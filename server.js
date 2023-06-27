@@ -24,6 +24,6 @@ app.get('/api/:tarotCard', (req, res) => {
     tarotCards[card] ? res.json(tarotCards[card]) : res.json('Not found');
 })
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
     console.log(`The server is running on ${PORT}.`);
 })
