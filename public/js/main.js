@@ -9,6 +9,7 @@ async function getName() {
     console.log(data);
     document.querySelector("h2").innerText = data.name;
     document.querySelector(".image").src = data.image;
+    document.querySelector(".description").innerText = data.description;
   } catch (error) {
     console.log(error);
   }
