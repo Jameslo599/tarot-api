@@ -34,10 +34,10 @@ MongoClient.connect(uri, { useUnifiedTopology: true })
         .catch((error) => res.json("Not found"));
       //   tarotCards[card] ? res.json(tarotCards[card]) : res.json("Not found");
     });
-
-    // Listen
-    app.listen(process.env.PORT || PORT, () => {
-      console.log(`The server is running on ${PORT}.`);
-    });
   })
   .catch((error) => console.error(error));
+
+// Listen
+app.listen(process.env.PORT || PORT, () => {
+  console.log(`The server is running on ${PORT}.`);
+});
