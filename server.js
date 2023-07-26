@@ -6,39 +6,37 @@ const PORT = 8000;
 const MongoClient = require("mongodb").MongoClient;
 const uri =
   "mongodb+srv://tarotapi59:koolster999@tarot.ay1wplb.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useUnifiedTopology: true });
 
-// MiddleWars
-app.use(express.static("public"));
-app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(cors());
+MongoClient.connect(uri, { useUnifiedTopology: true })
+  .then((client) => {
+    console.log("Connected to Database");
+    const db = client.db("tarot");
+    const tarotCards = db.collection("tarotCards");
 
-// Routes
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
-});
+    // MiddleWars
+    app.use(express.static("public"));
+    app.set("view engine", "ejs");
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.json());
+    app.use(cors());
 
-app.get("/api/:tarotCard", async (req, res) => {
-  const db = await client.db("tarot");
-  const tarotCards = await db.collection("tarotCards");
-  const card = req.params.tarotCard.toLowerCase();
-  tarotCards
-    .find({ id: `${card}` })
-    .toArray()
-    .then((data) => res.json(data))
-    .catch((error) => res.json("Not found"));
-});
+    // Routes
+    app.get("/", (req, res) => {
+      res.sendFile(__dirname + "/index.html");
+    });
 
-client.connect((err) => {
-  if (err) {
-    console.error(err);
-    return false;
-  }
-  // connection to mongo is successful, listen for requests
-  // Listen
-  app.listen(process.env.PORT || PORT, () => {
-    console.log(`The server is running on ${PORT}.`);
-  });
-});
+    app.get("/api/:tarotCard", (req, res) => {
+      const card = req.params.tarotCard.toLowerCase();
+      tarotCards
+        .find({ id: `${card}` })
+        .toArray()
+        .then((data) => res.json(data))
+        .catch((error) => res.json("Not found"));
+    });
+
+    // Listen
+    app.listen(process.env.PORT || PORT, () => {
+      console.log(`The server is running on ${PORT}.`);
+    });
+  })
+  .catch((error) => console.error(error));
