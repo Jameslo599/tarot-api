@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/:tarotCard", (req, res) => {
   const card = req.params.tarotCard.toLowerCase();
-
+  res.json("not found");
   //   tarotCards[card] ? res.json(tarotCards[card]) : res.json("Not found");
 });
 
