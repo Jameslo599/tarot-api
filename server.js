@@ -13,7 +13,7 @@ MongoClient.connect(uri, { useUnifiedTopology: true })
     const db = client.db("tarot");
     const tarotCards = db.collection("tarotCards");
 
-    // MiddleWars
+    // MiddleWares
     app.use(express.static("public"));
     app.set("view engine", "ejs");
     app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,6 +32,16 @@ MongoClient.connect(uri, { useUnifiedTopology: true })
         .toArray()
         .then((data) => res.json(data))
         .catch((error) => res.json("Not found"));
+    });
+
+    app.get("/reading/:number", (req, res) => {
+      const num = req.params.number;
+      console.log(num);
+      tarotCards
+        .find({ number: `${num}` })
+        .toArray()
+        .then((data) => res.json(data))
+        .catch((error) => res.json("Could not retrieve"));
     });
 
     // Listen
