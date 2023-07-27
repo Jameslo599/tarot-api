@@ -1,11 +1,11 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const PORT = 8000;
 const MongoClient = require("mongodb").MongoClient;
-const uri =
-  "mongodb+srv://tarotapi59:koolster999@tarot.ay1wplb.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.MONGO_URI;
 
 MongoClient.connect(uri, { useUnifiedTopology: true })
   .then((client) => {
