@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="/assets/reset.css" /> -->
+    <link rel="stylesheet" href="/public/assets/output.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <a href="#">Tarot API</a>
+      <nav>
+        <ul>
+          <li><a href="">About Tarot</a></li>
+          <li><a href="">Online Reading</a></li>
+          <li><a href="">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section id="banner">
+      <h1 class="text-blue-700">Find a card</h1>
+      <form method="get">
+        <label for="tarot-search">Choose a card:</label>
+        <select name="tarot-search" id="dropDown" required>
+          <option value="">--Select a Card--</option>
+          <option value="Magician">The Magician</option>
+          <option value="Popess">The Popess</option>
+          <option value="Empress">The Empress</option>
+          <option value="Emperor">The Emperor</option>
+          <option value="Pope">The Pope</option>
+          <option value="Lover">The Lover</option>
+          <option value="Chariot">The Chariot</option>
+          <option value="Justice">Justice</option>
+          <option value="Hermit">The Hermit</option>
+          <option value="Wheel-of-Fortune">The Wheel of Fortune</option>
+          <option value="Force">The Force</option>
+          <option value="Hanged Man">The Hanged Man</option>
+          <option value="Death">Card 13</option>
+          <option value="Temperance">Temperance</option>
+          <option value="Devil">The Devil</option>
+          <option value="Tower">The Tower</option>
+          <option value="Star">The Star</option>
+          <option value="Moon">The Moon</option>
+          <option value="Sun">The Sun</option>
+          <option value="Judgment">Judgment</option>
+          <option value="World">The World</option>
+          <option value="Fool">The Fool</option>
+        </select>
+        <br /><br />
+        <input
+          class="px-2 py-1 border-solid border-2 border-black"
+          type="button"
+          value="Submit"
+          id="search"
+        />
+      </form>
+      <!-- <input type="text" name="" id="" />
+      <button id="search">Search Tarot</button> -->
+      <h2>Name:</h2>
+      <div>
+        <img
+          class="image"
+          src="https://i.ibb.co/nC6y1K6/cardback.jpg"
+          alt="tarot cardback"
+        />
+      </div>
+      <div class="textBox"><p class="description"></p></div>
+    </section>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

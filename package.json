@@ -5,7 +5,8 @@
   "main": "public/js/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon ./src/server.js",
+    "tailwind": "npx tailwindcss -i ./src/style.css -o ./public/assets/output.css --watch"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +18,7 @@
     "mongodb": "^5.7.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "tailwindcss": "^3.3.3"
   }
 }
