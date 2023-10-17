@@ -4,8 +4,9 @@
   "description": "",
   "main": "public/js/main.js",
   "scripts": {
+    "start": "node public/js/main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./server.js",
+    "dev": "nodemon ./src/server.js",
     "tailwind": "npx tailwindcss -i ./src/style.css -o ./public/assets/output.css --watch"
   },
   "author": "",
