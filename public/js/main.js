@@ -18,30 +18,30 @@ async function getName() {
 }
 
 // Obtain a 3 card spread reading
-async function getReading() {
-  const cardArr = [];
-  const numArr = getRandomInt(22);
-  for (let i = 0; i < 3; i++) {
-    try {
-      // const response = await fetch(`https://tarot.cyclic.app/reading/${numArr[i]}`);
-      const response = await fetch(
-        `http://localhost:8000/reading/${numArr[i]}`
-      );
-      const data = await response.json();
-      console.log(data);
-      cardArr.push(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  console.log(cardArr.flat());
-}
+// async function getReading() {
+//   const cardArr = [];
+//   const numArr = getRandomInt(22);
+//   for (let i = 0; i < 3; i++) {
+//     try {
+//       // const response = await fetch(`https://tarot.cyclic.app/reading/${numArr[i]}`);
+//       const response = await fetch(
+//         `http://localhost:8000/reading/${numArr[i]}`
+//       );
+//       const data = await response.json();
+//       console.log(data);
+//       cardArr.push(data);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+//   console.log(cardArr.flat());
+// }
 
 // Randomized number without duplicates
-function getRandomInt(max, arr = []) {
-  if (arr.length === 3) return arr;
-  const num = Math.floor(Math.random() * max);
-  if (arr.includes(num)) return getRandomInt(max, arr);
-  arr.push(num);
-  return getRandomInt(max, arr);
-}
+// function getRandomInt(max, arr = []) {
+//   if (arr.length === 3) return arr;
+//   const num = Math.floor(Math.random() * max);
+//   if (arr.includes(num)) return getRandomInt(max, arr);
+//   arr.push(num);
+//   return getRandomInt(max, arr);
+// }
