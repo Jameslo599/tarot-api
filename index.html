@@ -8,64 +8,93 @@
     <title>Document</title>
   </head>
   <body>
-    <header>
-      <a href="#">Tarot API</a>
+    <header
+      class="fixed h-16 w-full left-0 top-0 flex flex-row justify-between items-center bg-slate-950"
+    >
+      <a href="#" class="nav-link"
+        ><img src="/images/logo.svg" alt="tarot logo" class="w-36 ml-4"
+      /></a>
       <nav>
-        <ul>
-          <li><a href="">About Tarot</a></li>
-          <li><a href="">Online Reading</a></li>
-          <li><a href="">Contact</a></li>
+        <ul class="flex flex-row w-100 mr-4">
+          <li class="m-2">
+            <a href="" class="group nav-link"
+              >About Tarot
+              <span class="nav-underline"></span>
+            </a>
+          </li>
+          <li class="m-2">
+            <a href="" class="group nav-link"
+              >Online Reading
+              <span class="nav-underline"></span>
+            </a>
+          </li>
+          <li class="m-2">
+            <a href="" class="group nav-link"
+              >Contact
+              <span class="nav-underline"></span>
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
-    <section id="banner">
-      <h1 class="text-blue-700">Find a card</h1>
+    <section id="banner" class="h-screen pt-28 pb-28 text-center">
+      <h1 class="text-5xl pb-4 m-6 inline-block border-b-4 border-orange-500">
+        Tarot Glossary
+      </h1>
       <form method="get">
-        <label for="tarot-search">Choose a card:</label>
-        <select name="tarot-search" id="dropDown" required>
-          <option value="">--Select a Card--</option>
-          <option value="Magician">The Magician</option>
-          <option value="Popess">The Popess</option>
-          <option value="Empress">The Empress</option>
-          <option value="Emperor">The Emperor</option>
-          <option value="Pope">The Pope</option>
-          <option value="Lover">The Lover</option>
-          <option value="Chariot">The Chariot</option>
-          <option value="Justice">Justice</option>
-          <option value="Hermit">The Hermit</option>
-          <option value="Wheel-of-Fortune">The Wheel of Fortune</option>
-          <option value="Force">The Force</option>
-          <option value="Hanged Man">The Hanged Man</option>
-          <option value="Death">Card 13</option>
-          <option value="Temperance">Temperance</option>
-          <option value="Devil">The Devil</option>
-          <option value="Tower">The Tower</option>
-          <option value="Star">The Star</option>
-          <option value="Moon">The Moon</option>
-          <option value="Sun">The Sun</option>
-          <option value="Judgment">Judgment</option>
-          <option value="World">The World</option>
-          <option value="Fool">The Fool</option>
-        </select>
-        <br /><br />
-        <input
-          class="px-2 py-1 border-solid border-2 border-black"
-          type="button"
-          value="Submit"
-          id="search"
-        />
+        <label for="tarot-search" class="text-lg sr-only"></label>
+        <div class="flex flex-row w-96 justify-around mx-auto my-10">
+          <select
+            name="tarot-search"
+            id="dropDown"
+            class="text-xl text-center block py-2.5 px-0 w-60 mx-auto text-gray-800 bg-transparent border-0 border-b-2 border-gray-500 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-900 bg-drop-down bg-no-repeat bg-right"
+            required
+          >
+            <option value="">--Select a Card--</option>
+            <option value="Magician">The Magician</option>
+            <option value="Popess">The Popess</option>
+            <option value="Empress">The Empress</option>
+            <option value="Emperor">The Emperor</option>
+            <option value="Pope">The Pope</option>
+            <option value="Lover">The Lover</option>
+            <option value="Chariot">The Chariot</option>
+            <option value="Justice">Justice</option>
+            <option value="Hermit">The Hermit</option>
+            <option value="Wheel-of-Fortune">The Wheel of Fortune</option>
+            <option value="Force">The Force</option>
+            <option value="Hanged Man">The Hanged Man</option>
+            <option value="Death">Card 13</option>
+            <option value="Temperance">Temperance</option>
+            <option value="Devil">The Devil</option>
+            <option value="Tower">The Tower</option>
+            <option value="Star">The Star</option>
+            <option value="Moon">The Moon</option>
+            <option value="Sun">The Sun</option>
+            <option value="Judgment">Judgment</option>
+            <option value="World">The World</option>
+            <option value="Fool">The Fool</option>
+          </select>
+          <input
+            class="px-2 py-1 border-solid border-2 border-black"
+            type="button"
+            value="Submit"
+            id="search"
+          />
+        </div>
       </form>
       <!-- <input type="text" name="" id="" />
       <button id="search">Search Tarot</button> -->
       <h2>Name:</h2>
       <div>
         <img
-          class="image"
+          class="image my-0 mx-auto"
           src="https://i.ibb.co/nC6y1K6/cardback.jpg"
           alt="tarot cardback"
         />
       </div>
-      <div class="textBox"><p class="description"></p></div>
+      <div class="textBox text-justify py-10">
+        <p class="description text-justify px-10%"></p>
+      </div>
     </section>
     <script src="/js/main.js"></script>
   </body>
