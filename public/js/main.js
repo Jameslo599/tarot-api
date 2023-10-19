@@ -1,7 +1,11 @@
 document.querySelector("#search").addEventListener("click", getName);
+//Prevent page refresh after submitting form
+document.querySelector("#form").addEventListener("submit", (e) => {
+  e.preventDefault();
+});
 
 // Obtain data on a single card
-async function getName() {
+async function getName(e) {
   const tarotName = document.querySelector("#dropDown").value;
   try {
     const response = await fetch(`https://tarot.cyclic.app/api/${tarotName}`);
@@ -9,7 +13,7 @@ async function getName() {
     const data = await response.json();
 
     console.log(data);
-    document.querySelector("h2").innerText = data[0].name;
+    document.querySelector(".name").innerText = data[0].name;
     document.querySelector(".image").src = data[0].image;
     document.querySelector(".description").innerText = data[0].description;
   } catch (error) {

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/assets/output.css" />
     <title>Document</title>
   </head>
-  <body>
+  <body class="h-screen">
     <header
       class="fixed h-16 w-full left-0 top-0 flex flex-row justify-between items-center bg-slate-950"
     >
@@ -24,7 +24,13 @@
           </li>
           <li class="m-2">
             <a href="" class="group nav-link"
-              >Online Reading
+              >Glossary
+              <span class="nav-underline"></span>
+            </a>
+          </li>
+          <li class="m-2">
+            <a href="" class="group nav-link"
+              >Card Reading
               <span class="nav-underline"></span>
             </a>
           </li>
@@ -37,65 +43,102 @@
         </ul>
       </nav>
     </header>
-    <section id="banner" class="h-screen pt-28 pb-28 text-center">
-      <h1 class="text-5xl pb-4 m-6 inline-block border-b-4 border-orange-500">
+    <section class="h-16"></section>
+    <section
+      id="banner"
+      class="h-full py-10 text-center bg-orange-50 bg-overlay"
+    >
+      <h1
+        class="font-bold text-5xl pb-4 m-6 inline-block border-b-4 border-orange-500"
+      >
         Tarot Glossary
       </h1>
-      <form method="get">
-        <label for="tarot-search" class="text-lg sr-only"></label>
-        <div class="flex flex-row w-96 justify-around mx-auto my-10">
-          <select
-            name="tarot-search"
-            id="dropDown"
-            class="text-xl text-center block py-2.5 px-0 w-60 mx-auto text-gray-800 bg-transparent border-0 border-b-2 border-gray-500 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-900 bg-drop-down bg-no-repeat bg-right"
-            required
-          >
-            <option value="">--Select a Card--</option>
-            <option value="Magician">The Magician</option>
-            <option value="Popess">The Popess</option>
-            <option value="Empress">The Empress</option>
-            <option value="Emperor">The Emperor</option>
-            <option value="Pope">The Pope</option>
-            <option value="Lover">The Lover</option>
-            <option value="Chariot">The Chariot</option>
-            <option value="Justice">Justice</option>
-            <option value="Hermit">The Hermit</option>
-            <option value="Wheel-of-Fortune">The Wheel of Fortune</option>
-            <option value="Force">The Force</option>
-            <option value="Hanged Man">The Hanged Man</option>
-            <option value="Death">Card 13</option>
-            <option value="Temperance">Temperance</option>
-            <option value="Devil">The Devil</option>
-            <option value="Tower">The Tower</option>
-            <option value="Star">The Star</option>
-            <option value="Moon">The Moon</option>
-            <option value="Sun">The Sun</option>
-            <option value="Judgment">Judgment</option>
-            <option value="World">The World</option>
-            <option value="Fool">The Fool</option>
-          </select>
-          <input
-            class="px-2 py-1 border-solid border-2 border-black"
-            type="button"
-            value="Submit"
-            id="search"
+      <div
+        class="w-full md:w-9/12 2xl:w-3/6 flex flex-row justify-center my-16 mx-auto"
+      >
+        <div class="flex-1 bg-slate-900 border-4 border-gray-900 rounded">
+          <img
+            class="image my-0 w-fit mx-auto rounded"
+            src="https://i.ibb.co/nC6y1K6/cardback.jpg"
+            alt="tarot cardback"
           />
         </div>
-      </form>
-      <!-- <input type="text" name="" id="" />
-      <button id="search">Search Tarot</button> -->
-      <h2>Name:</h2>
-      <div>
-        <img
-          class="image my-0 mx-auto"
-          src="https://i.ibb.co/nC6y1K6/cardback.jpg"
-          alt="tarot cardback"
-        />
-      </div>
-      <div class="textBox text-justify py-10">
-        <p class="description text-justify px-10%"></p>
+        <form
+          id="form"
+          method="get"
+          class="flex flex-col justify-start flex-1 mx-6 justify-between items-center"
+        >
+          <p class="w-11/12 text-justify text-lg">
+            The profound mystique and symbolic potency of the Tarot deck,
+            responsible for its profound influence across generations,
+            predominantly resides within its enigmatic 22 cards of the major
+            arcana. <br /><br />
+            Devoid of this major arcana, the Tarot would resemble standard
+            playing cards—a useful tool for games of chance and common
+            fortune-telling. However, it would lack the extraordinary qualities
+            that have ignited centuries of preservation, evolution,
+            interpretation, and artistic innovation, as witnessed in the rich
+            tapestry of Tarot cards. <br /><br />
+            To learn more about each of the 22 major arcana cards, choose a card
+            from the list.
+          </p>
+          <label for="tarot-search" class="text-2xl sr-only"
+            >Learn more about a card:</label
+          >
+          <div class="flex flex-row w-96 justify-around mx-auto my-10">
+            <select
+              name="tarot-search"
+              id="dropDown"
+              class="text-xl text-center block py-2.5 px-0 w-60 mr-2 text-gray-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-900 bg-drop-down bg-no-repeat bg-right cursor-pointer hover:border-gray-900 transition duration-200 ease-in-out"
+              required
+            >
+              <option value="">--Select a Card--</option>
+              <option value="Magician">The Magician</option>
+              <option value="Popess">The Popess</option>
+              <option value="Empress">The Empress</option>
+              <option value="Emperor">The Emperor</option>
+              <option value="Pope">The Pope</option>
+              <option value="Lover">The Lover</option>
+              <option value="Chariot">The Chariot</option>
+              <option value="Justice">Justice</option>
+              <option value="Hermit">The Hermit</option>
+              <option value="Wheel-of-Fortune">The Wheel of Fortune</option>
+              <option value="Force">The Force</option>
+              <option value="Hanged-Man">The Hanged Man</option>
+              <option value="Death">Card 13</option>
+              <option value="Temperance">Temperance</option>
+              <option value="Devil">The Devil</option>
+              <option value="Tower">The Tower</option>
+              <option value="Star">The Star</option>
+              <option value="Moon">The Moon</option>
+              <option value="Sun">The Sun</option>
+              <option value="Judgment">Judgment</option>
+              <option value="World">The World</option>
+              <option value="Fool">The Fool</option>
+            </select>
+            <button
+              class="px-2 py-1 bg-transparent hover:bg-cyan-700 text-cyan-700 font-semibold hover:text-white py-2 px-4 border border-cyan-500 hover:border-transparent rounded transition duration-200 ease-in-out active:bg-cyan-900"
+              type="submit"
+              value="Submit"
+              id="search"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
     </section>
+    <section class="py-20 bg-white bg-overlay">
+      <h2
+        class="name text-4xl font-bold text-center after:content-[' '] after:bg-slate-950 after:h-1 after:block after:w-14 after:flex-none after:mx-auto after:my-8 after:rounded"
+      >
+        Card Name
+      </h2>
+      <div class="w-full md:w-9/12 2xl:w-3/6 textBox text-justify mx-auto">
+        <p class="description text-justify text-lg"></p>
+      </div>
+    </section>
+    <footer class="h-48 bg-slate-900"></footer>
     <script src="/js/main.js"></script>
   </body>
 </html>

@@ -4,10 +4,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "drop-down": "url('/public/images/down-arrow.svg')",
-      },
-      padding: {
-        "10%": "10%",
+        "drop-down": "url('../images/down-arrow.svg')",
+        overlay: "url('../images/overlay.png')",
       },
     },
   },
