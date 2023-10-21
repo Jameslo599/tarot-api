@@ -22,7 +22,10 @@ MongoClient.connect(uri, { useUnifiedTopology: true })
 
     // Routes
     app.get("/", (req, res) => {
-      res.sendFile(__dirname + "/index.html");
+      res.sendFile(__dirname + "/home.html");
+    });
+    app.get("/card-api", (req, res) => {
+      res.sendFile(__dirname + "/card-api.html");
     });
 
     app.get("/api/:tarotCard", (req, res) => {
