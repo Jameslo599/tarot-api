@@ -1,3 +1,4 @@
+//API call to obtain card data
 document.querySelector("#search").addEventListener("click", getName);
 //Prevent page refresh after submitting form
 document.querySelector("#form").addEventListener("submit", (e) => {
@@ -16,9 +17,15 @@ async function getName(e) {
     document.querySelector(".name").innerText = data[0].name;
     document.querySelector(".image").src = data[0].image;
     document.querySelector(".description").innerText = data[0].description;
+    if (document.querySelector("#info").classList.contains("hidden"))
+      displayInfo();
   } catch (error) {
     console.log(error);
   }
+}
+
+function displayInfo() {
+  document.querySelector("#info").classList.remove("hidden");
 }
 
 // Obtain a 3 card spread reading
