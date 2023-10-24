@@ -17,15 +17,16 @@ async function getName(e) {
     document.querySelector(".name").innerText = data[0].name;
     document.querySelector(".image").src = data[0].image;
     document.querySelector(".description").innerText = data[0].description;
+    //Display info if first search
     if (document.querySelector("#info").classList.contains("hidden"))
       displayInfo();
   } catch (error) {
     console.log(error);
   }
 }
-
+// Displays info section
 function displayInfo() {
-  document.querySelector("#info").classList.remove("hidden");
+  document.querySelector("#info").classList.toggle("hidden");
 }
 
 // Obtain a 3 card spread reading
