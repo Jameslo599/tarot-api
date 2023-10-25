@@ -12,7 +12,10 @@
     <div class="flex flex-col h-screen justify-between">
       <header class="fixed h-16 w-full left-0 top-0 bg-slate-950 z-10">
         <nav>
-          <div class="flex flex-row justify-between items-center h-16">
+          <div
+            id="navBar"
+            class="flex flex-row justify-between items-center h-16"
+          >
             <a href="/" class="nav-link"
               ><img
                 src="/images/logo.svg"
@@ -37,7 +40,10 @@
                     fill="none"
                     stroke="#ffffff"
                   >
-                    <g class="js-nc-int-icon nc-int-menu-to-close-2">
+                    <g
+                      id="burgerAni"
+                      class="js-nc-int-icon nc-int-menu-to-close-2"
+                    >
                       <line x1="2" x2="30" y1="8" y2="8"></line>
                       <line x1="30" x2="2" y1="24" y2="24"></line>
                       <line x1="30" x2="2" y1="16" y2="16"></line>
@@ -119,33 +125,41 @@
             </div>
             <div
               id="navLinks"
-              class="justify-between items-center fixed w-full top-16 bg-slate-950 origin-top duration-200 scale-y-0 md:top-0 md:flex md:relative md:order-last md:h-16 md:w-fit md:scale-y-100"
+              class="justify-between items-center fixed w-full top-16 bg-slate-950 origin-top duration-200 scale-y-0 rounded-b md:top-0 md:flex md:relative md:order-last md:h-16 md:w-fit md:scale-y-100"
             >
               <ul
-                class="flex flex-col bg-slate-900 m-4 md:w-100 md:m-0 md:mr-4 md:flex-row md:bg-transparent"
+                class="flex flex-col bg-slate-900 m-4 rounded-lg md:w-100 md:m-0 md:mr-4 md:flex-row md:bg-transparent"
               >
-                <li class="m-2 hover:bg-slate-950/60">
+                <li
+                  class="m-2 hover:bg-slate-950/60 border-b-2 border-neutral-50/20 md:border-0"
+                >
                   <a href="" class="group nav-link inline-block"
                     >About Tarot
-                    <span class="nav-underline"></span>
+                    <span class="md:nav-underline"></span>
                   </a>
                 </li>
-                <li class="m-2 hover:bg-slate-950/60">
+                <li
+                  class="m-2 hover:bg-slate-950/60 border-b-2 border-neutral-50/20 md:border-0"
+                >
                   <a href="" class="group nav-link inline-block"
                     >Card Reading
-                    <span class="nav-underline"></span>
+                    <span class="md:nav-underline"></span>
                   </a>
                 </li>
-                <li class="m-2 hover:bg-slate-950/60">
+                <li
+                  class="m-2 hover:bg-slate-950/60 border-b-2 border-neutral-50/20 md:border-0"
+                >
                   <a href="/card-api" class="group nav-link inline-block"
                     >Card API
-                    <span class="nav-underline"></span>
+                    <span class="md:nav-underline"></span>
                   </a>
                 </li>
-                <li class="m-2 hover:bg-slate-950/60">
+                <li
+                  class="m-2 hover:bg-slate-950/60 border-b-2 border-neutral-50/20 md:border-0"
+                >
                   <a href="" class="group nav-link inline-block"
                     >Contact
-                    <span class="nav-underline"></span>
+                    <span class="md:nav-underline"></span>
                   </a>
                 </li>
               </ul>
@@ -163,21 +177,12 @@
           Tarot API
         </h1>
         <div
-          class="w-full my-16 mx-auto lg:flex lg:flex-row lg:justify-center md:w-10/12 lg:w-11/12 lg:items-center 2xl:w-[65%]"
+          class="w-full my-16 mx-auto lg:flex lg:flex-row lg:justify-center md:w-10/12 lg:w-6/12 lg:items-center 2xl:w-2/6"
         >
-          <div
-            class="mx-auto my-8 w-48 border-2 bg-slate-900 border-gray-900 rounded sm:w-fit lg:border-4 lg:flex-1 lg:my-0 lg:relative lg:bottom-8"
-          >
-            <img
-              class="image w-fit mx-auto rounded"
-              src="https://i.ibb.co/nC6y1K6/cardback.jpg"
-              alt="tarot cardback"
-            />
-          </div>
           <form
             id="form"
             method="get"
-            class="flex flex-col justify-start flex-1 mx-6 justify-between items-center bg-slate-900/90 rounded lg:relative lg:top-24 lg:right-12 lg:bg-cyan-800/95"
+            class="flex flex-col justify-start flex-1 mx-6 justify-between items-center bg-slate-900/90 rounded-lg"
           >
             <p
               class="text-left text-white w-full p-4 sm:p-8 sm:w-11/12 sm:text-lg md:w-full xl:px-10"
@@ -249,6 +254,15 @@
         >
           Card Name
         </h2>
+        <div
+          class="mx-auto mb-8 w-48 border-2 bg-slate-900 border-gray-900 rounded sm:w-fit lg:border-4 lg:flex-1 lg:relative"
+        >
+          <img
+            class="image w-fit mx-auto rounded"
+            src=""
+            alt="tarot cardback"
+          />
+        </div>
         <div class="w-10/12 md:w-9/12 2xl:w-3/6 textBox mx-auto">
           <p class="description text-left sm:text-lg"></p>
         </div>
