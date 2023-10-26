@@ -27,6 +27,9 @@ MongoClient.connect(uri, { useUnifiedTopology: true })
     app.get("/card-api", (req, res) => {
       res.sendFile(__dirname + "/card-api.html");
     });
+    app.get("/card-reading", (req, res) => {
+      res.sendFile(__dirname + "/card-reading.html");
+    });
 
     app.get("/api/:tarotCard", (req, res) => {
       const card = req.params.tarotCard.toLowerCase();

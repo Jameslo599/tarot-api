@@ -9,4 +9,7 @@
   .nav-underline {
     @apply block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-orange-600;
   }
+  .card-header {
+    @apply text-xl font-bold underline mb-2;
+  }
 }

@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="/assets/output.css" />
     <title>Tarot API</title>
   </head>
-  <body class="h-screen min-w-[320px] bg-slate-950">
+
+  <body class="h-screen min-w-[320px]">
     <div class="flex flex-col h-screen justify-between">
       <header class="fixed h-16 w-full left-0 top-0 bg-slate-950 z-10">
         <nav>
@@ -167,54 +168,107 @@
         </nav>
       </header>
       <section
-        class="h-auto mt-16 py-10 text-center bg-orange-50 bg-overlay lg:h-full"
+        id="banner"
+        class="mt-16 py-10 h-auto text-center bg-orange-50 bg-overlay"
       >
         <h1
-          class="font-bold pb-2 inline-block m-4 border-b-2 border-orange-500 text-3xl sm:text-4xl sm:border-b-4 md:text-5xl"
+          class="font-bold pb-2 inline-block border-b-2 border-orange-500 text-3xl sm:text-4xl sm:border-b-4 lg:text-5xl"
         >
-          The World of <span class="text-blue-500">Tarot!</span>
+          Three Card Spread
         </h1>
-        <div class="mx-8 mb-8 flex flex-col items-center">
-          <p
-            class="w-10/12 text-left w-full p-4 sm:p-8 sm:w-11/12 sm:text-lg md:w-full lg:text-center xl:px-10 xl:w-[70%] 2xl:w-[50%]"
-          >
-            The Tarot holds a mystical allure that transcends its humble origins
-            as a mere tool for games of chance. Over the course of several
-            centuries, this enigmatic deck of 78 cards has captivated the hearts
-            and minds of countless individuals. For some, it serves as a conduit
-            for divination and fortune-telling, unlocking the secrets of the
-            future. Others regard the Tarot as a hidden repository of ancient
-            and potent wisdom, waiting to be unveiled. <br /><br />
-            In the present day, a myriad of people turn to Tarot cards as a
-            source of guidance, consultation, and decision-making. It has
-            evolved into a versatile instrument, adapting to the ever-changing
-            needs of those who seek its wisdom. For many, the Tarot transcends
-            mere fortune-telling and becomes a visual aid for guided imagination
-            and meditation, enabling profound self-reflection and exploration.
-            It also takes on a role as a magical amulet, providing a tangible
-            link to the supernatural. <br /><br />
-            Throughout the centuries, the Tarot has left an indelible mark on
-            the human experience. It has touched, and at times, profoundly
-            transformed, the lives of those who have sought solace, answers, and
-            enlightenment through the mystical reading of Tarot cards.
-            <br /><br />
-            <span class="underline"
-              >Please have fun and I hope you receive the guidance you
-              desire!</span
-            >
-          </p>
-          <div>
-            <button
-              class="mt-6 mx-2 w-40 bg-orange-700 hover:bg-orange-500 text-white font-semibold hover:text-neutral-100 py-3 px-4 border-2 border-slate-600 hover:border-transparent rounded transition duration-200 ease-in-out active:bg-orange-900 sm:mt-0"
-            >
-              Learn More
-            </button>
-            <button
-              class="mt-6 mx-2 w-40 bg-blue-600 hover:bg-blue-400 text-white font-semibold py-3 px-4 border-2 hover:text-neutral-100 border-slate-600 hover:border-transparent rounded transition duration-200 ease-in-out active:bg-blue-900 sm:mt-0"
-            >
-              <a href="/card-reading">Make a Reading</a>
-            </button>
+        <div
+          class="flex flex-col mx-auto md:flex-row md:mt-6 2xl:max-w-[1536px]"
+        >
+          <div class="mx-auto mb-8 w-48 sm:w-fit lg:flex-1 lg:relative">
+            <h2 class="card-header mt-2 sm:mt-6 md:mt-0">Past</h2>
+            <img
+              class="image w-fit mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
+              src="https://i.ibb.co/nC6y1K6/cardback.jpg"
+              alt="tarot cardback"
+            />
           </div>
+          <div class="mx-auto mb-8 w-48 sm:w-fit lg:flex-1 lg:relative">
+            <h2 class="card-header">Present</h2>
+            <img
+              class="image w-fit mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
+              src="https://i.ibb.co/nC6y1K6/cardback.jpg"
+              alt="tarot cardback"
+            />
+          </div>
+          <div class="mx-auto mb-8 w-48 sm:w-fit lg:flex-1 lg:relative">
+            <h2 class="card-header">Future</h2>
+            <img
+              class="image w-fit mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
+              src="https://i.ibb.co/nC6y1K6/cardback.jpg"
+              alt="tarot cardback"
+            />
+          </div>
+        </div>
+        <div
+          class="w-full my-8 mx-auto lg:flex lg:flex-row lg:justify-center md:w-10/12 lg:w-6/12 lg:items-center 2xl:w-2/6"
+        >
+          <form
+            id="form"
+            method="get"
+            class="flex flex-col justify-start flex-1 mx-6 justify-between items-center bg-slate-900/90 rounded-lg"
+          >
+            <p
+              class="text-left text-white w-full p-4 sm:p-8 sm:w-11/12 sm:text-lg md:w-full xl:px-10"
+            >
+              Although you cannot "shuffle" cards in the traditional sense when
+              performing an online reading, the card choice by the computer is
+              not really random. It is dependent on the state of the computer’s
+              memory at the exact moment you activate shuffling algorithm
+              (pressing the submit button).<br /><br />
+              When interpreting the results, the card positions typically
+              represent the past, present, and future. Click on each tab to
+              reveal its meaning and then relate that interpretation to the
+              corresponding time period associated with each card's respective
+              position.<br /><br />
+              Focus on the question in your mind, give it your full attention,
+              and when you feel ready, click the button to proceed.
+            </p>
+            <label for="tarot-search" class="text-2xl sr-only"
+              >Learn more about a card:</label
+            >
+            <div
+              class="mx-auto bg-white rounded-md p-4 my-10 mx-4 sm:mx-auto sm:flex sm:flex-row sm:justify-around sm:w-96 sm:p-6 sm:items-center"
+            >
+              <input
+                type="text"
+                placeholder="Write your question"
+                required
+                class="border-2 border-slate-700 px-4 py-2 rounded"
+              />
+              <button
+                class="mt-6 bg-transparent hover:bg-cyan-700 text-cyan-700 font-semibold hover:text-white py-2 px-4 border-2 border-cyan-600 hover:border-transparent rounded transition duration-200 ease-in-out active:bg-cyan-900 sm:mt-0"
+                type="submit"
+                value="Submit"
+                id="search"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <section id="info" class="py-10 bg-white bg-overlay hidden">
+        <h2
+          class="name text-2xl sm:text-3xl font-bold text-center after:content-[' '] after:bg-slate-950 after:h-0.5 sm:after:h-1 after:block after:w-14 after:flex-none after:mx-auto after:my-4 md:after:my-8 after:rounded"
+        >
+          Card Name
+        </h2>
+        <div
+          class="mx-auto mb-8 w-48 border-2 bg-slate-900 border-gray-900 rounded sm:w-fit lg:border-4 lg:flex-1 lg:relative"
+        >
+          <img
+            class="image w-fit mx-auto rounded"
+            src=""
+            alt="tarot cardback"
+          />
+        </div>
+        <div class="w-10/12 md:w-9/12 2xl:w-3/6 textBox mx-auto">
+          <p class="description text-left sm:text-lg"></p>
         </div>
       </section>
       <footer class="h-16 bg-slate-950 flex flex-col justify-center p-8">
@@ -229,6 +283,7 @@
         >
       </footer>
     </div>
+    <script src="/js/main.js"></script>
     <script src="/js/nav.js"></script>
   </body>
 </html>
