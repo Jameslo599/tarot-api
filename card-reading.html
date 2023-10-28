@@ -130,38 +130,42 @@
               <ul
                 class="flex flex-col bg-slate-900 m-4 rounded-lg md:w-100 md:m-0 md:mr-4 md:flex-row md:bg-transparent"
               >
-                <li
-                  class="m-2 hover:bg-slate-950/60 border-b-2 border-neutral-50/20 md:border-0"
+                <a
+                  href="/card-reading"
+                  class="group nav-link inline-block border-b-2 border-neutral-50/20 hover:bg-slate-950/60 md:border-0"
                 >
-                  <a href="" class="group nav-link inline-block"
-                    >About Tarot
+                  <li class="m-2">
+                    About Tarot
                     <span class="md:nav-underline"></span>
-                  </a>
-                </li>
-                <li
-                  class="m-2 hover:bg-slate-950/60 border-b-2 border-neutral-50/20 md:border-0"
+                  </li>
+                </a>
+                <a
+                  href="/card-reading"
+                  class="group nav-link inline-block border-b-2 border-neutral-50/20 hover:bg-slate-950/60 md:border-0"
                 >
-                  <a href="/card-reading" class="group nav-link inline-block"
-                    >Card Reading
+                  <li class="m-2">
+                    Card Reading
                     <span class="md:nav-underline"></span>
-                  </a>
-                </li>
-                <li
-                  class="m-2 hover:bg-slate-950/60 border-b-2 border-neutral-50/20 md:border-0"
+                  </li>
+                </a>
+                <a
+                  href="/card-api"
+                  class="group nav-link inline-block border-b-2 border-neutral-50/20 hover:bg-slate-950/60 md:border-0"
                 >
-                  <a href="/card-api" class="group nav-link inline-block"
-                    >Card API
+                  <li class="m-2">
+                    Card API
                     <span class="md:nav-underline"></span>
-                  </a>
-                </li>
-                <li
-                  class="m-2 hover:bg-slate-950/60 border-b-2 border-neutral-50/20 md:border-0"
+                  </li>
+                </a>
+                <a
+                  href="/card-reading"
+                  class="group nav-link inline-block border-b-2 border-neutral-50/20 hover:bg-slate-950/60 md:border-0"
                 >
-                  <a href="" class="group nav-link inline-block"
-                    >Contact
+                  <li class="m-2">
+                    Contact
                     <span class="md:nav-underline"></span>
-                  </a>
-                </li>
+                  </li>
+                </a>
               </ul>
             </div>
           </div>
@@ -178,31 +182,46 @@
         </h1>
         <div
           id="cardImages"
-          class="flex flex-col mx-auto md:flex-row md:mt-6 2xl:max-w-[1536px]"
+          class="flex flex-col mx-auto mt-8 gap-x-4 gap-y-4 md:flex-row md:mt-6 2xl:max-w-[1536px]"
         >
-          <div class="mx-auto mb-8 w-48 sm:w-fit lg:flex-1 lg:relative">
+          <div class="py-4 mx-auto w-full sm:w-fit lg:flex-1 lg:relative">
             <h2 class="card-header mt-2 sm:mt-6 md:mt-0">Past</h2>
             <img
-              class="image w-fit mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
+              class="image w-48 mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
               src="https://i.ibb.co/nC6y1K6/cardback.jpg"
               alt="tarot cardback"
             />
+            <div
+              class="container inactive p-4 w-11/12 mx-auto my-6 bg-slate-900/90 rounded-lg transition-all duration-700 ease-in-out"
+            >
+              <p class="result text-white"></p>
+            </div>
           </div>
-          <div class="mx-auto mb-8 w-48 sm:w-fit lg:flex-1 lg:relative">
-            <h2 class="card-header">Present</h2>
+          <div class="py-4 mx-auto w-full sm:w-fit lg:flex-1 lg:relative">
+            <h2 class="card-header mt-2 sm:mt-6 md:mt-0">Present</h2>
             <img
-              class="image w-fit mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
+              class="image w-48 mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
               src="https://i.ibb.co/nC6y1K6/cardback.jpg"
               alt="tarot cardback"
             />
+            <div
+              class="container inactive p-4 w-11/12 mx-auto my-6 bg-slate-900/90 rounded-lg transition-all duration-700 ease-in-out"
+            >
+              <p class="result text-white"></p>
+            </div>
           </div>
-          <div class="mx-auto mb-8 w-48 sm:w-fit lg:flex-1 lg:relative">
-            <h2 class="card-header">Future</h2>
+          <div class="py-4 mx-auto w-full sm:w-fit lg:flex-1 lg:relative">
+            <h2 class="card-header mt-2 sm:mt-6 md:mt-0">Future</h2>
             <img
-              class="image w-fit mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
+              class="image w-48 mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
               src="https://i.ibb.co/nC6y1K6/cardback.jpg"
               alt="tarot cardback"
             />
+            <div
+              class="container inactive p-4 w-11/12 mx-auto my-6 bg-slate-900/90 rounded-lg transition-all duration-700 ease-in-out"
+            >
+              <p class="result text-white"></p>
+            </div>
           </div>
         </div>
         <h2 id="question" class="font-bold text-2xl mt-2 sm:mt-6"></h2>

@@ -12,4 +12,13 @@
   .card-header {
     @apply text-xl font-bold underline mb-2;
   }
+  .card {
+    @apply border-2 border-black rounded bg-sky-700 text-slate-100;
+  }
+  .inactive {
+    @apply opacity-0 invisible absolute;
+  }
+  .activated {
+    @apply opacity-100 visible;
+  }
 }
