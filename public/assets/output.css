@@ -1527,10 +1527,6 @@ video {
 }
 
 @media (min-width: 1536px) {
-  .\32xl\:h-full {
-    height: 100%;
-  }
-
   .\32xl\:w-2\/6 {
     width: 33.333333%;
   }
