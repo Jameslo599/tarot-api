@@ -1,6 +1,9 @@
 //Triple api call for card reading and prevent refresh upon submitting
 const form = document.querySelector("#form");
+const save = document.querySelector("#save");
+const saveState = [];
 
+//Handles displaying data on DOM
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   //Iterate through three child cards and update with info from api call
@@ -13,8 +16,15 @@ form.addEventListener("submit", async (e) => {
   //Reset text input
   form.reset();
 });
+//Handles saving
+form.addEventListener("submit", () => {
+  //Populate save button
+  save.classList.remove("hidden");
+  //Save object when 'save' button is clicked
+  save.addEventListener("click", makeObj);
+});
 
-// Obtain a 3 card spread reading
+//Obtain a 3 card spread reading
 async function getReading() {
   const cardArr = [];
   const numArr = getRandomInt(22);
@@ -32,7 +42,7 @@ async function getReading() {
   return cardArr.flat();
 }
 
-// Randomized number without duplicates
+//Randomized number without duplicates
 function getRandomInt(max, arr = []) {
   if (arr.length === 3) return arr;
   const num = Math.floor(Math.random() * max);
@@ -41,7 +51,7 @@ function getRandomInt(max, arr = []) {
   return getRandomInt(max, arr);
 }
 
-// Update DOM with API results
+//Update DOM with API results
 function updateDOM(arr) {
   const spread = document.querySelector("#cardImages");
   const imgArr = spread.getElementsByClassName("image");
@@ -53,4 +63,41 @@ function updateDOM(arr) {
     container[i].classList.replace("inactive", "activated");
     spread.children[i].classList.add("card");
   }
+}
+
+//Blueprint for objects that will be used for storage
+class Reading {
+  constructor(id, image, meaning, question) {
+    this.id = id;
+    this.image = image;
+    this.meaning = meaning;
+    this.question = question;
+  }
+}
+
+//Create new object
+function makeObj() {
+  const images = document.getElementsByClassName("image");
+  const meaning = document.getElementsByClassName("result");
+  const imgArr = [];
+  const meaningArr = [];
+  for (let i = 0; i < images.length; i++) {
+    imgArr.push(images[i].src);
+    meaningArr.push(meaning[i].textContent);
+  }
+  console.log(saveState);
+  //Prevent additional saves until new reading
+  save.removeEventListener("click", makeObj);
+  //Generate unique id number
+  const question = saveState[saveState.length - 1]?.id
+    ? saveState[saveState.length - 1].id + 1
+    : 1;
+  saveState.push(
+    new Reading(
+      question,
+      imgArr,
+      meaningArr,
+      document.querySelector("#question").textContent
+    )
+  );
 }
