@@ -1544,6 +1544,10 @@ video {
     width: fit-content;
   }
 
+  .\32xl\:w-5\/12 {
+    width: 41.666667%;
+  }
+
   .\32xl\:max-w-\[1536px\] {
     max-width: 1536px;
   }
