@@ -73,9 +73,23 @@ class Reading {
     this.meaning = meaning;
     this.question = question;
   }
+  //Load reading
+  loadState() {
+    const spread = document.querySelector("#cardImages");
+    const imgArr = spread.getElementsByClassName("image");
+    const meaning = spread.getElementsByClassName("result");
+    const container = spread.getElementsByClassName("container");
+    document.querySelector("#question").innerHTML = this.question;
+    for (let i = 0; i < 3; i++) {
+      imgArr[i].src = this.image[i];
+      meaning[i].textContent = this.meaning[i];
+      container[i].classList.replace("inactive", "activated");
+      spread.children[i].classList.add("card");
+    }
+  }
 }
 
-//Create new object
+//Create new reading object
 function makeObj() {
   const images = document.getElementsByClassName("image");
   const meaning = document.getElementsByClassName("result");
