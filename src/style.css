@@ -21,4 +21,10 @@
   .activated {
     @apply opacity-100 visible;
   }
+  .paragraph {
+    @apply w-10/12 mx-auto text-left w-full sm:p-8 sm:w-11/12 sm:text-lg sm:text-justify xl:w-[80%] 2xl:w-[1280px];
+  }
+  .p-container {
+    @apply mx-3 mb-8 bg-white bg-overlay rounded px-4 pb-8 border-[1px] border-gray-700 sm:mx-8 sm:py-4 lg:w-[80%] lg:mx-auto 2xl:w-[1440px];
+  }
 }

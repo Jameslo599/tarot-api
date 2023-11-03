@@ -7,6 +7,10 @@ for (let i = 0; i < table.length; i++) {
     switchChapter(table[i].textContent);
     table[i].classList.add("bg-gray-600");
     table[i].classList.add("font-bold");
+    table[i].classList.replace(
+      "border-neutral-200/40",
+      "border-neutral-200/90"
+    );
   });
 }
 
@@ -16,6 +20,7 @@ function reset() {
   for (const ele of list) {
     ele.classList.remove("bg-gray-600");
     ele.classList.remove("font-bold");
+    ele.classList.replace("border-neutral-200/90", "border-neutral-200/40");
   }
 }
 
