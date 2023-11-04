@@ -676,6 +676,70 @@ video {
   }
 }
 
+.entry-l {
+  width: 50%;
+  overflow-wrap: break-word;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(55 65 81 / var(--tw-border-opacity));
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .entry-l {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .entry-l {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
+.entry-r {
+  width: 50%;
+  overflow-wrap: break-word;
+  border-bottom-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(55 65 81 / var(--tw-border-opacity));
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-align: right;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .entry-r {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .entry-r {
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .entry-r {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -783,10 +847,6 @@ video {
   margin-bottom: 2rem;
 }
 
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
 .mb-8 {
   margin-bottom: 2rem;
 }
@@ -855,6 +915,10 @@ video {
   height: auto;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .h-screen {
   height: 100vh;
 }
@@ -877,6 +941,10 @@ video {
 
 .w-48 {
   width: 12rem;
+}
+
+.w-6\/12 {
+  width: 50%;
 }
 
 .w-60 {
@@ -941,6 +1009,14 @@ video {
 
 .flex-col {
   flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.items-end {
+  align-items: flex-end;
 }
 
 .items-center {
@@ -1167,12 +1243,20 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.pt-4 {
+  padding-top: 1rem;
+}
+
 .text-left {
   text-align: left;
 }
 
 .text-center {
   text-align: center;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .text-2xl {
@@ -1234,6 +1318,10 @@ video {
 
 .underline {
   text-decoration-line: underline;
+}
+
+.opacity-100 {
+  opacity: 1;
 }
 
 .transition {
@@ -1424,6 +1512,16 @@ video {
 .active\:bg-orange-900:active {
   --tw-bg-opacity: 1;
   background-color: rgb(124 45 18 / var(--tw-bg-opacity));
+}
+
+.disabled\:border-black:disabled {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.disabled\:bg-green-600:disabled {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1632,6 +1730,10 @@ video {
 
   .md\:bg-transparent {
     background-color: transparent;
+  }
+
+  .md\:text-center {
+    text-align: center;
   }
 
   .md\:text-5xl {

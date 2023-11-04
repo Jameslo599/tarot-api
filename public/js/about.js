@@ -3,7 +3,6 @@ const table = document.querySelector("#table-contents").children;
 for (let i = 0; i < table.length; i++) {
   table[i].addEventListener("click", () => {
     reset();
-    console.log(table[i].textContent);
     switchChapter(table[i].textContent);
     table[i].classList.add("bg-gray-600");
     table[i].classList.add("font-bold");
@@ -29,8 +28,8 @@ function switchChapter(str) {
   const chapter = document.querySelectorAll("div.chapter");
   for (const ele of chapter) {
     ele.classList.add("hidden");
-    ele.children[0].textContent.trim() === str
-      ? ele.classList.remove("hidden")
-      : null;
+    if (ele.children[0].textContent.trim() === str) {
+      ele.classList.remove("hidden");
+    }
   }
 }

@@ -21,6 +21,8 @@ form.addEventListener("submit", () => {
   //Populate save button
   save.classList.remove("hidden");
   //Save object when 'save' button is clicked
+  save.innerHTML = "Save";
+  save.disabled = false;
   save.addEventListener("click", makeObj);
 });
 
@@ -101,7 +103,8 @@ function makeObj() {
   }
   console.log(saveState);
   //Prevent additional saves until new reading
-  save.removeEventListener("click", makeObj);
+  save.disabled = true;
+  save.innerHTML = "Saved to History!";
   //Generate unique id number
   const question = saveState[saveState.length - 1]?.id
     ? saveState[saveState.length - 1].id + 1

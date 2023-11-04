@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="public/assets/output.css" />
     <title>Tarot API</title>
   </head>
-
-  <body class="h-screen min-w-[320px] bg-orange-50 bg-overlay">
+  <body class="h-screen min-w-[320px] bg-slate-950 bg-orange-50 bg-overlay">
     <div class="flex flex-col h-screen justify-between">
       <header class="fixed h-16 w-full left-0 top-0 bg-slate-950 z-10">
         <nav>
@@ -131,7 +130,7 @@
                 class="flex flex-col bg-slate-900 m-4 rounded-lg md:w-100 md:m-0 md:mr-4 md:flex-row md:bg-transparent"
               >
                 <a
-                  href="/card-reading"
+                  href="/about"
                   class="group nav-link inline-block border-b-2 border-neutral-50/20 hover:bg-slate-950/60 md:border-0"
                 >
                   <li class="m-2">
@@ -162,7 +161,7 @@
                   class="group nav-link inline-block border-b-2 border-neutral-50/20 hover:bg-slate-950/60 md:border-0"
                 >
                   <li class="m-2">
-                    Contact
+                    History
                     <span class="md:nav-underline"></span>
                   </li>
                 </a>
@@ -171,113 +170,39 @@
           </div>
         </nav>
       </header>
-      <section id="banner" class="mt-16 py-10 h-auto text-center">
+      <section
+        class="h-auto mt-16 py-10 text-center bg-orange-50 bg-overlay h-full"
+      >
         <h1
-          class="font-bold pb-2 inline-block border-b-2 border-orange-500 text-3xl sm:text-4xl sm:border-b-4 lg:text-5xl"
+          class="font-bold pb-2 inline-block m-4 border-b-2 border-orange-500 text-3xl sm:text-4xl sm:border-b-4 md:text-5xl"
         >
-          Three Card Spread
+          History
         </h1>
+        <!-- Center Suit -->
         <div
-          id="cardImages"
-          class="flex flex-col mx-auto mt-8 gap-x-4 gap-y-4 md:flex-row md:mt-6 2xl:max-w-[1536px]"
+          class="p-container block opacity-100 transition duration-700 ease-in-out"
         >
-          <div class="py-4 mx-auto w-full sm:w-fit lg:flex-1 lg:relative">
-            <h2 class="card-header mt-2 sm:mt-6 md:mt-0">Past</h2>
-            <img
-              class="image w-48 mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
-              src="https://i.ibb.co/nC6y1K6/cardback.jpg"
-              alt="tarot cardback"
-            />
-            <div
-              class="container inactive p-4 w-11/12 mx-auto my-6 bg-slate-900/90 rounded-lg transition-all duration-700 ease-in-out"
-            >
-              <p class="result text-white"></p>
-            </div>
-          </div>
-          <div class="py-4 mx-auto w-full sm:w-fit lg:flex-1 lg:relative">
-            <h2 class="card-header mt-2 sm:mt-6 md:mt-0">Present</h2>
-            <img
-              class="image w-48 mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
-              src="https://i.ibb.co/nC6y1K6/cardback.jpg"
-              alt="tarot cardback"
-            />
-            <div
-              class="container inactive p-4 w-11/12 mx-auto my-6 bg-slate-900/90 rounded-lg transition-all duration-700 ease-in-out"
-            >
-              <p class="result text-white"></p>
-            </div>
-          </div>
-          <div class="py-4 mx-auto w-full sm:w-fit lg:flex-1 lg:relative">
-            <h2 class="card-header mt-2 sm:mt-6 md:mt-0">Future</h2>
-            <img
-              class="image w-48 mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
-              src="https://i.ibb.co/nC6y1K6/cardback.jpg"
-              alt="tarot cardback"
-            />
-            <div
-              class="container inactive p-4 w-11/12 mx-auto my-6 bg-slate-900/90 rounded-lg transition-all duration-700 ease-in-out"
-            >
-              <p class="result text-white"></p>
-            </div>
-          </div>
-        </div>
-        <div>
-          <h2 id="question" class="font-bold text-2xl mt-2 sm:mt-6"></h2>
-          <button
-            id="save"
-            class="hidden mt-6 mx-2 w-40 bg-orange-700 hover:bg-orange-500 text-white font-semibold hover:text-neutral-100 py-3 px-4 border-2 border-slate-600 hover:border-transparent rounded transition duration-200 ease-in-out active:bg-orange-900 disabled:bg-green-600 disabled:border-black"
+          <div
+            class="flex justify-between border-b-2 border-black pt-4 text-left md:text-center"
           >
-            Save
-          </button>
-        </div>
+            <span class="font-bold text-lg w-6/12">Question</span>
+            <span class="font-bold text-lg w-6/12 text-right md:text-center"
+              >Date</span
+            >
+          </div>
+          <div
+            class="flex flex-wrap items-end justify-between pt-4 text-left md:text-center"
+          >
+            <div class="entry-l">
+              <span>How many Spirit Guides do I have? </span>
+            </div>
+            <div class="entry-r"><span>October 20, 2023</span></div>
 
-        <div
-          class="w-full my-8 mx-auto lg:flex lg:flex-row lg:justify-center md:w-10/12 lg:w-8/12 lg:items-center 2xl:w-5/12"
-        >
-          <form
-            id="form"
-            method="get"
-            class="flex flex-col justify-start flex-1 mx-6 justify-between items-center bg-slate-900/90 rounded-lg"
-          >
-            <p
-              class="text-left text-white w-full p-4 sm:p-8 sm:w-11/12 sm:text-lg md:w-full xl:px-10"
-            >
-              Although you cannot "shuffle" cards in the traditional sense when
-              performing an online reading, the card choice by the computer is
-              not really random. It is dependent on the state of the computer’s
-              memory at the exact moment you activate shuffling algorithm
-              (pressing the submit button).<br /><br />
-              When interpreting the results, the card positions typically
-              represent the past, present, and future. Click on each tab to
-              reveal its meaning and then relate that interpretation to the
-              corresponding time period associated with each card's respective
-              position.<br /><br />
-              Focus on the question in your mind, give it your full attention,
-              and when you feel ready, click the button to proceed.
-            </p>
-            <label for="tarot-search" class="text-2xl sr-only"
-              >Learn more about a card:</label
-            >
-            <div
-              class="bg-white rounded-md p-4 my-10 mx-4 sm:mx-auto sm:flex sm:flex-row sm:justify-around sm:w-96 sm:p-6 sm:items-center"
-            >
-              <input
-                id="theAsk"
-                type="text"
-                placeholder="Write your question"
-                required
-                class="border-2 border-slate-700 px-4 py-2 rounded focus:bg-slate-200"
-              />
-              <button
-                class="mt-6 bg-transparent hover:bg-cyan-700 text-cyan-700 font-semibold hover:text-white py-2 px-4 border-2 border-cyan-600 hover:border-transparent rounded transition duration-200 ease-in-out active:bg-cyan-900 sm:mt-0"
-                type="submit"
-                value="Submit"
-                id="threeCards"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
+            <span class="entry-l"
+              >How do I know if someone is scheming against me?
+            </span>
+            <span class="entry-r">October 20, 2023</span>
+          </div>
         </div>
       </section>
       <footer class="h-16 bg-slate-950 flex flex-col justify-center p-8">
@@ -292,7 +217,6 @@
         >
       </footer>
     </div>
-    <script src="public/js/reading.js"></script>
     <script src="public/js/nav.js"></script>
   </body>
 </html>
