@@ -1,7 +1,6 @@
 //Triple api call for card reading and prevent refresh upon submitting
 const form = document.querySelector("#form");
 const save = document.querySelector("#save");
-const saveState = [];
 
 //Handles displaying data on DOM
 form.addEventListener("submit", async (e) => {
@@ -101,15 +100,23 @@ function makeObj() {
     imgArr.push(images[i].src);
     meaningArr.push(meaning[i].textContent);
   }
-  console.log(saveState);
+  console.log(localStorage);
   //Prevent additional saves until new reading
   save.disabled = true;
   save.innerHTML = "Saved to History!";
+
+  //Save
+  saveObj();
+}
+
+//Save new reading
+function saveObj() {
   //Generate unique id number
-  const question = saveState[saveState.length - 1]?.id
-    ? saveState[saveState.length - 1].id + 1
-    : 1;
-  saveState.push(
+  const lastEntry = JSON.parse(localStorage.getItem(localStorage.length));
+  const question = lastEntry ? lastEntry.id + 1 : 1;
+
+  //Convert object to string for local storage
+  const newObj = JSON.stringify(
     new Reading(
       question,
       imgArr,
@@ -117,4 +124,13 @@ function makeObj() {
       document.querySelector("#question").textContent
     )
   );
+
+  localStorage.setItem(question, newObj);
+}
+
+//Load saved reading
+function loadObj(num) {
+  //Revive object with methods
+  const load = JSON.parse(localStorage.getItem(num));
+  Object.assign(new Reading(), load).loadState();
 }
