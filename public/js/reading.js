@@ -68,11 +68,12 @@ function updateDOM(arr) {
 
 //Blueprint for objects that will be used for storage
 class Reading {
-  constructor(id, image, meaning, question) {
+  constructor(id, image, meaning, question, date) {
     this.id = id;
     this.image = image;
     this.meaning = meaning;
     this.question = question;
+    this.date = date;
   }
   //Load reading
   loadState() {
@@ -90,6 +91,17 @@ class Reading {
   }
 }
 
+//Get date
+async function getDate() {
+  try {
+    const response = await fetch(`http://localhost:8000/card-reading/date`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 //Create new reading object
 function makeObj() {
   const images = document.getElementsByClassName("image");
@@ -100,28 +112,29 @@ function makeObj() {
     imgArr.push(images[i].src);
     meaningArr.push(meaning[i].textContent);
   }
-  console.log(localStorage);
   //Prevent additional saves until new reading
   save.disabled = true;
   save.innerHTML = "Saved to History!";
 
   //Save
-  saveObj();
+  saveObj(imgArr, meaningArr);
 }
 
 //Save new reading
-function saveObj() {
+async function saveObj(img, meaning) {
   //Generate unique id number
   const lastEntry = JSON.parse(localStorage.getItem(localStorage.length));
   const question = lastEntry ? lastEntry.id + 1 : 1;
+  const date = await getDate();
 
   //Convert object to string for local storage
   const newObj = JSON.stringify(
     new Reading(
       question,
-      imgArr,
-      meaningArr,
-      document.querySelector("#question").textContent
+      img,
+      meaning,
+      document.querySelector("#question").textContent,
+      date
     )
   );
 

@@ -6,6 +6,7 @@ const cors = require("cors");
 const PORT = 8000;
 const MongoClient = require("mongodb").MongoClient;
 const uri = process.env.MONGO_URI;
+const { format } = require("date-fns");
 
 MongoClient.connect(uri, { useUnifiedTopology: true })
   .then((client) => {
@@ -42,12 +43,22 @@ MongoClient.connect(uri, { useUnifiedTopology: true })
 
     app.get("/reading/:number", (req, res) => {
       const num = req.params.number;
-      console.log(num);
+      //console.log(num);
       tarotCards
         .find({ number: `${num}` })
         .toArray()
         .then((data) => res.json(data))
         .catch((error) => res.json("Could not retrieve"));
+    });
+
+    app.get("/card-reading/date", (req, res) => {
+      const date = new Date();
+      res.json(
+        format(
+          new Date(date.getFullYear(), date.getMonth(), date.getDate()),
+          "MMMM do, y"
+        )
+      );
     });
 
     // Listen
