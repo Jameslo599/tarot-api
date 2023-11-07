@@ -9,9 +9,8 @@ form.addEventListener("submit", async (e) => {
   const result = await getReading();
   updateDOM(result);
   //Update DOM h2 with question
-  document.querySelector("#question").innerHTML = `"${
-    document.querySelector("#theAsk").value
-  }"`;
+  document.querySelector("#question").innerHTML =
+    document.querySelector("#theAsk").value;
   //Reset text input
   form.reset();
 });
@@ -94,7 +93,7 @@ class Reading {
 //Get date
 async function getDate() {
   try {
-    const response = await fetch(`http://localhost:8000/card-reading/date`);
+    const response = await fetch(`https://tarot.cyclic.app/card-reading/date`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -123,8 +122,10 @@ function makeObj() {
 //Save new reading
 async function saveObj(img, meaning) {
   //Generate unique id number
-  const lastEntry = JSON.parse(localStorage.getItem(localStorage.length));
-  const question = lastEntry ? lastEntry.id + 1 : 1;
+  //const lastEntry = JSON.parse(localStorage.getItem(localStorage.length));
+  const question = localStorage.length
+    ? +localStorage.key(localStorage.length - 1) + 1
+    : 0;
   const date = await getDate();
 
   //Convert object to string for local storage
