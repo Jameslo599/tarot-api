@@ -11,16 +11,13 @@ form.addEventListener("submit", async (e) => {
   //Update DOM h2 with question
   document.querySelector("#question").innerHTML =
     document.querySelector("#theAsk").value;
+  //Populate save button
+  save.classList.remove("hidden");
   //Reset text input
   form.reset();
 });
 //Handles saving
 form.addEventListener("submit", () => {
-  //Populate save button
-  save.classList.remove("hidden");
-  //Save object when 'save' button is clicked
-  save.innerHTML = "Save";
-  save.disabled = false;
   save.addEventListener("click", makeObj);
 });
 
@@ -63,6 +60,10 @@ function updateDOM(arr) {
     container[i].classList.replace("inactive", "activated");
     spread.children[i].classList.add("card");
   }
+
+  //Save object when 'save' button is clicked
+  save.innerHTML = "Save";
+  save.disabled = false;
 }
 
 //Blueprint for objects that will be used for storage
@@ -122,16 +123,14 @@ function makeObj() {
 //Save new reading
 async function saveObj(img, meaning) {
   //Generate unique id number
-  //const lastEntry = JSON.parse(localStorage.getItem(localStorage.length));
-  const question = localStorage.length
-    ? +localStorage.key(localStorage.length - 1) + 1
-    : 0;
+  const arr = getArr();
+  const num = localStorage.length ? arr[0].id + 1 : 0;
   const date = await getDate();
 
   //Convert object to string for local storage
   const newObj = JSON.stringify(
     new Reading(
-      question,
+      num,
       img,
       meaning,
       document.querySelector("#question").textContent,
@@ -139,7 +138,7 @@ async function saveObj(img, meaning) {
     )
   );
 
-  localStorage.setItem(question, newObj);
+  localStorage.setItem(num, newObj);
 }
 
 //Load saved reading
@@ -147,4 +146,15 @@ function loadObj(num) {
   //Revive object with methods
   const load = JSON.parse(localStorage.getItem(num));
   Object.assign(new Reading(), load).loadState();
+}
+
+//Obtain an array from all local storage items
+function getArr() {
+  const arr = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    const value = JSON.parse(localStorage.getItem(key));
+    arr.push(value);
+  }
+  return arr.sort((a, b) => b.id - a.id);
 }
