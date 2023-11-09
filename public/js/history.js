@@ -13,12 +13,17 @@ function populate() {
   const arr = getArr();
   for (let i = 0; i < arr.length; i++) {
     const value = JSON.parse(localStorage.getItem(arr[i].id));
-    makeSpan(value.question, value.date);
+    //Revive object methods
+    value.removeState = function () {
+      //Delete reading
+      localStorage.removeItem(this.id);
+    };
+    makeSpan(value.question, value.date, value);
   }
 }
 
 //Generate two spans for each entry and append to log
-function makeSpan(query, date) {
+function makeSpan(query, date, fn) {
   const log = document.querySelector("#log");
   const question = document.createElement("span");
   question.classList.add("entry-l");
@@ -33,6 +38,11 @@ function makeSpan(query, date) {
   day.innerHTML = date;
   day.classList.add("sm:mx-4");
   button.classList.add("trash");
+  button.addEventListener("click", () => {
+    fn.removeState();
+    question.style.display = "none";
+    container.style.display = "none";
+  });
   icon.src = "/public/images/black-bin.svg";
   button.appendChild(icon);
   container.append(day, button);

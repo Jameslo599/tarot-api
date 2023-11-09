@@ -1020,6 +1020,10 @@ video {
   width: 100%;
 }
 
+.w-screen {
+  width: 100vw;
+}
+
 .min-w-\[320px\] {
   min-width: 320px;
 }
@@ -1126,6 +1130,10 @@ video {
   border-width: 4px;
 }
 
+.border-8 {
+  border-width: 8px;
+}
+
 .border-b-2 {
   border-bottom-width: 2px;
 }
@@ -1135,9 +1143,19 @@ video {
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
+.border-bronze {
+  --tw-border-opacity: 1;
+  border-color: rgb(191 141 48 / var(--tw-border-opacity));
+}
+
 .border-cyan-600 {
   --tw-border-opacity: 1;
   border-color: rgb(8 145 178 / var(--tw-border-opacity));
+}
+
+.border-gold {
+  --tw-border-opacity: 1;
+  border-color: rgb(217 183 13 / var(--tw-border-opacity));
 }
 
 .border-gray-400 {
@@ -1182,29 +1200,9 @@ video {
   border-color: rgb(51 65 85 / var(--tw-border-opacity));
 }
 
-.border-soot {
-  --tw-border-opacity: 1;
-  border-color: rgb(88 120 140 / var(--tw-border-opacity));
-}
-
-.border-gold {
-  --tw-border-opacity: 1;
-  border-color: rgb(217 183 13 / var(--tw-border-opacity));
-}
-
-.border-bronze {
-  --tw-border-opacity: 1;
-  border-color: rgb(191 141 48 / var(--tw-border-opacity));
-}
-
 .bg-blue-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
-}
-
-.bg-bronze {
-  --tw-bg-opacity: 1;
-  background-color: rgb(191 141 48 / var(--tw-bg-opacity));
 }
 
 .bg-gray-600 {
@@ -1227,9 +1225,14 @@ video {
   background-color: rgb(194 65 12 / var(--tw-bg-opacity));
 }
 
-.bg-slate-800 {
+.bg-red-800 {
   --tw-bg-opacity: 1;
-  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+  background-color: rgb(153 27 27 / var(--tw-bg-opacity));
+}
+
+.bg-sky-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 249 255 / var(--tw-bg-opacity));
 }
 
 .bg-slate-900 {
@@ -1246,11 +1249,6 @@ video {
   background-color: rgb(2 6 23 / var(--tw-bg-opacity));
 }
 
-.bg-soot {
-  --tw-bg-opacity: 1;
-  background-color: rgb(88 120 140 / var(--tw-bg-opacity));
-}
-
 .bg-transparent {
   background-color: transparent;
 }
@@ -1260,9 +1258,9 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-silver {
+.bg-bronze {
   --tw-bg-opacity: 1;
-  background-color: rgb(153 180 191 / var(--tw-bg-opacity));
+  background-color: rgb(191 141 48 / var(--tw-bg-opacity));
 }
 
 .bg-gold {
@@ -1270,59 +1268,14 @@ video {
   background-color: rgb(217 183 13 / var(--tw-bg-opacity));
 }
 
-.bg-orange-500 {
+.bg-soot {
   --tw-bg-opacity: 1;
-  background-color: rgb(249 115 22 / var(--tw-bg-opacity));
+  background-color: rgb(88 120 140 / var(--tw-bg-opacity));
 }
 
-.bg-orange-200 {
+.bg-silver {
   --tw-bg-opacity: 1;
-  background-color: rgb(254 215 170 / var(--tw-bg-opacity));
-}
-
-.bg-purple-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(233 213 255 / var(--tw-bg-opacity));
-}
-
-.bg-purple-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(147 51 234 / var(--tw-bg-opacity));
-}
-
-.bg-amber-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 211 77 / var(--tw-bg-opacity));
-}
-
-.bg-amber-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(253 230 138 / var(--tw-bg-opacity));
-}
-
-.bg-amber-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 243 199 / var(--tw-bg-opacity));
-}
-
-.bg-amber-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 251 235 / var(--tw-bg-opacity));
-}
-
-.bg-sky-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(240 249 255 / var(--tw-bg-opacity));
-}
-
-.bg-red-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(127 29 29 / var(--tw-bg-opacity));
-}
-
-.bg-red-800 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(153 27 27 / var(--tw-bg-opacity));
+  background-color: rgb(153 180 191 / var(--tw-bg-opacity));
 }
 
 .bg-drop-down {
@@ -1413,6 +1366,14 @@ video {
   padding-top: 1rem;
 }
 
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
+
+.pt-2 {
+  padding-top: 0.5rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1480,6 +1441,16 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-gold {
+  --tw-text-opacity: 1;
+  color: rgb(217 183 13 / var(--tw-text-opacity));
+}
+
+.text-bronze {
+  --tw-text-opacity: 1;
+  color: rgb(191 141 48 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -1581,6 +1552,11 @@ video {
   background-color: rgb(2 6 23 / var(--tw-bg-opacity));
 }
 
+.hover\:border-bronze:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(191 141 48 / var(--tw-border-opacity));
+}
+
 .hover\:border-cyan-200:hover {
   --tw-border-opacity: 1;
   border-color: rgb(165 243 252 / var(--tw-border-opacity));
@@ -1600,9 +1576,14 @@ video {
   border-color: transparent;
 }
 
-.hover\:border-bronze:hover {
+.hover\:border-gold:hover {
   --tw-border-opacity: 1;
-  border-color: rgb(191 141 48 / var(--tw-border-opacity));
+  border-color: rgb(217 183 13 / var(--tw-border-opacity));
+}
+
+.hover\:border-black:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .hover\:bg-blue-400:hover {
@@ -1644,9 +1625,14 @@ video {
   background-color: rgb(88 120 140 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-silver:hover {
+.hover\:bg-gold:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(153 180 191 / var(--tw-bg-opacity));
+  background-color: rgb(217 183 13 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-bronze:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 141 48 / var(--tw-bg-opacity));
 }
 
 .hover\:text-gray-900:hover {
@@ -1662,6 +1648,11 @@ video {
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.hover\:text-black:hover {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .focus\:border-gray-900:focus {
@@ -1816,8 +1807,21 @@ video {
     justify-content: space-around;
   }
 
+  .sm\:border-4 {
+    border-width: 4px;
+  }
+
+  .sm\:border-2 {
+    border-width: 2px;
+  }
+
   .sm\:border-b-4 {
     border-bottom-width: 4px;
+  }
+
+  .sm\:border-gold {
+    --tw-border-opacity: 1;
+    border-color: rgb(217 183 13 / var(--tw-border-opacity));
   }
 
   .sm\:p-2 {
@@ -1936,6 +1940,14 @@ video {
 
   .md\:w-full {
     width: 100%;
+  }
+
+  .md\:w-\[33\%\] {
+    width: 33%;
+  }
+
+  .md\:flex-1 {
+    flex: 1 1 0%;
   }
 
   .md\:scale-y-100 {
