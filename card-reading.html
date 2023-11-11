@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="/public/images/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/public/images/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -184,7 +185,7 @@
       <section id="banner" class="mt-16 py-10 h-auto text-center bg-gradient">
         <div>
           <h1
-            class="font-bold bg-slate-900/70 underline rounded p-4 inline-block text-white text-3xl sm:text-4xl xl:text-5xl"
+            class="font-bold bg-slate-900/90 underline rounded p-4 inline-block text-white text-3xl sm:text-4xl xl:text-5xl transition duration-500 ease-in-out shadow-lg hover:shadow-lg hover:shadow-moss hover:text-moss"
           >
             Three Card Spread
           </h1>
@@ -195,18 +196,23 @@
           class="flex flex-col mx-[1rem] mt-8 gap-x-4 gap-y-4 sm:mx-6 md:flex-row md:mt-10 2xl:mx-auto 2xl:max-w-[1536px]"
         >
           <div
-            class="py-6 mx-auto w-full bg-pink/70 bg-overlay transition duration-500 ease-in-out shadow-none hover:shadow-xl hover:shadow-moss rounded md:flex-1 md:relative"
+            class="py-6 mx-auto w-full bg-pink/80 bg-overlay transition duration-500 ease-in-out shadow-lg hover:shadow-xl hover:shadow-moss rounded-lg md:flex-1 md:relative"
           >
             <h2
-              class="card-header bg-slate-900/70 inline-block no-underline px-4 py-1 rounded text-white"
+              class="card-header bg-slate-900/90 inline-block no-underline px-4 py-1 rounded text-white"
             >
               Past
             </h2>
-            <img
-              class="image w-48 mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
-              src="https://i.ibb.co/nC6y1K6/cardback.jpg"
-              alt="tarot cardback"
-            />
+            <div class="w-48 mx-auto relative md:w-[60%] 2xl:w-fit">
+              <img
+                class="image rounded border-2 border-black"
+                src="https://i.ibb.co/nC6y1K6/cardback.jpg"
+                alt="tarot cardback"
+              />
+              <div
+                class="cover absolute bg-slate-950/80 rounded top-0 w-full h-full transition-all duration-700 ease-in-out"
+              ></div>
+            </div>
             <div
               class="container inactive p-4 w-11/12 mx-auto my-6 bg-slate-900/90 rounded-lg transition-all duration-700 ease-in-out"
             >
@@ -214,21 +220,26 @@
             </div>
           </div>
           <div
-            class="py-6 mx-auto w-full bg-pink/70 bg-overlay transition duration-500 ease-in-out shadow-none hover:shadow-xl hover:shadow-moss rounded md:flex-1 md:relative"
+            class="py-6 mx-auto w-full bg-pink/80 bg-overlay transition duration-500 ease-in-out shadow-lg hover:shadow-xl hover:shadow-moss rounded-lg md:flex-1 md:relative"
           >
             <div>
               <h2
-                class="card-header bg-slate-900/70 inline-block no-underline px-4 py-1 rounded text-white"
+                class="card-header bg-slate-900/90 inline-block no-underline px-4 py-1 rounded text-white"
               >
                 Present
               </h2>
             </div>
 
-            <img
-              class="image w-48 mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
-              src="https://i.ibb.co/nC6y1K6/cardback.jpg"
-              alt="tarot cardback"
-            />
+            <div class="w-48 mx-auto relative md:w-[60%] 2xl:w-fit">
+              <img
+                class="image rounded border-2 border-black"
+                src="https://i.ibb.co/nC6y1K6/cardback.jpg"
+                alt="tarot cardback"
+              />
+              <div
+                class="cover absolute bg-slate-950/80 rounded top-0 w-full h-full transition-all duration-700 ease-in-out"
+              ></div>
+            </div>
             <div
               class="container inactive p-4 w-11/12 mx-auto my-6 bg-slate-900/90 rounded-lg transition-all duration-700 ease-in-out"
             >
@@ -236,18 +247,24 @@
             </div>
           </div>
           <div
-            class="py-6 mx-auto w-full bg-pink/70 bg-overlay transition duration-500 ease-in-out shadow-none hover:shadow-xl hover:shadow-moss rounded md:flex-1 md:relative"
+            class="py-6 mx-auto w-full bg-pink/80 bg-overlay transition duration-500 ease-in-out shadow-lg hover:shadow-xl hover:shadow-moss rounded-lg md:flex-1 md:relative"
           >
             <h2
-              class="card-header bg-slate-900/70 inline-block no-underline px-4 py-1 rounded text-white"
+              class="card-header bg-slate-900/90 inline-block no-underline px-4 py-1 rounded text-white"
             >
               Future
             </h2>
-            <img
-              class="image w-48 mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
-              src="https://i.ibb.co/nC6y1K6/cardback.jpg"
-              alt="tarot cardback"
-            />
+            <div class="w-48 mx-auto relative md:w-[60%] 2xl:w-fit">
+              <img
+                class="image rounded border-2 border-black"
+                src="https://i.ibb.co/nC6y1K6/cardback.jpg"
+                alt="tarot cardback"
+              />
+              <div
+                class="cover absolute bg-slate-950/80 rounded top-0 w-full h-full transition-all duration-700 ease-in-out"
+              ></div>
+            </div>
+
             <div
               class="container inactive p-4 w-11/12 mx-auto my-6 bg-slate-900/90 rounded-lg transition-all duration-700 ease-in-out"
             >
@@ -323,7 +340,7 @@
           <a
             href="https://www.jameshlo.com/"
             target="_blank"
-            class="border-b-2 border-moss transition duration-200 ease-in-out hover:border-moss/80"
+            class="border-b-2 border-moss transition duration-200 ease-in-out hover:border-moss/60 hover:text-moss"
             >James H Lo</a
           ></span
         >
