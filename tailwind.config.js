@@ -23,6 +23,9 @@ module.exports = {
         lilac: "#A68DC0",
         violet: "#7851A9",
       },
+      fontFamily: {
+        alegreya: ['"Alegreya"', "serif"],
+      },
     },
   },
   plugins: [],
