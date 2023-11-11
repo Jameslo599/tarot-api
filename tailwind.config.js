@@ -6,20 +6,22 @@ module.exports = {
       backgroundImage: {
         "drop-down": "url('../images/down-arrow.svg')",
         overlay: "url('../images/overlay.png')",
+        gradient:
+          "linear-gradient(to left bottom, #7851a9, #815cad, #8a67b2, #9373b6, #9b7eba, #9086c4, #838ecb, #7696d0, #3f9dd0, #00a2c3, #00a5aa, #00a489);",
       },
       backgroundColor: {
-        soot: "#58788C",
-        silver: "#99B4BF",
-        navy: "#253C59",
-        bronze: "#BF8D30",
-        gold: "#D9B70D",
+        moss: "#00C9AA",
+        pink: "#FCEAFF",
+        lilac: "#A68DC0",
+        violet: "#7851A9",
+        gradient:
+          "linear-gradient(to left bottom, #7851a9, #815cad, #8a67b2, #9373b6, #9b7eba, #9086c4, #838ecb, #7696d0, #3f9dd0, #00a2c3, #00a5aa, #00a489);",
       },
       colors: {
-        soot: "#58788C",
-        silver: "#99B4BF",
-        navy: "#253C59",
-        bronze: "#BF8D30",
-        gold: "#D9B70D",
+        moss: "#00C9AA",
+        pink: "#FCEAFF",
+        lilac: "#A68DC0",
+        violet: "#7851A9",
       },
     },
   },

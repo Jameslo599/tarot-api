@@ -11,6 +11,9 @@ form.addEventListener("submit", async (e) => {
   //Update DOM h2 with question
   document.querySelector("#question").innerHTML =
     document.querySelector("#theAsk").value;
+  document
+    .querySelector("#question")
+    .classList.replace("bg-slate-900/0", "bg-slate-900/70");
   //Populate save button
   save.classList.remove("hidden");
   //Reset text input
@@ -82,6 +85,9 @@ class Reading {
     const meaning = spread.getElementsByClassName("result");
     const container = spread.getElementsByClassName("container");
     document.querySelector("#question").innerHTML = this.question;
+    document
+      .querySelector("#question")
+      .classList.replace("bg-slate-900/0", "bg-slate-900/70");
     for (let i = 0; i < 3; i++) {
       imgArr[i].src = this.image[i];
       meaning[i].textContent = this.meaning[i];

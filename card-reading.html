@@ -8,15 +8,17 @@
     <title>Tarot API</title>
   </head>
 
-  <body class="h-screen min-w-[320px] bg-white bg-overlay">
+  <body class="h-screen min-w-[320px] bg-gradient">
     <div class="flex flex-col h-screen justify-between">
-      <header class="fixed h-16 w-full left-0 top-0 bg-navy z-10">
+      <header
+        class="fixed h-16 w-full left-0 top-0 bg-slate-900 bg-overlay z-10"
+      >
         <nav>
           <div
             id="navBar"
             class="flex flex-row justify-between items-center h-16"
           >
-            <a href="/" class="nav-link rounded ml-4 hover:bg-soot"
+            <a href="/" class="nav-link rounded ml-4 hover:bg-violet"
               ><img
                 src="public/images/logo.svg"
                 alt="tarot logo"
@@ -25,7 +27,7 @@
             <div class="mr-4 order-last sm:mr-6 md:hidden">
               <button
                 id="hamburger"
-                class="flex flex-col justify-center border-2 p-0.5 border-gold rounded-lg transition-all"
+                class="flex flex-col justify-center border-2 p-0.5 border-moss rounded-lg transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -125,14 +127,14 @@
             </div>
             <div
               id="navLinks"
-              class="justify-between items-center fixed w-full top-16 bg-navy origin-top duration-200 scale-y-0 rounded-b md:top-0 md:flex md:relative md:order-last md:h-16 md:w-fit md:scale-y-100"
+              class="justify-between items-center fixed w-full top-16 bg-slate-900 bg-overlay origin-top duration-200 scale-y-0 rounded-b md:top-0 md:flex md:relative md:order-last md:h-16 md:w-fit md:scale-y-100"
             >
               <ul
-                class="flex flex-col bg-slate-900 m-4 rounded-lg md:w-100 md:m-0 md:mr-4 md:flex-row md:bg-transparent"
+                class="flex flex-col bg-violet m-4 rounded-lg md:w-100 md:m-0 md:mr-4 md:flex-row md:bg-transparent"
               >
                 <a
                   href="/about"
-                  class="group nav-link inline-block border-b-2 border-bronze md:rounded hover:bg-soot md:border-0"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
                   <li class="m-2 text-white">
                     About Tarot
@@ -141,7 +143,7 @@
                 </a>
                 <a
                   href="/card-reading"
-                  class="group nav-link inline-block border-b-2 border-bronze md:rounded hover:bg-soot md:border-0"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
                   <li class="m-2 text-white">
                     Card Reading
@@ -150,7 +152,7 @@
                 </a>
                 <a
                   href="/card-api"
-                  class="group nav-link inline-block border-b-2 border-bronze md:rounded hover:bg-soot md:border-0"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
                   <li class="m-2 text-white">
                     Card API
@@ -159,7 +161,7 @@
                 </a>
                 <a
                   href="/card-reading"
-                  class="group nav-link inline-block border-b-2 border-bronze md:rounded hover:bg-soot md:border-0"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
                   <li class="m-2 text-white">
                     History
@@ -171,35 +173,27 @@
           </div>
         </nav>
       </header>
-      <section id="banner" class="mt-16 py-10 h-auto text-center">
-        <h1
-          class="font-bold pb-2 inline-block border-b-2 border-bronze text-3xl sm:text-4xl sm:border-b-4 lg:text-5xl"
-        >
-          Three Card Spread
-        </h1>
+      <section id="banner" class="mt-16 py-10 h-auto text-center bg-gradient">
+        <div>
+          <h1
+            class="font-bold bg-slate-900/70 underline rounded p-4 inline-block text-white text-3xl sm:text-4xl xl:text-5xl"
+          >
+            Three Card Spread
+          </h1>
+        </div>
+
         <div
           id="cardImages"
-          class="flex flex-col mx-auto mt-8 gap-x-4 gap-y-4 md:flex-row md:mt-6 2xl:max-w-[1536px]"
+          class="flex flex-col mx-[1rem] mt-8 gap-x-4 gap-y-4 sm:mx-6 md:flex-row md:mt-10 2xl:mx-auto 2xl:max-w-[1536px]"
         >
           <div
-            class="pt-2 pb-6 mx-auto w-full bg-navy border-4 border-gold rounded md:flex-1 md:relative"
+            class="py-6 mx-auto w-full bg-pink/70 bg-overlay transition duration-500 ease-in-out shadow-none hover:shadow-xl hover:shadow-moss rounded md:flex-1 md:relative"
           >
-            <h2 class="card-header text-white mt-2 sm:mt-6 md:mt-0">Past</h2>
-            <img
-              class="image w-48 mx-auto rounded border-4 border-gold md:w-[60%] 2xl:w-fit"
-              src="https://i.ibb.co/nC6y1K6/cardback.jpg"
-              alt="tarot cardback"
-            />
-            <div
-              class="container inactive p-4 w-11/12 mx-auto my-6 bg-slate-900/90 rounded-lg transition-all duration-700 ease-in-out"
+            <h2
+              class="card-header bg-slate-900/70 inline-block no-underline px-4 py-1 rounded text-white"
             >
-              <p class="result text-white"></p>
-            </div>
-          </div>
-          <div
-            class="pt-2 pb-6 mx-auto w-full bg-soot border-4 border-gold rounded md:flex-1 md:relative"
-          >
-            <h2 class="card-header text-white mt-2 sm:mt-6 md:mt-0">Present</h2>
+              Past
+            </h2>
             <img
               class="image w-48 mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
               src="https://i.ibb.co/nC6y1K6/cardback.jpg"
@@ -212,9 +206,35 @@
             </div>
           </div>
           <div
-            class="pt-2 pb-6 mx-auto w-full bg-navy border-4 border-gold rounded md:flex-1 md:relative"
+            class="py-6 mx-auto w-full bg-pink/70 bg-overlay transition duration-500 ease-in-out shadow-none hover:shadow-xl hover:shadow-moss rounded md:flex-1 md:relative"
           >
-            <h2 class="card-header text-white mt-2 sm:mt-6 md:mt-0">Future</h2>
+            <div>
+              <h2
+                class="card-header bg-slate-900/70 inline-block no-underline px-4 py-1 rounded text-white"
+              >
+                Present
+              </h2>
+            </div>
+
+            <img
+              class="image w-48 mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
+              src="https://i.ibb.co/nC6y1K6/cardback.jpg"
+              alt="tarot cardback"
+            />
+            <div
+              class="container inactive p-4 w-11/12 mx-auto my-6 bg-slate-900/90 rounded-lg transition-all duration-700 ease-in-out"
+            >
+              <p class="result text-white"></p>
+            </div>
+          </div>
+          <div
+            class="py-6 mx-auto w-full bg-pink/70 bg-overlay transition duration-500 ease-in-out shadow-none hover:shadow-xl hover:shadow-moss rounded md:flex-1 md:relative"
+          >
+            <h2
+              class="card-header bg-slate-900/70 inline-block no-underline px-4 py-1 rounded text-white"
+            >
+              Future
+            </h2>
             <img
               class="image w-48 mx-auto rounded border-2 border-black md:w-[60%] 2xl:w-fit"
               src="https://i.ibb.co/nC6y1K6/cardback.jpg"
@@ -228,25 +248,31 @@
           </div>
         </div>
         <div>
-          <h2 id="question" class="font-bold text-2xl mt-2 sm:mt-6"></h2>
+          <div class="mt-8 sm:mt-6">
+            <span
+              id="question"
+              class="font-bold text-white text-2xl bg-slate-900/0 px-4 py-2 rounded"
+            ></span>
+          </div>
+
           <button
             id="save"
-            class="hidden mt-6 mx-2 w-40 bg-orange-700 hover:bg-orange-500 text-white font-semibold hover:text-neutral-100 py-3 px-4 border-2 border-slate-600 hover:border-transparent rounded transition duration-200 ease-in-out active:bg-orange-900 disabled:bg-green-600 disabled:border-black"
+            class="hidden mt-6 mx-2 w-40 bg-moss hover:bg-moss/80 text-white font-semibold hover:text-neutral-100 py-3 px-4 shadow-md hover:shadow-xl rounded transition duration-200 ease-in-out active:bg-moss/60 disabled:bg-green-600 disabled:shadow-xl"
           >
             Save
           </button>
         </div>
 
         <div
-          class="w-full my-8 mx-auto lg:flex lg:flex-row lg:justify-center md:w-10/12 lg:w-8/12 lg:items-center 2xl:w-5/12"
+          class="w-full my-8 mx-auto lg:flex lg:flex-row lg:justify-center md:w-10/12 lg:w-8/12 lg:items-center 2xl:w-[960px]"
         >
           <form
             id="form"
             method="get"
-            class="flex flex-col justify-start flex-1 mx-6 justify-between items-center bg-navy rounded-lg border-4 border-gold"
+            class="flex flex-col justify-start flex-1 mx-6 bg-neutral-100 shadow-2xl bg-overlay justify-between items-center rounded-lg border-2 sm:border-4 border-transparent"
           >
             <p
-              class="text-left text-white w-full p-4 sm:p-8 sm:w-11/12 sm:text-lg md:w-full xl:px-10"
+              class="text-left w-full p-4 sm:p-8 sm:w-11/12 sm:text-lg md:w-full xl:px-10"
             >
               Although you cannot "shuffle" cards in the traditional sense when
               performing an online reading, the card choice by the computer is
@@ -262,17 +288,17 @@
               and when you feel ready, click the button to proceed.
             </p>
             <div
-              class="bg-white rounded-md p-4 my-10 mx-4 sm:mx-auto sm:flex sm:flex-row sm:justify-around sm:w-96 sm:p-6 sm:items-center sm:border-4 sm:border-gold"
+              class="bg-violet rounded-md p-4 my-10 mx-4 sm:mx-auto sm:flex sm:flex-row sm:justify-around sm:w-96 sm:p-6 sm:items-center sm:border-2 sm:border-moss"
             >
               <input
                 id="theAsk"
                 type="text"
                 placeholder="Write your question"
                 required
-                class="border-2 border-slate-700 px-4 py-2 rounded focus:bg-slate-200"
+                class="border-2 border-white border-slate-700 px-4 py-2 rounded focus:bg-slate-200"
               />
               <button
-                class="mt-6 bg-transparent hover:bg-cyan-700 text-cyan-700 font-semibold hover:text-white py-2 px-4 border-2 border-cyan-600 hover:border-transparent rounded transition duration-200 ease-in-out active:bg-cyan-900 sm:mt-0"
+                class="mt-6 bg-moss hover:bg-moss/80 text-white font-semibold py-2 px-4 border-2 border-moss hover:border-transparent rounded transition duration-200 ease-in-out active:bg-cyan-900 sm:mt-0"
                 type="submit"
                 value="Submit"
                 id="threeCards"
@@ -289,7 +315,7 @@
           <a
             href="https://www.jameshlo.com/"
             target="_blank"
-            class="border-b-2 border-gold transition duration-200 ease-in-out hover:border-bronze"
+            class="border-b-2 border-moss transition duration-200 ease-in-out hover:border-moss/80"
             >James H Lo</a
           ></span
         >
