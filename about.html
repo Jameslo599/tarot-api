@@ -1,30 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="font-alegreya text-lg">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/public/images/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/public/images/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <!-- <link rel="stylesheet" href="/assets/reset.css" /> -->
     <link rel="stylesheet" href="public/assets/output.css" />
     <title>Tarot API</title>
   </head>
-  <body class="h-screen min-w-[320px] bg-slate-950 bg-orange-50 bg-overlay">
+  <body class="h-screen min-w-[320px] bg-slate-950 bg-violet">
     <div class="flex flex-col h-screen justify-between">
-      <header class="fixed h-16 w-full left-0 top-0 bg-slate-950 z-10">
+      <header
+        class="fixed h-16 w-full left-0 top-0 bg-slate-900 bg-overlay z-10"
+      >
         <nav>
           <div
             id="navBar"
             class="flex flex-row justify-between items-center h-16"
           >
-            <a href="/" class="nav-link"
+            <a href="/" class="nav-link rounded ml-4 hover:bg-violet"
               ><img
                 src="public/images/logo.svg"
                 alt="tarot logo"
-                class="w-28 ml-1 sm:ml-4 md:w-32"
+                class="w-28 p-1 sm:p-2 md:w-32"
             /></a>
             <div class="mr-4 order-last sm:mr-6 md:hidden">
               <button
                 id="hamburger"
-                class="flex flex-col justify-center border-2 p-0.5 border-orange-700 rounded-lg transition-all"
+                class="flex flex-col justify-center border-2 p-[0.15rem] border-moss rounded-lg transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -124,43 +135,43 @@
             </div>
             <div
               id="navLinks"
-              class="justify-between items-center fixed w-full top-16 bg-slate-950 origin-top duration-200 scale-y-0 rounded-b md:top-0 md:flex md:relative md:order-last md:h-16 md:w-fit md:scale-y-100"
+              class="justify-between items-center fixed w-full top-16 bg-slate-900 bg-overlay origin-top duration-200 scale-y-0 rounded-b md:top-0 md:flex md:relative md:order-last md:h-16 md:w-fit md:scale-y-100"
             >
               <ul
-                class="flex flex-col bg-slate-900 m-4 rounded-lg md:w-100 md:m-0 md:mr-4 md:flex-row md:bg-transparent"
+                class="flex flex-col bg-violet m-4 rounded-lg md:w-100 md:m-0 md:mr-4 md:flex-row md:bg-transparent"
               >
                 <a
                   href="/about"
-                  class="group nav-link inline-block border-b-2 border-neutral-50/20 hover:bg-slate-950/60 md:border-0"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
-                  <li class="m-2">
+                  <li class="m-2 text-white">
                     About Tarot
                     <span class="md:nav-underline"></span>
                   </li>
                 </a>
                 <a
                   href="/card-reading"
-                  class="group nav-link inline-block border-b-2 border-neutral-50/20 hover:bg-slate-950/60 md:border-0"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
-                  <li class="m-2">
+                  <li class="m-2 text-white">
                     Card Reading
                     <span class="md:nav-underline"></span>
                   </li>
                 </a>
                 <a
                   href="/card-api"
-                  class="group nav-link inline-block border-b-2 border-neutral-50/20 hover:bg-slate-950/60 md:border-0"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
-                  <li class="m-2">
+                  <li class="m-2 text-white">
                     Card API
                     <span class="md:nav-underline"></span>
                   </li>
                 </a>
                 <a
                   href="/card-reading"
-                  class="group nav-link inline-block border-b-2 border-neutral-50/20 hover:bg-slate-950/60 md:border-0"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
-                  <li class="m-2">
+                  <li class="m-2 text-white">
                     History
                     <span class="md:nav-underline"></span>
                   </li>
@@ -171,60 +182,60 @@
         </nav>
       </header>
       <section
-        class="h-auto mt-16 py-10 text-center bg-orange-50 bg-overlay h-auto"
+        class="h-auto mt-16 py-10 pt-4 sm:pt-10 text-center bg-violet h-auto"
       >
         <h1
-          class="font-bold pb-2 inline-block m-4 border-b-2 border-orange-500 text-3xl sm:text-4xl sm:border-b-4 md:text-5xl"
+          class="font-bold bg-white bg-overlay underline rounded p-4 inline-block text-gray-800 text-3xl sm:text-4xl xl:text-5xl transition duration-500 ease-in-out shadow-lg hover:shadow-lg hover:shadow-moss hover:text-moss"
         >
-          The Major Suit of the <span class="text-orange-600">Tarot</span>
+          The Major Suit of the Tarot
         </h1>
         <div
-          class="w-[300px] my-4 mx-auto bg-slate-900/90 rounded-lg text-white sm:w-[600px]"
+          class="w-[300px] my-4 mx-auto bg-white bg-overlay rounded-lg sm:w-[600px]"
         >
           <ul
             id="table-contents"
             class="flex flex-col py-4 sm:flex-row sm:flex-wrap sm:p-4"
           >
             <a
-              class="bg-gray-600 font-bold cursor-pointer border-b-2 border-neutral-200/90 hover:bg-slate-700 active:bg-gray-900 transition duration-200 ease-in-out sm:w-2/6"
+              class="bg-lilac/30 font-bold cursor-pointer border-b-2 border-violet hover:bg-lilac/60 active:bg-lilac transition duration-200 ease-in-out sm:w-2/6"
               ><li class="py-2 sm:px-2">Center Suit</li></a
             >
 
             <a
-              class="cursor-pointer border-b-2 border-neutral-200/40 hover:bg-gray-700 active:bg-gray-900 transition duration-200 ease-in-out sm:w-2/6"
+              class="cursor-pointer border-b-2 border-violet/30 hover:bg-lilac/60 active:bg-lilac transition duration-200 ease-in-out sm:w-2/6"
               ><li class="py-2 sm:px-2">Order & Chaos</li></a
             >
             <a
-              class="cursor-pointer border-b-2 border-neutral-200/40 hover:bg-slate-700 active:bg-gray-900 transition duration-200 ease-in-out sm:w-2/6"
+              class="cursor-pointer border-b-2 border-violet/30 hover:bg-lilac/60 active:bg-lilac transition duration-200 ease-in-out sm:w-2/6"
               ><li class="py-2 sm:px-2">Titles & Numbers</li></a
             >
             <a
-              class="cursor-pointer border-b-2 border-neutral-200/40 hover:bg-slate-700 active:bg-gray-900 transition duration-200 ease-in-out sm:w-2/6"
+              class="cursor-pointer border-b-2 border-violet/30 hover:bg-lilac/60 active:bg-lilac transition duration-200 ease-in-out sm:w-2/6"
               ><li class="py-2 sm:px-2">Ladder of Creation</li></a
             >
             <a
-              class="cursor-pointer border-b-2 border-neutral-200/40 hover:bg-slate-700 active:bg-gray-900 transition duration-200 ease-in-out sm:w-2/6"
+              class="cursor-pointer border-b-2 border-violet/30 hover:bg-lilac/60 active:bg-lilac transition duration-200 ease-in-out sm:w-2/6"
               ><li class="py-2 sm:px-2">Parts of the Suit</li></a
             >
             <a
-              class="cursor-pointer border-b-2 border-neutral-200/40 hover:bg-slate-700 active:bg-gray-900 transition duration-200 ease-in-out sm:w-2/6"
+              class="cursor-pointer border-b-2 border-violet/30 hover:bg-lilac/60 active:bg-lilac transition duration-200 ease-in-out sm:w-2/6"
               ><li class="py-2 sm:px-2">Closeness & Exposure</li></a
             >
             <a
-              class="cursor-pointer border-b-2 border-neutral-200/40 hover:bg-slate-700 active:bg-gray-900 transition duration-200 ease-in-out sm:w-6/12"
+              class="cursor-pointer border-b-2 border-violet/30 hover:bg-lilac/60 active:bg-lilac transition duration-200 ease-in-out sm:w-6/12"
               ><li class="py-2 sm:px-2">The Fool's Journey</li></a
             >
             <a
-              class="cursor-pointer border-b-2 border-neutral-200/40 hover:bg-slate-700 active:bg-gray-900 transition duration-200 ease-in-out sm:w-6/12"
+              class="cursor-pointer border-b-2 border-violet/30 hover:bg-lilac/60 active:bg-lilac transition duration-200 ease-in-out sm:w-6/12"
               ><li class="py-2 sm:px-2">Hebrew Letters</li></a
             >
           </ul>
         </div>
         <!-- Center Suit -->
         <div
-          class="chapter p-container block opacity-100 transition duration-700 ease-in-out"
+          class="chapter p-container mt-10 mb-0 block opacity-100 transition duration-700 ease-in-out shadow-2xl"
         >
-          <h2 class="font-bold text-xl underline my-4">Center Suit</h2>
+          <h2 class="font-bold text-2xl underline my-4">Center Suit</h2>
           <p class="paragraph">
             When people consider the magic and the symbolic power of the Tarot,
             which is responsible for its huge impact on many generations, they
@@ -258,9 +269,9 @@
         </div>
         <!-- Order Chaos -->
         <div
-          class="chapter p-container hidden transition duration-700 ease-in-out"
+          class="chapter p-container mt-10 mb-0 mt-10 mb-0 hidden transition duration-700 ease-in-out"
         >
-          <h2 class="font-bold text-xl underline my-4">Order & Chaos</h2>
+          <h2 class="font-bold text-2xl underline my-4">Order & Chaos</h2>
           <p class="paragraph">
             The major suit differs from the minor suits not only in the richness
             and complexity of its card illustrations, but also in its less
@@ -393,8 +404,8 @@
           </p>
         </div>
         <!-- Titles Numbers -->
-        <div class="chapter p-container hidden">
-          <h2 class="font-bold text-xl underline my-4">Titles & Numbers</h2>
+        <div class="chapter p-container mt-10 mb-0 hidden">
+          <h2 class="font-bold text-2xl underline my-4">Titles & Numbers</h2>
           <p class="paragraph">
             In the Tarot de Marseille, the number of each card appears in Roman
             numerals. The notation is a long one in which, for example, 9 is
@@ -435,8 +446,8 @@
           </p>
         </div>
         <!-- Ladder of Creation -->
-        <div class="chapter p-container hidden">
-          <h2 class="font-bold text-xl underline my-4">Ladder of Creation</h2>
+        <div class="chapter p-container mt-10 mb-0 hidden">
+          <h2 class="font-bold text-2xl underline my-4">Ladder of Creation</h2>
           <p class="paragraph">
             Why is it at all important to know the true ordering of the cards,
             if we can place them anyway in the order we wish? The answer is that
@@ -507,8 +518,8 @@
           </p>
         </div>
         <!-- Parts of the Suit -->
-        <div class="chapter p-container hidden">
-          <h2 class="font-bold text-xl underline my-4">Parts of the Suit</h2>
+        <div class="chapter p-container mt-10 mb-0 hidden">
+          <h2 class="font-bold text-2xl underline my-4">Parts of the Suit</h2>
           <p class="paragraph">
             For a better understanding of the major suit sequence and its
             evolution, let us examine its different parts in more detail. Most
@@ -581,8 +592,10 @@
           </p>
         </div>
         <!-- Closeness -->
-        <div class="chapter p-container hidden">
-          <h2 class="font-bold text-xl underline my-4">Closeness & Exposure</h2>
+        <div class="chapter p-container mt-10 mb-0 hidden">
+          <h2 class="font-bold text-2xl underline my-4">
+            Closeness & Exposure
+          </h2>
           <p class="paragraph">
             In the first half of the major suit almost all of the figures are
             dressed. Some of them are also heavily covered, for example by
@@ -674,8 +687,8 @@
           </p>
         </div>
         <!-- Fool's Journey -->
-        <div class="chapter p-container hidden">
-          <h2 class="font-bold text-xl underline my-4">The Fool's Journey</h2>
+        <div class="chapter p-container mt-10 mb-0 hidden">
+          <h2 class="font-bold text-2xl underline my-4">The Fool's Journey</h2>
           <p class="paragraph">
             We can’t know for sure the intentions of the original creators of
             the Tarot. But if they did have some Neo-Platonic ideas in mind, it
@@ -916,8 +929,8 @@
           </p>
         </div>
         <!-- Hebrew Letters -->
-        <div class="chapter p-container hidden">
-          <h2 class="font-bold text-xl underline my-4">Hebrew Letters</h2>
+        <div class="chapter p-container mt-10 mb-0 hidden">
+          <h2 class="font-bold text-2xl underline my-4">Hebrew Letters</h2>
           <p class="paragraph">
             Many writers in both the French and the English school believed that
             the 22 cards of the major suit corresponded to the 22 letters of the
@@ -992,13 +1005,13 @@
           </p>
         </div>
       </section>
-      <footer class="h-16 bg-slate-950 flex flex-col justify-center p-8">
+      <footer class="h-16 bg-slate-900 flex flex-col justify-center p-8">
         <span class="block text-white mx-auto text-center"
           >&copy; 2023 Copyright:
           <a
             href="https://www.jameshlo.com/"
             target="_blank"
-            class="border-b-2 border-cyan-600 transition duration-200 ease-in-out hover:border-cyan-200"
+            class="border-b-2 border-moss transition duration-200 ease-in-out hover:border-moss/60 hover:text-moss"
             >James H Lo</a
           ></span
         >

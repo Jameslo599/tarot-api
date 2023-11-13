@@ -4,12 +4,9 @@ for (let i = 0; i < table.length; i++) {
   table[i].addEventListener("click", () => {
     reset();
     switchChapter(table[i].textContent);
-    table[i].classList.add("bg-gray-600");
+    table[i].classList.add("bg-lilac/30");
     table[i].classList.add("font-bold");
-    table[i].classList.replace(
-      "border-neutral-200/40",
-      "border-neutral-200/90"
-    );
+    table[i].classList.replace("border-violet/30", "border-violet");
   });
 }
 
@@ -17,9 +14,9 @@ for (let i = 0; i < table.length; i++) {
 function reset() {
   const list = document.querySelectorAll("ul#table-contents > a");
   for (const ele of list) {
-    ele.classList.remove("bg-gray-600");
+    ele.classList.remove("bg-lilac/30");
     ele.classList.remove("font-bold");
-    ele.classList.replace("border-neutral-200/90", "border-neutral-200/40");
+    ele.classList.replace("border-violet", "border-violet/30");
   }
 }
 

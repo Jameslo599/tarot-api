@@ -1,30 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="font-alegreya text-lg">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/public/images/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/public/images/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <!-- <link rel="stylesheet" href="/assets/reset.css" /> -->
-    <link rel="stylesheet" href="/assets/output.css" />
+    <link rel="stylesheet" href="public/assets/output.css" />
     <title>Tarot API</title>
   </head>
-  <body class="h-screen min-w-[320px] bg-slate-950">
+  <body class="h-screen min-w-[320px] bg-pink">
     <div class="flex flex-col h-screen justify-between">
-      <header class="fixed h-16 w-full left-0 top-0 bg-slate-950 z-10">
+      <header
+        class="fixed h-16 w-full left-0 top-0 bg-slate-900 bg-overlay z-10"
+      >
         <nav>
           <div
             id="navBar"
             class="flex flex-row justify-between items-center h-16"
           >
-            <a href="/" class="nav-link"
+            <a href="/" class="nav-link rounded ml-4 hover:bg-violet"
               ><img
-                src="/images/logo.svg"
+                src="public/images/logo.svg"
                 alt="tarot logo"
-                class="w-28 ml-1 sm:ml-4 md:w-32"
+                class="w-28 p-1 sm:p-2 md:w-32"
             /></a>
             <div class="mr-4 order-last sm:mr-6 md:hidden">
               <button
                 id="hamburger"
-                class="flex flex-col justify-center border-2 p-0.5 border-orange-700 rounded-lg transition-all"
+                class="flex flex-col justify-center border-2 p-[0.15rem] border-moss rounded-lg transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -124,44 +135,44 @@
             </div>
             <div
               id="navLinks"
-              class="justify-between items-center fixed w-full top-16 bg-slate-950 origin-top duration-200 scale-y-0 rounded-b md:top-0 md:flex md:relative md:order-last md:h-16 md:w-fit md:scale-y-100"
+              class="justify-between items-center fixed w-full top-16 bg-slate-900 bg-overlay origin-top duration-200 scale-y-0 rounded-b md:top-0 md:flex md:relative md:order-last md:h-16 md:w-fit md:scale-y-100"
             >
               <ul
-                class="flex flex-col bg-slate-900 m-4 rounded-lg md:w-100 md:m-0 md:mr-4 md:flex-row md:bg-transparent"
+                class="flex flex-col bg-violet m-4 rounded-lg md:w-100 md:m-0 md:mr-4 md:flex-row md:bg-transparent"
               >
                 <a
-                  href="/card-reading"
-                  class="group nav-link inline-block border-b-2 border-neutral-50/20 hover:bg-slate-950/60 md:border-0"
+                  href="/about"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
-                  <li class="m-2">
+                  <li class="m-2 text-white">
                     About Tarot
                     <span class="md:nav-underline"></span>
                   </li>
                 </a>
                 <a
                   href="/card-reading"
-                  class="group nav-link inline-block border-b-2 border-neutral-50/20 hover:bg-slate-950/60 md:border-0"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
-                  <li class="m-2">
+                  <li class="m-2 text-white">
                     Card Reading
                     <span class="md:nav-underline"></span>
                   </li>
                 </a>
                 <a
                   href="/card-api"
-                  class="group nav-link inline-block border-b-2 border-neutral-50/20 hover:bg-slate-950/60 md:border-0"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
-                  <li class="m-2">
+                  <li class="m-2 text-white">
                     Card API
                     <span class="md:nav-underline"></span>
                   </li>
                 </a>
                 <a
                   href="/card-reading"
-                  class="group nav-link inline-block border-b-2 border-neutral-50/20 hover:bg-slate-950/60 md:border-0"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
-                  <li class="m-2">
-                    Contact
+                  <li class="m-2 text-white">
+                    History
                     <span class="md:nav-underline"></span>
                   </li>
                 </a>
@@ -171,16 +182,16 @@
         </nav>
       </header>
       <section
-        class="h-auto mt-16 py-10 text-center bg-orange-50 bg-overlay lg:h-full"
+        class="h-auto mt-16 py-10 text-center bg-pink bg-overlay lg:h-full"
       >
         <h1
-          class="font-bold pb-2 inline-block m-4 border-b-2 border-orange-500 text-3xl sm:text-4xl sm:border-b-4 md:text-5xl"
+          class="font-bold bg-slate-900/90 underline rounded p-4 inline-block text-white text-3xl sm:text-4xl xl:text-5xl transition duration-500 ease-in-out shadow-lg hover:shadow-lg hover:shadow-moss hover:text-moss"
         >
-          Seek Answers from the <span class="text-blue-500">Tarot!</span>
+          Seek Wisdom from the <span class="text-moss">Tarot</span>
         </h1>
-        <div class="mx-8 mb-8 flex flex-col items-center">
+        <div class="mx-4 my-8 flex flex-col items-center sm:mx-8">
           <p
-            class="w-10/12 text-left w-full p-4 sm:p-8 sm:w-11/12 sm:text-lg md:w-full lg:text-center xl:px-10 xl:w-[70%] 2xl:w-[50%]"
+            class="w-10/12 text-left w-full pt-4 sm:p-8 sm:w-11/12 sm:text-lg md:w-full lg:text-center xl:px-10 xl:w-[70%] 2xl:w-[50%]"
           >
             The Tarot holds a mystical allure that transcends its humble origins
             as a mere tool for games of chance. Over the course of several
@@ -209,30 +220,30 @@
           </p>
           <div>
             <button
-              class="mt-6 mx-2 w-40 bg-orange-700 hover:bg-orange-500 text-white font-semibold hover:text-neutral-100 py-3 px-4 border-2 border-slate-600 hover:border-transparent rounded transition duration-200 ease-in-out active:bg-orange-900 sm:mt-0"
+              class="shadow-md hover:shadow-lg mt-6 mx-2 w-40 bg-violet/70 hover:bg-violet text-white font-semibold hover:text-neutral-100 py-3 px-4 border-2 border-slate-600 hover:border-transparent rounded transition duration-200 ease-in-out active:bg-orange-900 sm:mt-0"
             >
-              Learn More
+              <a href="/about">Learn More</a>
             </button>
             <button
-              class="mt-6 mx-2 w-40 bg-blue-600 hover:bg-blue-400 text-white font-semibold py-3 px-4 border-2 hover:text-neutral-100 border-slate-600 hover:border-transparent rounded transition duration-200 ease-in-out active:bg-blue-900 sm:mt-0"
+              class="shadow-md hover:shadow-lg mt-6 mx-2 w-40 bg-moss hover:bg-moss/80 text-white font-semibold py-3 px-4 border-2 hover:hover:text-violet border-slate-600 hover:border-transparent rounded transition duration-200 ease-in-out active:bg-blue-900 sm:mt-0"
             >
               <a href="/card-reading">Make a Reading</a>
             </button>
           </div>
         </div>
       </section>
-      <footer class="h-16 bg-slate-950 flex flex-col justify-center p-8">
+      <footer class="h-16 bg-slate-900 flex flex-col justify-center p-8">
         <span class="block text-white mx-auto text-center"
           >&copy; 2023 Copyright:
           <a
             href="https://www.jameshlo.com/"
             target="_blank"
-            class="border-b-2 border-cyan-600 transition duration-200 ease-in-out hover:border-cyan-200"
+            class="border-b-2 border-moss transition duration-200 ease-in-out hover:border-moss/60 hover:text-moss"
             >James H Lo</a
           ></span
         >
       </footer>
     </div>
-    <script src="/js/nav.js"></script>
+    <script src="public/js/nav.js"></script>
   </body>
 </html>
