@@ -13,7 +13,7 @@
     @apply text-xl font-bold underline mb-2;
   }
   .card {
-    @apply border-[3px] border-black rounded bg-blue-50 bg-overlay;
+    @apply border-2 border-black rounded bg-blue-50 bg-overlay;
   }
   .inactive {
     @apply opacity-0 invisible absolute;
