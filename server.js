@@ -25,6 +25,9 @@ MongoClient.connect(uri, { useUnifiedTopology: true })
     app.get("/", (req, res) => {
       res.sendFile(__dirname + "/home.html");
     });
+    app.get("/about", (req, res) => {
+      res.sendFile(__dirname + "/about.html");
+    });
     app.get("/card-api", (req, res) => {
       res.sendFile(__dirname + "/card-api.html");
     });
