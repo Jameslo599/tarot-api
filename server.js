@@ -4,69 +4,89 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const PORT = 8000;
-const MongoClient = require("mongodb").MongoClient;
 const uri = process.env.MONGO_URI;
+const mongoose = require("mongoose");
 const { format } = require("date-fns");
 
-MongoClient.connect(uri, { useUnifiedTopology: true })
-  .then((client) => {
-    console.log("Connected to Database");
-    const db = client.db("tarot");
-    const tarotCards = db.collection("tarotCards");
+mongoose.Promise = Promise;
+mongoose.connect(uri);
 
-    // MiddleWares
-    app.use(express.static("public"));
-    app.set("view engine", "ejs");
-    app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json());
-    app.use(cors());
+const tarotCardSchema = new mongoose.Schema({
+  id: String,
+});
 
-    // Routes
-    app.get("/", (req, res) => {
-      res.sendFile(__dirname + "/home.html");
-    });
-    app.get("/about", (req, res) => {
-      res.sendFile(__dirname + "/about.html");
-    });
-    app.get("/card-api", (req, res) => {
-      res.sendFile(__dirname + "/card-api.html");
-    });
-    app.get("/card-reading", (req, res) => {
-      res.sendFile(__dirname + "/card-reading.html");
-    });
+const userSchema = new mongoose.Schema({
+  username: String,
+  pass: String,
+});
 
-    app.get("/api/:tarotCard", (req, res) => {
-      const card = req.params.tarotCard.toLowerCase();
-      tarotCards
-        .find({ id: `${card}` })
-        .toArray()
-        .then((data) => res.json(data))
-        .catch((error) => res.json("Not found"));
-    });
+const TarotCard = mongoose.model("TarotCard", tarotCardSchema);
+const User = mongoose.model("User", userSchema);
 
-    app.get("/reading/:number", (req, res) => {
-      const num = req.params.number;
-      //console.log(num);
-      tarotCards
-        .find({ number: `${num}` })
-        .toArray()
-        .then((data) => res.json(data))
-        .catch((error) => res.json("Could not retrieve"));
-    });
+// MiddleWares
+app.use(express.static("public"));
+app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors());
 
-    app.get("/card-reading/date", (req, res) => {
-      const date = new Date();
-      res.json(
-        format(
-          new Date(date.getFullYear(), date.getMonth(), date.getDate()),
-          "MMMM do, y"
-        )
-      );
-    });
+// Routes
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/home.html");
+});
+app.get("/about", (req, res) => {
+  res.sendFile(__dirname + "/about.html");
+});
+app.get("/card-api", (req, res) => {
+  res.sendFile(__dirname + "/card-api.html");
+});
+app.get("/card-reading", (req, res) => {
+  res.sendFile(__dirname + "/card-reading.html");
+});
 
-    // Listen
-    app.listen(process.env.PORT || PORT, () => {
-      console.log(`The server is running on ${PORT}.`);
-    });
-  })
-  .catch((error) => console.error(error));
+//Card Readings
+app.get("/api/:tarotCard", (req, res) => {
+  const card = req.params.tarotCard.toLowerCase();
+  TarotCard.find({ id: card })
+    .then((data) => res.json(data))
+    .catch((error) => res.json("Not found"));
+});
+
+app.get("/reading/:number", (req, res) => {
+  const num = req.params.number;
+  TarotCard.find({ number: num })
+    .then((data) => res.json(data))
+    .catch((error) => res.json("Could not retrieve"));
+});
+
+app.get("/card-reading/date", (req, res) => {
+  const date = new Date();
+  res.json(
+    format(
+      new Date(date.getFullYear(), date.getMonth(), date.getDate()),
+      "MMMM do, y"
+    )
+  );
+});
+
+//User sign up
+app.get("/signup/:username/", (req, res) => {
+  const user = req.params.username.toLowerCase();
+  User.find({ username: `${user}` })
+    .then((data) => res.json(data.length))
+    .catch((error) => res.json(error));
+});
+
+app.get("/signup/:username/:password", (req, res) => {
+  const user = req.params.username.toLowerCase();
+  const password = req.params.password;
+  const obj = { username: user, pass: password };
+  User.create(obj)
+    .then(() => res.send("User created successfully"))
+    .catch((error) => res.json("Error in creating user"));
+});
+
+// Listen
+app.listen(process.env.PORT || PORT, () => {
+  console.log(`The server is running on ${PORT}.`);
+});
