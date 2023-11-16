@@ -7,6 +7,7 @@ const PORT = 8000;
 const uri = process.env.MONGO_URI;
 const mongoose = require("mongoose");
 const { format } = require("date-fns");
+const crypto = require("crypto");
 
 mongoose.Promise = Promise;
 mongoose.connect(uri, { dbName: "tarot" });
@@ -79,19 +80,46 @@ app.get("/card-reading/date", (req, res) => {
 //Check if user exists
 app.get("/signup/:username/", (req, res) => {
   const user = req.params.username.toLowerCase();
-  User.find({ username: `${user}` })
+  getUsername(user)
     .then((data) => res.json(data))
     .catch((error) => res.json(error));
+});
+//Get all users
+app.get("/users", (req, res) => {
+  getUsers()
+    .then((data) => res.json(data))
+    .catch((error) => res.json("Error in creating user"));
+});
+//Get user by session token
+app.get("/session", (req, res) => {
+  getSession("string")
+    .then((data) => res.json(data))
+    .catch((error) => res.json("Error in creating user"));
 });
 //Add new user
 app.get("/signup/:username/:password", (req, res) => {
   const user = req.params.username.toLowerCase();
-  const password = req.params.password;
-  const obj = { username: user, pass: password };
-  User.create(obj)
-    .then(() => res.send("User created successfully"))
+  const salt = random();
+  const password = authenticate(salt, req.params.password);
+  createUser({
+    username: user,
+    authentication: {
+      salt: salt,
+      password: password,
+    },
+  })
+    .then((data) => res.json(data))
     .catch((error) => res.json("Error in creating user"));
 });
+//Add new user
+// app.get("/signup/:username/:password", (req, res) => {
+//   const user = req.params.username.toLowerCase();
+//   const password = req.params.password;
+//   const obj = { username: user, pass: password };
+//   User.create(obj)
+//     .then(() => res.send("User created successfully"))
+//     .catch((error) => res.json("Error in creating user"));
+// });
 //Delete User
 app.get("/delete/:username/", (req, res) => {
   const user = req.params.username.toLowerCase();
@@ -104,3 +132,38 @@ app.get("/delete/:username/", (req, res) => {
 app.listen(process.env.PORT || PORT, () => {
   console.log(`The server is running on ${PORT}.`);
 });
+
+function getUsers() {
+  return User.find({});
+}
+function getSession(sessionToken) {
+  return User.findOne({ "authentication.sessionToken": sessionToken });
+}
+function getId(id) {
+  User.findById(id);
+}
+function getUsername(user) {
+  return User.find({ username: user });
+}
+function createUser(values) {
+  return new User(values).save().then((user) => user.toObject());
+}
+function deleteById(id) {
+  User.findOneAndDelete({ _id: id });
+}
+function updateById(id, values) {
+  User.findByIdAndUpdate(id, values);
+}
+
+//Make random token
+const SECRET = "JAMES-REST-API";
+
+function random() {
+  crypto.randomBytes(128).toString("base64");
+}
+function authenticate(salt, password) {
+  return crypto
+    .createHmac("sha256", [salt, password].join("/"))
+    .update(SECRET)
+    .digest("hex");
+}
