@@ -10,6 +10,7 @@ const { format } = require("date-fns");
 
 mongoose.Promise = Promise;
 mongoose.connect(uri);
+//mongoose.connection.collection("tarotCards").rename("tarotcards");
 
 const tarotCardSchema = new mongoose.Schema({
   id: String,
@@ -19,6 +20,15 @@ const userSchema = new mongoose.Schema({
   username: String,
   pass: String,
 });
+
+// const userSchema = new mongoose.Schema({
+//   username: { type: String, required: true },
+//   authentication: {
+//     password: { type: String, required: true, select: false },
+//     salt: { type: String, select: false },
+//     sessionToken: { type: String, select: false },
+//   },
+// });
 
 const TarotCard = mongoose.model("TarotCard", tarotCardSchema);
 const User = mongoose.model("User", userSchema);
@@ -45,7 +55,7 @@ app.get("/card-reading", (req, res) => {
 });
 
 //Card Readings
-app.get("/api/:tarotCard", (req, res) => {
+app.get("/card-api/:tarotCard", (req, res) => {
   const card = req.params.tarotCard.toLowerCase();
   TarotCard.find({ id: card })
     .then((data) => res.json(data))
@@ -69,14 +79,14 @@ app.get("/card-reading/date", (req, res) => {
   );
 });
 
-//User sign up
+//Check if user exists
 app.get("/signup/:username/", (req, res) => {
   const user = req.params.username.toLowerCase();
   User.find({ username: `${user}` })
-    .then((data) => res.json(data.length))
+    .then((data) => res.json(data))
     .catch((error) => res.json(error));
 });
-
+//Add new user
 app.get("/signup/:username/:password", (req, res) => {
   const user = req.params.username.toLowerCase();
   const password = req.params.password;
@@ -84,6 +94,13 @@ app.get("/signup/:username/:password", (req, res) => {
   User.create(obj)
     .then(() => res.send("User created successfully"))
     .catch((error) => res.json("Error in creating user"));
+});
+//Delete User
+app.get("/delete/:username/", (req, res) => {
+  const user = req.params.username.toLowerCase();
+  User.deleteOne({ username: `${user}` })
+    .then((data) => res.json(data))
+    .catch((error) => res.json(error));
 });
 
 // Listen

@@ -8,9 +8,13 @@ document.querySelector("#form").addEventListener("submit", async (e) => {
 async function getName(e) {
   const tarotName = document.querySelector("#dropDown").value;
   try {
-    const response = await fetch(`https://tarot.cyclic.app/api/${tarotName}`);
+    const response = await fetch(
+      `https://tarot.cyclic.app/card-api/${tarotName}`
+    );
+    //const response = await fetch(`http://localhost:8000/card-api/${tarotName}`);
     const data = await response.json();
     //Update information with results
+    console.log(data);
     document.querySelector(".name").innerText = data[0].name;
     document.querySelector(".image").src = data[0].image;
     document.querySelector(".description").innerText = data[0].description;
