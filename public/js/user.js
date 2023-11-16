@@ -18,7 +18,7 @@ async function signUp() {
 //Delete user
 async function deleteUser() {
   try {
-    const response = await fetch(`http://localhost:8000/delete/jameslo599`);
+    const response = await fetch(`https://tarot.cyclic.app/delete/jameslo599`);
     const data = await response.json();
     console.log(data);
   } catch (error) {

@@ -11,7 +11,6 @@ async function getName(e) {
     const response = await fetch(
       `https://tarot.cyclic.app/card-api/${tarotName}`
     );
-    //const response = await fetch(`http://localhost:8000/card-api/${tarotName}`);
     const data = await response.json();
     //Update information with results
     console.log(data);

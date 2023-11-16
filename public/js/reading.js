@@ -63,7 +63,7 @@ function updateDOM(arr) {
     meaning[i].textContent = arr[i].meaning;
     container[i].classList.replace("inactive", "activated");
     spread.children[i].classList.add("card");
-    cover[i].classList.replace("bg-slate-950/80", "bg-slate-950/0");
+    cover[i].classList.replace("bg-slate-800/80", "bg-slate-800/0");
   }
 
   //Save object when 'save' button is clicked

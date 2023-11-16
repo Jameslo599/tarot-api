@@ -7,7 +7,6 @@ const PORT = 8000;
 const uri = process.env.MONGO_URI;
 const mongoose = require("mongoose");
 const { format } = require("date-fns");
-app.use(cors());
 
 mongoose.Promise = Promise;
 mongoose.connect(uri, { dbName: "tarot" });
@@ -20,18 +19,13 @@ const tarotCardSchema = new mongoose.Schema({
 });
 
 const userSchema = new mongoose.Schema({
-  username: String,
-  pass: String,
+  username: { type: String, required: true },
+  authentication: {
+    password: { type: String, required: true, select: false },
+    salt: { type: String, select: false },
+    sessionToken: { type: String, select: false },
+  },
 });
-
-// const userSchema = new mongoose.Schema({
-//   username: { type: String, required: true },
-//   authentication: {
-//     password: { type: String, required: true, select: false },
-//     salt: { type: String, select: false },
-//     sessionToken: { type: String, select: false },
-//   },
-// });
 
 const TarotCard = mongoose.model("TarotCard", tarotCardSchema);
 const User = mongoose.model("User", userSchema);
@@ -41,6 +35,7 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
 
 // Routes
 app.get("/", (req, res) => {
