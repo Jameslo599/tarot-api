@@ -10,7 +10,10 @@ const { format } = require("date-fns");
 app.use(cors());
 
 mongoose.Promise = Promise;
-mongoose.connect(uri);
+mongoose.connect(uri, { dbName: "tarot" });
+mongoose.connection.on("connected", () => {
+  console.log("Connected to MongoDB:", mongoose.connection.db.databaseName);
+});
 
 const tarotCardSchema = new mongoose.Schema({
   id: String,
