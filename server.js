@@ -10,7 +10,6 @@ const { format } = require("date-fns");
 
 mongoose.Promise = Promise;
 mongoose.connect(uri);
-//mongoose.connection.collection("tarotCards").rename("tarotcards");
 
 const tarotCardSchema = new mongoose.Schema({
   id: String,
