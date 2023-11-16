@@ -7,6 +7,7 @@ const PORT = 8000;
 const uri = process.env.MONGO_URI;
 const mongoose = require("mongoose");
 const { format } = require("date-fns");
+app.use(cors());
 
 mongoose.Promise = Promise;
 mongoose.connect(uri);
@@ -37,7 +38,6 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
 
 // Routes
 app.get("/", (req, res) => {
