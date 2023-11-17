@@ -25,7 +25,7 @@
     @apply w-10/12 mx-auto text-left w-full sm:p-8 sm:w-11/12 sm:text-lg sm:text-justify xl:w-[80%] 2xl:w-[1280px];
   }
   .p-container {
-    @apply mx-3 mb-8 bg-white bg-overlay rounded px-2 pb-8 border-[1px] border-gray-700 sm:mx-8 sm:px-4 sm:py-4 lg:w-[80%] lg:mx-auto 2xl:w-[1440px];
+    @apply mx-3 mb-8 bg-white bg-overlay rounded px-4 pb-8 border-[1px] border-gray-700 sm:mx-8 sm:px-4 sm:py-4 lg:w-[80%] lg:mx-auto 2xl:w-[1440px];
   }
   .entry-l {
     @apply text-sm w-6/12 break-words pl-1 py-2 border-r-2 border-b-2 border-gray-700 sm:text-base md:w-[75%] lg:text-lg;

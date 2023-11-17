@@ -12,7 +12,6 @@
       href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <!-- <link rel="stylesheet" href="/assets/reset.css" /> -->
     <link rel="stylesheet" href="/assets/output.css" />
     <title>Tarot API</title>
   </head>
@@ -216,15 +215,15 @@
               >Learn more about a card:</label
             >
             <div
-              class="mx-2 bg-violet bg-overlay rounded-md p-2 my-10 mx-2 sm:mx-auto sm:flex sm:flex-row sm:justify-around sm:w-96 sm:p-6 sm:items-center"
+              class="flex flex-col bg-violet bg-overlay rounded-md p-4 px-5 my-10 max-w-[520px] sm:mx-auto sm:flex sm:flex-row sm:justify-around sm:w-96 sm:p-6 sm:items-center"
             >
               <select
                 name="tarot-search"
                 id="dropDown"
-                class="text-lg text-center block py-1 px-0 w-[220px] sm:mr-4 text-white bg-transparent border-0 border-b-2 border-white appearance-none dark:text-black dark:border-white focus:ring-0 focus:border-neutral-300 focus:text-black focus:bg-white bg-drop-down bg-no-repeat bg-right cursor-pointer hover:text-neutral-300 hover:border-neutral-300 transition duration-200 ease-in-out"
+                class="text-lg text-center text-white block py-1 px-0 w-[220px] sm:mr-4 bg-transparent border-0 border-b-2 border-white appearance-none dark:text-black dark:border-white focus:ring-0 focus:border-neutral-300 focus:text-black focus:bg-white bg-drop-down bg-no-repeat bg-right cursor-pointer hover:text-neutral-300 hover:border-neutral-300 transition duration-200 ease-in-out"
                 required
               >
-                <option value="">--Select a Card--</option>
+                <option value="" class="text-white">--Select a Card--</option>
                 <option value="Magician">The Magician</option>
                 <option value="Popess">The Popess</option>
                 <option value="Empress">The Empress</option>
