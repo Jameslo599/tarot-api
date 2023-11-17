@@ -16,18 +16,63 @@
 // }
 async function signUp() {
   try {
-    const user = "jameslo599";
-    const password = "runescape";
-
-    if (!user || !password) return console.log("input empty");
-
-    const response = await fetch(`http://localhost:8000/signup/${user}`);
+    const acc = {
+      user: "jameslo699",
+      password: "runescape",
+    };
+    //Check if acc already exists
+    if (!acc.user || !acc.password) return console.log("input empty");
+    const response = await fetch(`http://localhost:8000/check`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(acc),
+    });
     const existingUser = await response.json();
     if (existingUser.length > 0) return console.log("user exists");
 
-    const creation = await fetch(
-      `http://localhost:8000/signup/${user}/${password}`
-    );
+    //Create new account
+    const creation = await fetch(`http://localhost:8000/auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(acc),
+    });
+    const data = await creation.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function login() {
+  try {
+    const acc = {
+      user: "jameslo699",
+      password: "runescape",
+    };
+    //Check if acc exists
+    if (!acc.user || !acc.password) return console.log("input empty");
+    const response = await fetch(`http://localhost:8000/check`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(acc),
+    });
+    const existingUser = await response.json();
+    if (existingUser.length === 0) return console.log("user does not exist");
+
+    //Login
+    const creation = await fetch(`http://localhost:8000/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(acc),
+    });
     const data = await creation.json();
     console.log(data);
   } catch (error) {

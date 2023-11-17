@@ -1,5 +1,3 @@
-//Style select element on Safari
-document.querySelector("#dropDown").style.textAlign = "center";
 //API call to obtain card data prevent page refresh after submitting form
 document.querySelector("#form").addEventListener("submit", async (e) => {
   e.preventDefault();

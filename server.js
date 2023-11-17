@@ -52,21 +52,21 @@ app.get("/card-reading", (req, res) => {
   res.sendFile(__dirname + "/card-reading.html");
 });
 
-//Card Readings
+//Return card info corresponding to name
 app.get("/card-api/:tarotCard", (req, res) => {
   const card = req.params.tarotCard.toLowerCase();
   TarotCard.find({ id: card })
     .then((data) => res.json(data))
     .catch((error) => res.json("Not found"));
 });
-
+//Return card corresponding to number
 app.get("/reading/:number", (req, res) => {
   const num = req.params.number;
   TarotCard.find({ number: num })
     .then((data) => res.json(data))
     .catch((error) => res.json("Could not retrieve"));
 });
-
+//Return today's date
 app.get("/card-reading/date", (req, res) => {
   const date = new Date();
   res.json(
@@ -77,30 +77,33 @@ app.get("/card-reading/date", (req, res) => {
   );
 });
 
-//Check if user exists
-app.get("/signup/:username/", (req, res) => {
-  const user = req.params.username.toLowerCase();
-  getUsername(user)
-    .then((data) => res.json(data))
-    .catch((error) => res.json(error));
-});
 //Get all users
 app.get("/users", (req, res) => {
   getUsers()
     .then((data) => res.json(data))
     .catch((error) => res.json("Error in creating user"));
 });
+
 //Get user by session token
 app.get("/session", (req, res) => {
   getSession("string")
     .then((data) => res.json(data))
     .catch((error) => res.json("Error in creating user"));
 });
+
+//Check if user exists
+app.post("/check", (req, res) => {
+  const user = req.body.user;
+  getUsername(user)
+    .then((data) => res.json(data))
+    .catch((error) => res.json(error));
+});
+
 //Add new user
-app.get("/signup/:username/:password", (req, res) => {
-  const user = req.params.username.toLowerCase();
+app.post("/auth/register", (req, res) => {
+  const user = req.body.user;
   const salt = random();
-  const password = authenticate(salt, req.params.password);
+  const password = authenticate(salt, req.body.password);
   createUser({
     username: user,
     authentication: {
@@ -111,26 +114,38 @@ app.get("/signup/:username/:password", (req, res) => {
     .then((data) => res.json(data))
     .catch((error) => res.json("Error in creating user"));
 });
-//Add new user
-// app.get("/signup/:username/:password", (req, res) => {
-//   const user = req.params.username.toLowerCase();
-//   const password = req.params.password;
-//   const obj = { username: user, pass: password };
-//   User.create(obj)
-//     .then(() => res.send("User created successfully"))
-//     .catch((error) => res.json("Error in creating user"));
-// });
+
+//Login user
+app.post("/auth/login", async (req, res) => {
+  let user = await getUsername(req.body.user).select(
+    "+authentication.salt +authentication.password"
+  );
+  user = user[0];
+  const expectedHash = authenticate(
+    user.authentication.salt,
+    req.body.password
+  );
+  if (user.authentication.password !== expectedHash) {
+    return res.sendStatus(403);
+  }
+  const salt = random();
+  user.authentication.sessionToken = authenticate(salt, user._id.toString());
+  user.save();
+
+  res.cookie("JAMES-AUTH", user.authentication.sessionToken, {
+    domain: "localhost",
+    path: "/",
+  });
+
+  res.status(200).json(user).end();
+});
+
 //Delete User
 app.get("/delete/:username/", (req, res) => {
   const user = req.params.username.toLowerCase();
   User.deleteOne({ username: `${user}` })
     .then((data) => res.json(data))
     .catch((error) => res.json(error));
-});
-
-// Listen
-app.listen(process.env.PORT || PORT, () => {
-  console.log(`The server is running on ${PORT}.`);
 });
 
 function getUsers() {
@@ -159,7 +174,7 @@ function updateById(id, values) {
 const SECRET = "JAMES-REST-API";
 
 function random() {
-  crypto.randomBytes(128).toString("base64");
+  return crypto.randomBytes(128).toString("base64");
 }
 function authenticate(salt, password) {
   return crypto
@@ -167,3 +182,8 @@ function authenticate(salt, password) {
     .update(SECRET)
     .digest("hex");
 }
+
+// Listen
+app.listen(process.env.PORT || PORT, () => {
+  console.log(`The server is running on ${PORT}.`);
+});
