@@ -1504,6 +1504,10 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.\[-webkit-text-align\:center\] {
+  -webkit-text-align: center;
+}
+
 @media (min-width: 768px) {
   .md\:nav-underline {
     display: block;
