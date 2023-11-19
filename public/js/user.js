@@ -1,19 +1,4 @@
 //Sign up new user
-// async function signUp() {
-//   const user = "jameslo599";
-//   const password = "runescape";
-//   try {
-//     const response = await fetch(`https://tarot.cyclic.app/signup/${user}`);
-//     const data = await response.json();
-//     console.log(data);
-//     //if user exists then return, else send req to add user
-//     data.length >= 1
-//       ? console.log("username is taken")
-//       : fetch(`https://tarot.cyclic.app/signup/${user}/${password}`);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
 async function signUp() {
   try {
     const acc = {
@@ -46,7 +31,7 @@ async function signUp() {
     console.log(error);
   }
 }
-
+//Login user
 async function login() {
   try {
     const acc = {
@@ -74,6 +59,19 @@ async function login() {
       body: JSON.stringify(acc),
     });
     const data = await creation.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//Sign out user
+async function signOut() {
+  try {
+    const req = await fetch("http://localhost:8000/sign-out", {
+      method: "DELETE",
+    });
+    const data = await req.json();
     console.log(data);
   } catch (error) {
     console.log(error);

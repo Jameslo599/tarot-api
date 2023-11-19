@@ -140,7 +140,10 @@ app.post("/auth/login", async (req, res) => {
 });
 
 //Sign out user
-app.delete;
+app.delete("/sign-out", (req, res) => {
+  res.clearCookie("JAMES-AUTH", { domain: "localhost", path: "/" });
+  res.json("Successfully signed out!").end();
+});
 
 //Delete User
 app.get("/delete/:username/", (req, res) => {
