@@ -136,9 +136,11 @@ app.post("/auth/login", async (req, res) => {
     domain: "localhost",
     path: "/",
   });
-
   res.status(200).json(user).end();
 });
+
+//Sign out user
+app.delete;
 
 //Delete User
 app.get("/delete/:username/", (req, res) => {

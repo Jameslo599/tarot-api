@@ -50,7 +50,7 @@ async function signUp() {
 async function login() {
   try {
     const acc = {
-      user: "jameslo699",
+      user: "jameslo599",
       password: "runescape",
     };
     //Check if acc exists
