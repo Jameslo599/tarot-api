@@ -1991,6 +1991,10 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:invisible {
+    visibility: hidden;
+  }
+
   .md\:absolute {
     position: absolute;
   }
@@ -2001,6 +2005,18 @@ video {
 
   .md\:top-0 {
     top: 0px;
+  }
+
+  .md\:right-\[2rem\] {
+    right: 2rem;
+  }
+
+  .md\:top-\[3rem\] {
+    top: 3rem;
+  }
+
+  .md\:right-\[1rem\] {
+    right: 1rem;
   }
 
   .md\:order-last {

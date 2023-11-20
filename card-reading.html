@@ -203,8 +203,6 @@
                 </ul> -->
                 <button
                   id="dropdownHoverButton"
-                  data-dropdown-toggle="dropdownHover"
-                  data-dropdown-trigger="hover"
                   class="group nav-link inline-block md:rounded hover:bg-violet md:border-0"
                   type="button"
                 >
@@ -233,19 +231,20 @@
                 <!-- Dropdown menu -->
                 <div
                   id="dropdownHover"
-                  class="z-10 m-2 bg-slate-900 rounded shadow md:absolute"
+                  class="z-10 m-2 bg-slate-900 rounded shadow md:absolute md:top-[3rem] md:right-[1rem] md:invisible"
                 >
-                  <ul
-                    class="p-2 text-white font-medium"
-                    aria-labelledby="dropdownHoverButton"
-                  >
+                  <ul class="p-2 text-white font-medium">
                     <li>
-                      <a href="#" class="block px-4 py-2 border-b-2 border-moss"
+                      <a
+                        href="#"
+                        class="block px-4 py-2 border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                         >History</a
                       >
                     </li>
                     <li>
-                      <a href="#" class="block px-4 py-2 border-b-2 border-moss"
+                      <a
+                        href="#"
+                        class="block px-4 py-2 border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                         >Sign Out</a
                       >
                     </li>
