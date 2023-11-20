@@ -168,15 +168,89 @@
                     <span class="md:nav-underline"></span>
                   </li>
                 </a>
-                <a
-                  href="/card-reading"
+                <!-- <a
+                  href="#"
                   class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
                   <li class="m-2 text-white">
-                    History
+                    Login
                     <span class="md:nav-underline"></span>
                   </li>
-                </a>
+                </a> -->
+                <!-- Mobile signed in -->
+                <!-- <ul
+                  class="flex flex-col bg-violet rounded-lg md:w-100 md:m-0 md:mr-4 md:flex-row md:bg-transparent"
+                  aria-labelledby="dropdownHoverButton"
+                >
+                  <a
+                    href="#"
+                    class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
+                  >
+                    <li class="m-2 text-white">
+                      History
+                      <span class="md:nav-underline"></span>
+                    </li>
+                  </a>
+                  <a
+                    href="#"
+                    class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
+                  >
+                    <li class="m-2 text-white">
+                      Log Out
+                      <span class="md:nav-underline"></span>
+                    </li>
+                  </a>
+                </ul> -->
+                <button
+                  id="dropdownHoverButton"
+                  data-dropdown-toggle="dropdownHover"
+                  data-dropdown-trigger="hover"
+                  class="group nav-link inline-block md:rounded hover:bg-violet md:border-0"
+                  type="button"
+                >
+                  <div class="m-2">
+                    <li class="flex items-center text-white">
+                      James Lo
+                      <svg
+                        class="w-2.5 h-2.5 ms-3"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 10 6"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m1 1 4 4 4-4"
+                        />
+                      </svg>
+                    </li>
+                    <span class="md:nav-underline"></span>
+                  </div>
+                </button>
+                <!-- Dropdown menu -->
+                <div
+                  id="dropdownHover"
+                  class="z-10 m-2 bg-slate-900 rounded shadow md:absolute"
+                >
+                  <ul
+                    class="p-2 text-white font-medium"
+                    aria-labelledby="dropdownHoverButton"
+                  >
+                    <li>
+                      <a href="#" class="block px-4 py-2 border-b-2 border-moss"
+                        >History</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="block px-4 py-2 border-b-2 border-moss"
+                        >Sign Out</a
+                      >
+                    </li>
+                  </ul>
+                </div>
               </ul>
             </div>
           </div>
@@ -309,8 +383,9 @@
               reveal its meaning and then relate that interpretation to the
               corresponding time period associated with each card's respective
               position.<br /><br />
-              Focus on the question in your mind, give it your full attention,
-              and when you feel ready, click the button to proceed.
+              Enter your question in the field below and focus on it in your
+              mind. Give it your full attention, and when you feel ready, click
+              the button to proceed.
             </p>
             <div
               class="bg-violet rounded-md p-4 my-10 mx-4 sm:mx-auto sm:flex sm:flex-row sm:justify-around sm:w-96 sm:p-6 sm:items-center sm:border-2 sm:border-gray-800"
