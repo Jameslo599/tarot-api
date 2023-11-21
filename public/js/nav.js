@@ -36,10 +36,3 @@ document.querySelector("#dropdownHoverButton").addEventListener("click", () => {
   console.log("fwf");
   document.querySelector("#dropdownHover").classList.toggle("md:invisible");
 });
-
-// document
-//   .querySelector("#dropdownHoverButton")
-//   .addEventListener("mouseleave", () => {
-//     console.log("fwf");
-//     document.querySelector("#dropdownHover").style.visibility = "hidden";
-//   });
