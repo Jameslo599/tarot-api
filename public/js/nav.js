@@ -1,3 +1,13 @@
+//Switch last nav link depending if user is signed in
+window.addEventListener("load", async () => {
+  if (document.cookie === "") return;
+  const session = document.cookie.slice(11);
+  const username = await getUser(session);
+  document.querySelector("#login").style.display = "none";
+  document.querySelector("#username").prepend(username.username);
+  document.querySelector("#dropdownHoverButton").classList.remove("hidden");
+});
+
 //Open mobile navbar
 const menu = document.querySelector("#navLinks");
 const menuClass = menu.classList;
@@ -33,6 +43,16 @@ function bodyClick(e) {
 
 //Open drop-down on hover
 document.querySelector("#dropdownHoverButton").addEventListener("click", () => {
-  console.log("fwf");
   document.querySelector("#dropdownHover").classList.toggle("md:invisible");
 });
+
+//Determine last nav link
+async function getUser(session) {
+  try {
+    const req = await fetch(`http://localhost:8000/session/${session}`);
+    const data = await req.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}

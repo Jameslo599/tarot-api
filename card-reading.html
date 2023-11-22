@@ -168,7 +168,8 @@
                     <span class="md:nav-underline"></span>
                   </li>
                 </a>
-                <!-- <a
+                <!-- Not signed in -->
+                <a
                   href="#"
                   class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
@@ -176,41 +177,18 @@
                     Login
                     <span class="md:nav-underline"></span>
                   </li>
-                </a> -->
-                <!-- Mobile signed in -->
-                <!-- <ul
-                  class="flex flex-col bg-violet rounded-lg md:w-100 md:m-0 md:mr-4 md:flex-row md:bg-transparent"
-                  aria-labelledby="dropdownHoverButton"
-                >
-                  <a
-                    href="#"
-                    class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
-                  >
-                    <li class="m-2 text-white">
-                      History
-                      <span class="md:nav-underline"></span>
-                    </li>
-                  </a>
-                  <a
-                    href="#"
-                    class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
-                  >
-                    <li class="m-2 text-white">
-                      Log Out
-                      <span class="md:nav-underline"></span>
-                    </li>
-                  </a>
-                </ul> -->
+                </a>
+
+                <!-- Signed in -->
                 <button
                   id="dropdownHoverButton"
-                  class="group nav-link inline-block md:rounded hover:bg-violet md:border-0"
+                  class="hidden nav-link inline-block md:rounded hover:bg-violet md:border-0"
                   type="button"
                 >
                   <div class="m-2">
-                    <li class="flex items-center text-white">
-                      James Lo
+                    <li id="username" class="flex items-center text-white">
                       <svg
-                        class="w-2.5 h-2.5 ms-3"
+                        class="w-2.5 h-2.5 ms-1"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -236,7 +214,7 @@
                   <ul class="p-2 text-white font-medium">
                     <li>
                       <a
-                        href="#"
+                        href="/history"
                         class="block px-4 py-2 border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                         >History</a
                       >

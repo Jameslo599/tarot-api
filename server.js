@@ -85,10 +85,11 @@ app.get("/users", (req, res) => {
 });
 
 //Get user by session token
-app.get("/session", (req, res) => {
-  getSession("string")
+app.get("/session/:token", (req, res) => {
+  const session = `${req.params.token}`;
+  getSession(session)
     .then((data) => res.json(data))
-    .catch((error) => res.json("Error in creating user"));
+    .catch(() => res.json("Token does not exist"));
 });
 
 //Check if user exists

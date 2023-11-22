@@ -59,6 +59,7 @@ async function login() {
       body: JSON.stringify(acc),
     });
     const data = await creation.json();
+    location.reload();
     console.log(data);
   } catch (error) {
     console.log(error);
@@ -72,6 +73,7 @@ async function signOut() {
       method: "DELETE",
     });
     const data = await req.json();
+    location.reload();
     console.log(data);
   } catch (error) {
     console.log(error);
