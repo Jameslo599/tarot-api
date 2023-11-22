@@ -179,10 +179,22 @@
                   </li>
                 </a>
 
+                <!-- Not signed in -->
+                <a
+                  id="login"
+                  href="#"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
+                >
+                  <li class="m-2 text-white">
+                    Login
+                    <span class="md:nav-underline"></span>
+                  </li>
+                </a>
+
                 <!-- Signed in -->
                 <button
                   id="dropdownHoverButton"
-                  class="hidden nav-link inline-block md:rounded hover:bg-violet md:border-0"
+                  class="hidden group nav-link inline-block md:rounded hover:bg-violet md:border-0"
                   type="button"
                 >
                   <div class="m-2">
@@ -221,6 +233,7 @@
                     </li>
                     <li>
                       <a
+                        id="signOut"
                         href="#"
                         class="block px-4 py-2 border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                         >Sign Out</a

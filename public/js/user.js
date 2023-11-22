@@ -66,20 +66,6 @@ async function login() {
   }
 }
 
-//Sign out user
-async function signOut() {
-  try {
-    const req = await fetch("http://localhost:8000/sign-out", {
-      method: "DELETE",
-    });
-    const data = await req.json();
-    location.reload();
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 //Get users
 async function getUsers() {
   try {

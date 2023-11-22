@@ -166,15 +166,68 @@
                     <span class="md:nav-underline"></span>
                   </li>
                 </a>
+                <!-- Not signed in -->
                 <a
-                  href="/card-reading"
+                  id="login"
+                  href="#"
                   class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
                   <li class="m-2 text-white">
-                    History
+                    Login
                     <span class="md:nav-underline"></span>
                   </li>
                 </a>
+
+                <!-- Signed in -->
+                <button
+                  id="dropdownHoverButton"
+                  class="hidden group nav-link inline-block md:rounded hover:bg-violet md:border-0"
+                  type="button"
+                >
+                  <div class="m-2">
+                    <li id="username" class="flex items-center text-white">
+                      <svg
+                        class="w-2.5 h-2.5 ms-1"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 10 6"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m1 1 4 4 4-4"
+                        />
+                      </svg>
+                    </li>
+                    <span class="md:nav-underline"></span>
+                  </div>
+                </button>
+                <!-- Dropdown menu -->
+                <div
+                  id="dropdownHover"
+                  class="z-10 m-2 bg-slate-900 rounded shadow md:absolute md:top-[3rem] md:right-[1rem] md:invisible"
+                >
+                  <ul class="p-2 text-white font-medium">
+                    <li>
+                      <a
+                        href="/history"
+                        class="block px-4 py-2 border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
+                        >History</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        id="signOut"
+                        href="#"
+                        class="block px-4 py-2 border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
+                        >Sign Out</a
+                      >
+                    </li>
+                  </ul>
+                </div>
               </ul>
             </div>
           </div>
