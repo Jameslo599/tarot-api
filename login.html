@@ -12,12 +12,10 @@
       href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <!-- <link rel="stylesheet" href="/assets/reset.css" /> -->
     <link rel="stylesheet" href="public/assets/output.css" />
     <title>Tarot API</title>
   </head>
-
-  <body class="h-screen min-w-[320px] bg-gradient">
+  <body class="h-screen min-w-[320px] bg-neutral-100">
     <div class="flex flex-col h-screen justify-between">
       <header
         class="fixed h-16 w-full left-0 top-0 bg-slate-900 bg-overlay z-10"
@@ -36,7 +34,7 @@
             <div class="mr-4 order-last sm:mr-6 md:hidden">
               <button
                 id="hamburger"
-                class="flex flex-col justify-center border-2 p-[0.15rem] border-moss rounded-lg transition-all"
+                class="flex flex-col justify-center border-2 p-0.5 border-moss rounded-lg transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -170,17 +168,6 @@
                 </a>
                 <!-- Not signed in -->
                 <a
-                  href="#"
-                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
-                >
-                  <li class="m-2 text-white">
-                    Login
-                    <span class="md:nav-underline"></span>
-                  </li>
-                </a>
-
-                <!-- Not signed in -->
-                <a
                   id="login"
                   href="#"
                   class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
@@ -246,158 +233,46 @@
           </div>
         </nav>
       </header>
-      <section id="banner" class="mt-16 py-10 h-auto text-center bg-gradient">
-        <div>
-          <h1
-            class="font-bold bg-slate-900/90 underline rounded p-4 inline-block text-white text-3xl sm:text-4xl xl:text-5xl transition duration-500 ease-in-out shadow-lg hover:shadow-lg hover:shadow-moss hover:text-moss"
-          >
-            Three Card Spread
-          </h1>
-        </div>
-
-        <div
-          id="cardImages"
-          class="flex flex-col mx-[1rem] mt-8 gap-x-4 gap-y-4 sm:mx-6 md:flex-row md:mt-10 2xl:mx-auto 2xl:max-w-[1536px]"
+      <section class="h-auto mt-16 py-10 text-center">
+        <h1
+          class="font-bold bg-slate-900/90 underline rounded p-4 inline-block text-white text-3xl sm:text-4xl xl:text-5xl transition duration-500 ease-in-out shadow-lg hover:shadow-lg hover:shadow-moss hover:text-moss"
         >
-          <div
-            class="py-6 mx-auto w-full bg-pink/80 bg-overlay transition duration-500 ease-in-out shadow-lg hover:shadow-xl hover:shadow-moss rounded-lg md:flex-1 md:relative"
-          >
-            <h2
-              class="card-header bg-slate-900/90 inline-block no-underline px-4 py-1 rounded text-white"
-            >
-              Past
-            </h2>
-            <div class="w-48 mx-auto relative md:w-[60%] 2xl:w-fit">
-              <img
-                class="image rounded border-2 border-black"
-                src="https://i.ibb.co/nC6y1K6/cardback.jpg"
-                alt="tarot cardback"
-              />
-              <div
-                class="cover absolute bg-slate-800/80 rounded top-0 w-full h-full transition-all duration-700 ease-in-out"
-              ></div>
-            </div>
-            <div
-              class="container inactive p-4 w-11/12 mx-auto my-6 bg-slate-900/90 rounded-lg transition-all duration-700 ease-in-out"
-            >
-              <p class="result text-white"></p>
-            </div>
-          </div>
-          <div
-            class="py-6 mx-auto w-full bg-pink/80 bg-overlay transition duration-500 ease-in-out shadow-lg hover:shadow-xl hover:shadow-moss rounded-lg md:flex-1 md:relative"
-          >
-            <div>
-              <h2
-                class="card-header bg-slate-900/90 inline-block no-underline px-4 py-1 rounded text-white"
-              >
-                Present
-              </h2>
-            </div>
+          Sign In
+        </h1>
+        <!-- Reading Log -->
 
-            <div class="w-48 mx-auto relative md:w-[60%] 2xl:w-fit">
-              <img
-                class="image rounded border-2 border-black"
-                src="https://i.ibb.co/nC6y1K6/cardback.jpg"
-                alt="tarot cardback"
-              />
-              <div
-                class="cover absolute bg-slate-800/80 rounded top-0 w-full h-full transition-all duration-700 ease-in-out"
-              ></div>
-            </div>
-            <div
-              class="container inactive p-4 w-11/12 mx-auto my-6 bg-slate-900/90 rounded-lg transition-all duration-700 ease-in-out"
-            >
-              <p class="result text-white"></p>
-            </div>
-          </div>
-          <div
-            class="py-6 mx-auto w-full bg-pink/80 bg-overlay transition duration-500 ease-in-out shadow-lg hover:shadow-xl hover:shadow-moss rounded-lg md:flex-1 md:relative"
-          >
-            <h2
-              class="card-header bg-slate-900/90 inline-block no-underline px-4 py-1 rounded text-white"
-            >
-              Future
-            </h2>
-            <div class="w-48 mx-auto relative md:w-[60%] 2xl:w-fit">
-              <img
-                class="image rounded border-2 border-black"
-                src="https://i.ibb.co/nC6y1K6/cardback.jpg"
-                alt="tarot cardback"
-              />
-              <div
-                class="cover absolute bg-slate-800/80 rounded top-0 w-full h-full transition-all duration-700 ease-in-out"
-              ></div>
-            </div>
-
-            <div
-              class="container inactive p-4 w-11/12 mx-auto my-6 bg-slate-900/90 rounded-lg transition-all duration-700 ease-in-out"
-            >
-              <p class="result text-white"></p>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="mt-8 sm:mt-6">
-            <span
-              id="question"
-              class="font-bold text-white text-2xl bg-slate-900/0 px-4 py-2 rounded"
-            ></span>
-          </div>
-
-          <button
-            id="save"
-            class="hidden mt-6 mx-2 w-40 bg-moss hover:bg-moss/80 text-white font-semibold hover:text-neutral-100 py-3 px-4 shadow-md hover:shadow-xl rounded transition duration-200 ease-in-out active:bg-moss/60 disabled:bg-green-600 disabled:shadow-xl"
-          >
-            Save
-          </button>
-        </div>
-
-        <div
-          class="w-full my-8 mx-auto lg:flex lg:flex-row lg:justify-center md:w-10/12 lg:w-8/12 lg:items-center 2xl:w-[960px]"
+        <form
+          id="form"
+          method="get"
+          class="bg-violet bg-overlay rounded-md p-4 my-10 mx-4 sm:mx-auto sm:flex sm:flex-row sm:justify-around sm:w-96 sm:p-6 sm:items-center sm:border-2 sm:border-gray-800"
         >
-          <form
-            id="form"
-            method="get"
-            class="flex flex-col justify-start flex-1 mx-4 bg-neutral-100 shadow-2xl bg-overlay justify-between items-center rounded-lg border-2 sm:border-4 border-transparent"
-          >
-            <p
-              class="text-left w-full p-4 sm:p-8 sm:w-11/12 sm:text-lg md:w-full xl:px-10"
+          <div class="flex flex-col justify-center items-start">
+            <label for="user" class="text-white">USERNAME*</label>
+            <input
+              type="text"
+              required
+              class="border-2 border-white border-slate-700 px-4 py-0.5 rounded focus:bg-slate-200"
+            />
+            <label for="user" class="text-white">EMAIL*</label>
+            <input
+              type="email"
+              required
+              class="border-2 border-white border-slate-700 px-4 py-0.5 rounded focus:bg-slate-200"
+            />
+            <label for="user" class="text-white">PASSWORD*</label>
+            <input
+              type="password"
+              required
+              class="border-2 border-white border-slate-700 px-4 py-0.5 rounded focus:bg-slate-200"
+            />
+            <span class="text-white">* = required</span>
+            <button
+              class="mt-6 w-full bg-moss hover:bg-moss/80 text-white font-semibold hover:text-neutral-100 py-3 px-4 shadow-md hover:shadow-xl rounded transition duration-200 ease-in-out active:bg-moss/60 disabled:bg-green-600 disabled:shadow-xl"
             >
-              Although you cannot "shuffle" cards in the traditional sense when
-              performing an online reading, the card choice by the computer is
-              not really random. It is dependent on the state of the computer’s
-              memory at the exact moment you activate shuffling algorithm
-              (pressing the submit button).<br /><br />
-              When interpreting the results, the card positions typically
-              represent the past, present, and future. Click on each tab to
-              reveal its meaning and then relate that interpretation to the
-              corresponding time period associated with each card's respective
-              position.<br /><br />
-              Enter your question in the field below and focus on it in your
-              mind. Give it your full attention, and when you feel ready, click
-              the button to proceed.
-            </p>
-            <div
-              class="bg-violet rounded-md p-4 my-10 mx-4 sm:mx-auto sm:flex sm:flex-row sm:justify-around sm:w-96 sm:p-6 sm:items-center sm:border-2 sm:border-gray-800"
-            >
-              <input
-                id="theAsk"
-                type="text"
-                placeholder="Write your question"
-                required
-                class="border-2 border-white border-slate-700 px-4 py-2 rounded focus:bg-slate-200"
-              />
-              <button
-                class="mt-6 bg-moss hover:bg-moss/80 text-white font-semibold py-2 px-4 border-2 border-moss hover:border-transparent rounded transition duration-200 ease-in-out active:bg-cyan-900 sm:mt-0"
-                type="submit"
-                value="Submit"
-                id="threeCards"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
+              SIGN IN
+            </button>
+          </div>
+        </form>
       </section>
       <footer class="h-16 bg-slate-900 flex flex-col justify-center p-8">
         <span class="block text-white mx-auto text-center"
@@ -411,7 +286,6 @@
         >
       </footer>
     </div>
-    <script src="public/js/reading.js"></script>
     <script src="public/js/nav.js"></script>
   </body>
 </html>

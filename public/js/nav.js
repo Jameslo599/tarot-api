@@ -1,6 +1,6 @@
 //Switch last nav link depending if user is signed in
 window.addEventListener("load", async () => {
-  if (document.cookie === "") {
+  if (document.cookie === "" || document.cookie.slice(0, 10) !== "JAMES-AUTH") {
     return (document.querySelector("#dropdownHover").style.display = "none");
   }
   const session = document.cookie.slice(11);
