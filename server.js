@@ -21,6 +21,7 @@ const tarotCardSchema = new mongoose.Schema({
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
+  email: { type: String, required: true },
   authentication: {
     password: { type: String, required: true, select: false },
     salt: { type: String, select: false },
@@ -94,7 +95,7 @@ app.get("/session/:token", (req, res) => {
 
 //Check if user exists
 app.post("/check", (req, res) => {
-  const user = req.body.user;
+  const user = req.body.user.toLowerCase();
   getUsername(user)
     .then((data) => res.json(data))
     .catch((error) => res.json(error));
@@ -102,11 +103,13 @@ app.post("/check", (req, res) => {
 
 //Add new user
 app.post("/auth/register", (req, res) => {
-  const user = req.body.user;
+  const user = req.body.user.toLowerCase();
+  const email = req.body.email.toLowerCase();
   const salt = random();
   const password = authenticate(salt, req.body.password);
   createUser({
     username: user,
+    email: email,
     authentication: {
       salt: salt,
       password: password,
@@ -154,20 +157,31 @@ app.get("/delete/:username/", (req, res) => {
     .catch((error) => res.json(error));
 });
 
+//Forgot Password
+app.get("/forgot/:username/", (req, res) => {
+  const email = req.body.email.toLowerCase();
+  getEmail(email)
+    .then((data) => res.json(data))
+    .catch((error) => res.json(error));
+});
+
 function getUsers() {
   return User.find({});
 }
 function getSession(sessionToken) {
   return User.findOne({ "authentication.sessionToken": sessionToken });
 }
-function getId(id) {
-  User.findById(id);
-}
 function getUsername(user) {
   return User.find({ username: user });
 }
+function getEmail(email) {
+  return User.find({ email: email });
+}
 function createUser(values) {
   return new User(values).save().then((user) => user.toObject());
+}
+function getId(id) {
+  User.findById(id);
 }
 function deleteById(id) {
   User.findOneAndDelete({ _id: id });

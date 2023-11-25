@@ -3,6 +3,7 @@ async function signUp() {
   try {
     const acc = {
       user: "jameslo699",
+      email: "aceboyz@gmail.com",
       password: "runescape",
     };
     //Check if acc already exists
@@ -35,7 +36,7 @@ async function signUp() {
 async function login() {
   try {
     const acc = {
-      user: "jameslo599",
+      user: "jameslo699",
       password: "runescape",
     };
     //Check if acc exists

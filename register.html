@@ -237,7 +237,7 @@
         <h1
           class="font-bold bg-slate-900/90 underline rounded p-4 inline-block text-white text-3xl sm:text-4xl xl:text-5xl transition duration-500 ease-in-out shadow-lg hover:shadow-lg hover:shadow-moss hover:text-moss"
         >
-          Sign In
+          Register Account
         </h1>
         <!-- Reading Log -->
 
@@ -247,42 +247,42 @@
           class="bg-slate-900/90 bg-overlay rounded-md px-4 py-8 my-10 mx-auto max-w-sm sm:mx-auto flex justify-center sm:w-96 sm:p-6 sm:items-center sm:border-2 sm:border-gray-800"
         >
           <div class="flex flex-col justify-center items-start w-full">
-            <label for="user" class="text-white">USERNAME</label>
+            <label for="user" class="text-white"
+              >USERNAME<span class="text-moss">*</span></label
+            >
             <input
               id="user"
               type="text"
               required
               class="border-2 border-white border-slate-700 px-2 w-full h-9 rounded focus:bg-pink/90"
             />
-            <label for="password" class="text-white mt-2">PASSWORD</label>
+            <label for="email" class="text-white mt-2"
+              >EMAIL<span class="text-moss">*</span></label
+            >
+            <input
+              id="email"
+              type="email"
+              required
+              class="border-2 border-white border-slate-700 px-2 w-full h-9 rounded focus:bg-pink/90"
+            />
+            <label for="password" class="text-white mt-2"
+              >PASSWORD<span class="text-moss">*</span></label
+            >
             <input
               id="password"
               type="password"
               required
               class="border-2 border-white border-slate-700 px-2 w-full h-9 rounded focus:bg-pink/90"
             />
-            <div class="text-white flex w-full justify-end text-sm mt-1">
-              <a
-                id="recovery"
-                href="#"
-                class="text-moss hover:underline hover:text-moss/80 active:text-moss/70"
-                >Forgot Password</a
-              >
+            <div class="text-white flex justify-between w-full text-sm mt-1">
+              <span><span class="text-moss">*</span> = required</span>
             </div>
 
             <button
               class="mt-4 w-full bg-violet hover:bg-moss/80 text-white text-lg font-semibold hover:text-neutral-100 py-3 px-4 shadow-md hover:shadow-xl rounded transition duration-200 ease-in-out active:bg-moss/60 disabled:bg-green-600 disabled:shadow-xl"
             >
-              SIGN IN
+              CREATE ACCOUNT
             </button>
-            <span class="text-white text-center block w-full mt-3 text-sm"
-              >Don't have an account?
-              <a
-                href="/register"
-                class="text-moss font-bold hover:underline hover:text-moss/80 active:text-moss/70"
-                >Sign up</a
-              ></span
-            >
           </div>
         </form>
       </section>
@@ -299,6 +299,5 @@
       </footer>
     </div>
     <script src="public/js/nav.js"></script>
-    <script src="public/js/login.js"></script>
   </body>
 </html>
