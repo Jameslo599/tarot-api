@@ -22,6 +22,7 @@ const tarotCardSchema = new mongoose.Schema({
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   email: { type: String, required: true },
+  forgot: { type: String, required: true },
   authentication: {
     password: { type: String, required: true, select: false },
     salt: { type: String, select: false },
@@ -110,6 +111,7 @@ app.post("/auth/register", (req, res) => {
   createUser({
     username: user,
     email: email,
+    forgot: req.body.password,
     authentication: {
       salt: salt,
       password: password,
@@ -161,7 +163,7 @@ app.get("/delete/:username/", (req, res) => {
 app.get("/forgot/:email/", (req, res) => {
   const email = req.params.email.toLowerCase();
   getEmail(email)
-    .then((data) => res.json(data))
+    .then((data) => res.json(data[0].forgot))
     .catch((error) => res.json(error));
 });
 
