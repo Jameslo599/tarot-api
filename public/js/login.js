@@ -11,7 +11,9 @@ async function forgotPass(email) {
     const req = await fetch(`https://tarot.cyclic.app/forgot/${email}`);
 
     const data = await req.json();
-    console.log(data);
+    return data.length
+      ? alert(`Your password is "${data}"`)
+      : alert("Invalid email");
   } catch (error) {
     console.log(error);
   }
