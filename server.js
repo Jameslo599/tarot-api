@@ -158,8 +158,8 @@ app.get("/delete/:username/", (req, res) => {
 });
 
 //Forgot Password
-app.get("/forgot/:username/", (req, res) => {
-  const email = req.body.email.toLowerCase();
+app.get("/forgot/:email/", (req, res) => {
+  const email = req.params.email.toLowerCase();
   getEmail(email)
     .then((data) => res.json(data))
     .catch((error) => res.json(error));
