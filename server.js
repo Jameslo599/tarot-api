@@ -148,6 +148,7 @@ app.post("/auth/login", async (req, res) => {
     domain: "localhost",
     path: "/",
   });
+  res.json("fail");
   res.status(200).json(user).end();
 });
 
