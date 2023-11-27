@@ -51,7 +51,9 @@ async function login() {
       body: JSON.stringify(acc),
     });
     const data = await creation.json();
-    console.log(data);
+    //If password is wrong
+    if (data === false)
+      return document.querySelector("#invalid").classList.remove("hidden");
     document.querySelector("#invalid").classList.add("hidden");
     document.querySelector("#success").classList.remove("hidden");
     //window.location.href = "https://tarot.cyclic.app/";
