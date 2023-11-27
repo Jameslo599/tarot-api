@@ -9,7 +9,6 @@ document.querySelector("#recovery").addEventListener("click", () => {
 async function forgotPass(email) {
   try {
     const req = await fetch(`https://tarot.cyclic.app/forgot/${email}`);
-
     const data = await req.json();
     return data.length
       ? alert(`Your password is "${data}"`)
@@ -28,7 +27,7 @@ document.querySelector("#signIn").addEventListener("submit", async (e) => {
 async function login() {
   try {
     const acc = {
-      user: document.querySelector("#user").value,
+      user: document.querySelector("#user").value.toLowerCase(),
       password: document.querySelector("#password").value,
     };
     //Check if acc exists
@@ -51,7 +50,6 @@ async function login() {
       body: JSON.stringify(acc),
     });
     const data = await creation.json();
-    console.log(data);
     window.location.href = "https://tarot.cyclic.app/";
   } catch (error) {
     console.log(error);
