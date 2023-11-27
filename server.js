@@ -56,6 +56,9 @@ app.get("/card-reading", (req, res) => {
 app.get("/login", (req, res) => {
   res.sendFile(__dirname + "/login.html");
 });
+app.get("/register", (req, res) => {
+  res.sendFile(__dirname + "/register.html");
+});
 
 //Return card info corresponding to name
 app.get("/card-api/:tarotCard", (req, res) => {

@@ -5,8 +5,11 @@ window.addEventListener("load", async () => {
   }
   const session = document.cookie.slice(11);
   const username = await getUser(session);
+  if (!username.username) {
+    return (document.querySelector("#dropdownHover").style.display = "none");
+  }
   document.querySelector("#login").style.display = "none";
-  document.querySelector("#username").prepend(username.username);
+  await document.querySelector("#username").prepend(username.username);
   document.querySelector("#dropdownHoverButton").classList.remove("hidden");
 });
 
