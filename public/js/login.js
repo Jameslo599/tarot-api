@@ -33,7 +33,7 @@ async function login() {
     };
     //Check if acc exists
     console.log(document.querySelector("#password").value);
-    const response = await fetch(`http://localhost:8000/check`, {
+    const response = await fetch(`https://tarot.cyclic.app/check`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ async function login() {
     if (existingUser.length === 0) return console.log("user does not exist");
 
     //Login
-    const creation = await fetch(`http://localhost:8000/auth/login`, {
+    const creation = await fetch(`https://tarot.cyclic.app/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +53,7 @@ async function login() {
     });
     const data = await creation.json();
     console.log(data);
-    window.location.href = "http://localhost:8000/";
+    window.location.href = "https://tarot.cyclic.app/";
   } catch (error) {
     console.log(error);
   }
