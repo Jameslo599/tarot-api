@@ -12,7 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="public/assets/output.css" />
+    <link rel="stylesheet" href="/assets/output.css" />
     <title>Tarot API</title>
   </head>
   <body class="h-screen min-w-[320px] bg-neutral-100">
@@ -247,6 +247,12 @@
           class="bg-slate-900/90 bg-overlay rounded-md px-4 py-8 my-10 mx-auto max-w-sm sm:mx-auto flex justify-center sm:w-96 sm:p-6 sm:items-center sm:border-2 sm:border-gray-800"
         >
           <div class="flex flex-col justify-center items-start w-full">
+            <div
+              id="invalid"
+              class="hidden mx-auto mb-2 p-2 rounded text-white bg-red-900"
+            >
+              <span>Invalid username or password</span>
+            </div>
             <label for="user" class="text-white">USERNAME</label>
             <input
               id="user"

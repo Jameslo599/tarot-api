@@ -39,7 +39,8 @@ async function login() {
       body: JSON.stringify(acc),
     });
     const existingUser = await response.json();
-    if (existingUser.length === 0) return console.log("user does not exist");
+    if (existingUser.length === 0)
+      return document.querySelector("#invalid").classList.remove("hidden");
 
     //Login
     const creation = await fetch(`https://tarot.cyclic.app/auth/login`, {
