@@ -138,6 +138,7 @@ app.post("/auth/login", async (req, res) => {
     req.body.password
   );
   if (user.authentication.password !== expectedHash) {
+    res.json("fail");
     return res.sendStatus(403);
   }
   const salt = random();
@@ -148,7 +149,6 @@ app.post("/auth/login", async (req, res) => {
     domain: "localhost",
     path: "/",
   });
-  res.json("fail");
   res.status(200).json(user).end();
 });
 
