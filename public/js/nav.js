@@ -6,7 +6,7 @@ window.addEventListener("load", async () => {
   const session = document.cookie.slice(11);
   const username = await getUser(session);
   //Return if multiple logins
-  if (!username.length) return;
+  if (!username) return;
   document.querySelector("#login").style.display = "none";
   await document.querySelector("#username").prepend(username.username);
   document.querySelector("#dropdownHoverButton").classList.remove("hidden");
