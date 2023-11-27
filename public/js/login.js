@@ -50,7 +50,8 @@ async function login() {
       },
       body: JSON.stringify(acc),
     });
-    const data = await creation.json();
+    document.querySelector("#invalid").classList.add("hidden");
+    document.querySelector("#success").classList.remove("hidden");
     window.location.href = "https://tarot.cyclic.app/";
   } catch (error) {
     console.log(error);
