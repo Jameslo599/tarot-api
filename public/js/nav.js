@@ -6,7 +6,7 @@ window.addEventListener("load", async () => {
   const session = document.cookie.slice(11);
   const username = await getUser(session);
   if (!username.username) {
-    return (document.querySelector("#dropdownHover").style.display = "none");
+    signOut();
   }
   document.querySelector("#login").style.display = "none";
   await document.querySelector("#username").prepend(username.username);
@@ -88,12 +88,10 @@ document.querySelector("#signOut").addEventListener("click", signOut);
 //Sign out user
 async function signOut() {
   try {
-    const req = await fetch("https://tarot.cyclic.app/sign-out", {
+    await fetch("https://tarot.cyclic.app/sign-out", {
       method: "DELETE",
     });
-    const data = await req.json();
     location.reload();
-    return data;
   } catch (error) {
     console.log(error);
   }
