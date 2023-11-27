@@ -32,7 +32,6 @@ async function login() {
       password: document.querySelector("#password").value,
     };
     //Check if acc exists
-    console.log(document.querySelector("#password").value);
     const response = await fetch(`https://tarot.cyclic.app/check`, {
       method: "POST",
       headers: {
