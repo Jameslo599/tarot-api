@@ -27,7 +27,7 @@ document.querySelector("#signIn").addEventListener("submit", async (e) => {
 async function login() {
   try {
     const acc = {
-      user: document.querySelector("#user").value.toLowerCase(),
+      user: `${document.querySelector("#user").value}`.toLowerCase(),
       password: document.querySelector("#password").value,
     };
     //Check if acc exists
