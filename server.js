@@ -53,6 +53,9 @@ app.get("/card-api", (req, res) => {
 app.get("/card-reading", (req, res) => {
   res.sendFile(__dirname + "/card-reading.html");
 });
+app.get("/login", (req, res) => {
+  res.sendFile(__dirname + "/login.html");
+});
 
 //Return card info corresponding to name
 app.get("/card-api/:tarotCard", (req, res) => {
@@ -94,14 +97,6 @@ app.get("/session/:token", (req, res) => {
     .catch(() => res.json("Token does not exist"));
 });
 
-//Check if user exists
-app.post("/check", (req, res) => {
-  const user = req.body.user.toLowerCase();
-  getUsername(user)
-    .then((data) => res.json(data))
-    .catch((error) => res.json(error));
-});
-
 //Add new user
 app.post("/auth/register", (req, res) => {
   const user = req.body.user.toLowerCase();
@@ -119,6 +114,14 @@ app.post("/auth/register", (req, res) => {
   })
     .then((data) => res.json(data))
     .catch((error) => res.json("Error in creating user"));
+});
+
+//Check if user exists
+app.post("/check", (req, res) => {
+  const user = req.body.user.toLowerCase();
+  getUsername(user)
+    .then((data) => res.json(data))
+    .catch((error) => res.json(error));
 });
 
 //Login user

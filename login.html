@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/public/images/favicon.ico" />
-    <link rel="apple-touch-icon" href="/public/images/apple-touch-icon.png" />
-    <link rel="shortcut icon" href="/public/images/favicon.ico" />
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/images/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="public/assets/output.css" />
+    <link rel="stylesheet" href="/assets/output.css" />
     <title>Tarot API</title>
   </head>
   <body class="h-screen min-w-[320px] bg-neutral-100">
@@ -27,7 +27,7 @@
           >
             <a href="/" class="nav-link rounded md:ml-4 hover:bg-violet"
               ><img
-                src="public/images/logo.svg"
+                src="/images/logo.svg"
                 alt="tarot logo"
                 class="w-28 p-1 sm:p-2 md:w-32"
             /></a>
@@ -169,7 +169,7 @@
                 <!-- Not signed in -->
                 <a
                   id="login"
-                  href="#"
+                  href="/login"
                   class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
                   <li class="m-2 text-white">
@@ -242,8 +242,8 @@
         <!-- Reading Log -->
 
         <form
-          id="form"
-          method="get"
+          id="signIn"
+          method="post"
           class="bg-slate-900/90 bg-overlay rounded-md px-4 py-8 my-10 mx-auto max-w-sm sm:mx-auto flex justify-center sm:w-96 sm:p-6 sm:items-center sm:border-2 sm:border-gray-800"
         >
           <div class="flex flex-col justify-center items-start w-full">
@@ -298,7 +298,7 @@
         >
       </footer>
     </div>
-    <script src="public/js/nav.js"></script>
-    <script src="public/js/login.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/login.js"></script>
   </body>
 </html>

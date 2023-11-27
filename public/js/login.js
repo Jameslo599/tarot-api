@@ -18,3 +18,43 @@ async function forgotPass(email) {
     console.log(error);
   }
 }
+
+//Login user
+document.querySelector("#signIn").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  await login();
+});
+
+async function login() {
+  try {
+    const acc = {
+      user: document.querySelector("#user").value,
+      password: document.querySelector("#password").value,
+    };
+    //Check if acc exists
+    console.log(document.querySelector("#password").value);
+    const response = await fetch(`http://localhost:8000/check`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(acc),
+    });
+    const existingUser = await response.json();
+    if (existingUser.length === 0) return console.log("user does not exist");
+
+    //Login
+    const creation = await fetch(`http://localhost:8000/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(acc),
+    });
+    const data = await creation.json();
+    console.log(data);
+    window.location.href = "http://localhost:8000/";
+  } catch (error) {
+    console.log(error);
+  }
+}
