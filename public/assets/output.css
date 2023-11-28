@@ -1196,11 +1196,6 @@ video {
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
-.border-cyan-600 {
-  --tw-border-opacity: 1;
-  border-color: rgb(8 145 178 / var(--tw-border-opacity));
-}
-
 .border-gray-900 {
   --tw-border-opacity: 1;
   border-color: rgb(17 24 39 / var(--tw-border-opacity));
@@ -1599,11 +1594,6 @@ video {
   .group:hover .md\:nav-underline {
     max-width: 100%;
   }
-}
-
-.hover\:border-cyan-200:hover {
-  --tw-border-opacity: 1;
-  border-color: rgb(165 243 252 / var(--tw-border-opacity));
 }
 
 .hover\:border-moss\/60:hover {
