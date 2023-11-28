@@ -34,7 +34,7 @@ async function signUp() {
     });
     document.querySelector("#invalid").classList.add("hidden");
     document.querySelector("#success").classList.remove("hidden");
-    window.location.href = "https://tarot.cyclic.app/login";
+    //window.location.href = "https://tarot.cyclic.app/login";
   } catch (error) {
     console.log(error);
   }
