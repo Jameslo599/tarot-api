@@ -21,7 +21,7 @@ async function signUp() {
     });
     const existingUser = await response.json();
     console.log(existingUser);
-    if (!existingUser.username || !existingUser.email)
+    if (existingUser.username.length > 0 || existingUser.email.length > 0)
       return document.querySelector("#invalid").classList.remove("hidden");
 
     //Create new account

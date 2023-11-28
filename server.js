@@ -128,14 +128,17 @@ app.post("/check", (req, res) => {
 });
 //Check if user exists for account creation
 app.post("/check/create", async (req, res) => {
-  const user = req.body.user.toLowerCase();
-  const email = req.params.email.toLowerCase();
-  const [userData, emailData] = await Promise.all([
-    getUsername(user),
-    getEmail(email),
-  ]);
-  console.log(userData, emailData);
-  res.json({ username: userData, email: emailData });
+  try {
+    const user = req.body.user.toLowerCase();
+    const email = req.body.email.toLowerCase();
+    const [userData, emailData] = await Promise.all([
+      getUsername(user),
+      getEmail(email),
+    ]);
+    res.json({ username: userData, email: emailData });
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
 //Login user
