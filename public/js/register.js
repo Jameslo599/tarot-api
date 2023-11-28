@@ -21,8 +21,19 @@ async function signUp() {
     });
     const existingUser = await response.json();
     console.log(existingUser);
-    if (existingUser.username.length > 0 || existingUser.email.length > 0)
+    if (existingUser.username.length > 0 && existingUser.email.length > 0) {
+      document.querySelector("#invalid").innerHTML =
+        "Username and Email already exist";
       return document.querySelector("#invalid").classList.remove("hidden");
+    }
+    if (existingUser.username.length > 0) {
+      document.querySelector("#invalid").innerHTML = "Username already exists";
+      return document.querySelector("#invalid").classList.remove("hidden");
+    }
+    if (existingUser.email.length > 0) {
+      document.querySelector("#invalid").innerHTML = "Email already exists";
+      return document.querySelector("#invalid").classList.remove("hidden");
+    }
 
     //Create new account
     await fetch(`https://tarot.cyclic.app/auth/register`, {
