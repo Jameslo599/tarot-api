@@ -134,6 +134,7 @@ app.post("/check/create", async (req, res) => {
     getUsername(user),
     getEmail(email),
   ]);
+  console.log(userData, emailData);
   res.json({ username: userData, email: emailData });
 });
 
