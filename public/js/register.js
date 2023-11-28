@@ -1,14 +1,18 @@
 //Sign up new user
+document.querySelector("#signUp").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  await signUp();
+});
+
 async function signUp() {
   try {
     const acc = {
-      user: "jameslo699",
-      email: "aceboyz@gmail.com",
-      password: "runescape",
+      user: `${document.querySelector("#user").value}`.toLowerCase(),
+      email: `${document.querySelector("#email").value}`.toLowerCase(),
+      password: document.querySelector("#password").value,
     };
     //Check if acc already exists
-    if (!acc.user || !acc.password) return console.log("input empty");
-    const response = await fetch(`http://localhost:8000/check`, {
+    const response = await fetch(`https://tarot.cyclic.app/check`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -16,18 +20,20 @@ async function signUp() {
       body: JSON.stringify(acc),
     });
     const existingUser = await response.json();
-    if (existingUser.length > 0) return console.log("user exists");
+    if (existingUser.length > 0)
+      return document.querySelector("#invalid").classList.remove("hidden");
 
     //Create new account
-    const creation = await fetch(`http://localhost:8000/auth/register`, {
+    await fetch(`https://tarot.cyclic.app/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(acc),
     });
-    const data = await creation.json();
-    console.log(data);
+    document.querySelector("#invalid").classList.add("hidden");
+    document.querySelector("#success").classList.remove("hidden");
+    window.location.href = "https://tarot.cyclic.app/login";
   } catch (error) {
     console.log(error);
   }

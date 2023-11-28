@@ -242,11 +242,23 @@
         <!-- Reading Log -->
 
         <form
-          id="form"
+          id="signUp"
           method="get"
-          class="bg-slate-900/90 bg-overlay rounded-md px-4 py-8 my-10 mx-auto max-w-sm sm:mx-auto flex justify-center sm:w-96 sm:p-6 sm:items-center sm:border-2 sm:border-gray-800"
+          class="bg-slate-900/90 bg-overlay sm:rounded-md px-4 py-8 my-10 mx-auto max-w-sm sm:mx-auto flex justify-center sm:w-96 sm:p-6 sm:items-center sm:border-2 sm:border-gray-800"
         >
           <div class="flex flex-col justify-center items-start w-full">
+            <div
+              id="invalid"
+              class="hidden mx-auto mb-2 p-2 rounded text-white bg-red-900"
+            >
+              <span>User already exists</span>
+            </div>
+            <div
+              id="success"
+              class="hidden mx-auto mb-2 p-2 rounded text-white bg-green-600"
+            >
+              <span>Account created! Redirecting to login...</span>
+            </div>
             <label for="user" class="text-white"
               >USERNAME<span class="text-moss">*</span></label
             >
@@ -299,5 +311,6 @@
       </footer>
     </div>
     <script src="public/js/nav.js"></script>
+    <script src="public/js/register.js"></script>
   </body>
 </html>
