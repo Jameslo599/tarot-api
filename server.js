@@ -137,7 +137,7 @@ app.post("/check/create", async (req, res) => {
     ]);
     res.json({ username: userData, email: emailData });
   } catch (error) {
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ error: "Account Exists" });
   }
 });
 
