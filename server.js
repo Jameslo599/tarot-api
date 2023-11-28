@@ -122,12 +122,7 @@ app.post("/auth/register", (req, res) => {
 //Check if user exists
 app.post("/check", (req, res) => {
   const user = req.body.user.toLowerCase();
-  const email = req.params.email.toLowerCase();
   getUsername(user)
-    .then((data) => res.json(data))
-    .catch((error) => res.json(error));
-
-  getEmail(email)
     .then((data) => res.json(data))
     .catch((error) => res.json(error));
 });
