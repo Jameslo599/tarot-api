@@ -12,7 +12,7 @@ async function signUp() {
       password: document.querySelector("#password").value,
     };
     //Check if acc already exists
-    const response = await fetch(`https://tarot.cyclic.app/check`, {
+    const response = await fetch(`https://tarot.cyclic.app/check/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,7 +20,8 @@ async function signUp() {
       body: JSON.stringify(acc),
     });
     const existingUser = await response.json();
-    if (existingUser.length > 0)
+    console.log(existingUser);
+    if (existingUser.username.length > 0 || existingUser.email.length > 0)
       return document.querySelector("#invalid").classList.remove("hidden");
 
     //Create new account
