@@ -1319,14 +1319,6 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-slate-900\/80 {
-  background-color: rgb(15 23 42 / 0.8);
-}
-
-.bg-slate-900\/70 {
-  background-color: rgb(15 23 42 / 0.7);
-}
-
 .bg-drop-down {
   background-image: url('../images/down-arrow.svg');
 }
@@ -1477,11 +1469,6 @@ video {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
-}
-
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
 }
 
 .font-bold {
@@ -1760,14 +1747,13 @@ video {
   color: rgb(0 201 170 / 0.7);
 }
 
+.active\:text-moss\/80:active {
+  color: rgb(0 201 170 / 0.8);
+}
+
 .disabled\:bg-green-600:disabled {
   --tw-bg-opacity: 1;
   background-color: rgb(22 163 74 / var(--tw-bg-opacity));
-}
-
-.disabled\:bg-gray-600:disabled {
-  --tw-bg-opacity: 1;
-  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
 }
 
 .disabled\:bg-green-800:disabled {
@@ -2059,6 +2045,10 @@ video {
 
   .md\:bg-transparent {
     background-color: transparent;
+  }
+
+  .md\:text-left {
+    text-align: left;
   }
 
   .md\:text-center {
