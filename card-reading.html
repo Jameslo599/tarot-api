@@ -3,17 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/public/images/favicon.ico" />
-    <link rel="apple-touch-icon" href="/public/images/apple-touch-icon.png" />
-    <link rel="shortcut icon" href="/public/images/favicon.ico" />
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/images/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <!-- <link rel="stylesheet" href="/assets/reset.css" /> -->
-    <link rel="stylesheet" href="public/assets/output.css" />
+    <link rel="stylesheet" href="/assets/output.css" />
     <title>Tarot API</title>
   </head>
 
@@ -29,7 +28,7 @@
           >
             <a href="/" class="nav-link rounded md:ml-4 hover:bg-violet"
               ><img
-                src="public/images/logo.svg"
+                src="/images/logo.svg"
                 alt="tarot logo"
                 class="w-28 p-1 sm:p-2 md:w-32"
             /></a>
@@ -168,21 +167,11 @@
                     <span class="md:nav-underline"></span>
                   </li>
                 </a>
-                <!-- Not signed in -->
-                <a
-                  href="/login"
-                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
-                >
-                  <li class="m-2 text-white">
-                    Login
-                    <span class="md:nav-underline"></span>
-                  </li>
-                </a>
 
                 <!-- Not signed in -->
                 <a
                   id="login"
-                  href="#"
+                  href="/login"
                   class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
                 >
                   <li class="m-2 text-white">
@@ -343,10 +332,16 @@
               class="font-bold text-white text-2xl bg-slate-900/0 px-4 py-2 rounded"
             ></span>
           </div>
-
+          <div id="cta" class="hidden mt-8 sm:mt-6">
+            <span
+              class="font-bold text-white text-lg bg-slate-900/90 px-4 py-2 rounded"
+              >Sign in to save readings</span
+            >
+          </div>
           <button
             id="save"
-            class="hidden mt-6 mx-2 w-40 bg-moss hover:bg-moss/80 text-white font-semibold hover:text-neutral-100 py-3 px-4 shadow-md hover:shadow-xl rounded transition duration-200 ease-in-out active:bg-moss/60 disabled:bg-green-600 disabled:shadow-xl"
+            class="hidden mt-6 mx-2 w-40 bg-moss hover:bg-moss/80 text-white font-semibold hover:text-neutral-100 py-3 px-4 shadow-md hover:shadow-xl rounded transition duration-200 ease-in-out active:bg-moss/60 disabled:bg-green-800 disabled:shadow-xl"
+            disabled
           >
             Save
           </button>
@@ -411,7 +406,7 @@
         >
       </footer>
     </div>
-    <script src="public/js/reading.js"></script>
-    <script src="public/js/nav.js"></script>
+    <script src="/js/reading.js"></script>
+    <script src="/js/nav.js"></script>
   </body>
 </html>

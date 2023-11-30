@@ -1,6 +1,16 @@
 //Triple api call for card reading and prevent refresh upon submitting
 const form = document.querySelector("#form");
 const save = document.querySelector("#save");
+const cta = document.querySelector("#cta");
+
+window.addEventListener("load", async () => {
+  if (document.cookie === "" || document.cookie.slice(0, 10) !== "JAMES-AUTH")
+    return cta.classList.add("signedOut");
+  const session = document.cookie.slice(11);
+  const username = await getUser(session);
+  //Return if multiple logins
+  if (!username) return cta.classList.add("signedOut");
+});
 
 //Handles displaying data on DOM
 form.addEventListener("submit", async (e) => {
@@ -13,7 +23,7 @@ form.addEventListener("submit", async (e) => {
     document.querySelector("#theAsk").value;
   document
     .querySelector("#question")
-    .classList.replace("bg-slate-900/0", "bg-slate-900/70");
+    .classList.replace("bg-slate-900/0", "bg-slate-900/90");
   //Populate save button
   save.classList.remove("hidden");
   //Reset text input
@@ -67,6 +77,9 @@ function updateDOM(arr) {
   }
 
   //Save object when 'save' button is clicked
+  if (cta.classList.contains("signedOut")) {
+    return cta.classList.remove("hidden");
+  }
   save.innerHTML = "Save";
   save.disabled = false;
 }
@@ -165,4 +178,15 @@ function getArr() {
     arr.push(value);
   }
   return arr.sort((a, b) => b.id - a.id);
+}
+
+//Validate session token
+async function getUser(session) {
+  try {
+    const req = await fetch(`https://tarot.cyclic.app/session/${session}`);
+    const data = await req.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 }
