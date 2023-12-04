@@ -227,6 +227,7 @@ app.delete("/:session/delete-all", async (req, res) => {
     const account = await getSession(session);
     account.readings = [];
     account.save();
+    res.status(200).json(user).end();
   } catch (error) {
     res.json(error);
   }
