@@ -3,18 +3,15 @@ const session = document.cookie.slice(11);
 window.addEventListener("load", populate);
 //Delete all readings on click
 document.querySelector("#delete-all").addEventListener("click", async () => {
-  if (confirm("Delete all saved readings?")) {
-    try {
-      await fetch(`https://tarot.cyclic.app/${session}/delete/all`, {
-        method: "DELETE",
-      });
-      location.reload();
-    } catch (error) {
-      console.error("Error deleting readings:", error);
-      // Handle error, e.g., show a user-friendly message
-    }
+  try {
+    await fetch(`https://tarot.cyclic.app/${session}/delete/all`, {
+      method: "DELETE",
+    });
+    location.reload();
+  } catch (error) {
+    console.error("Error deleting readings:", error);
+    // Handle error, e.g., show a user-friendly message
   }
-  console.log(2);
 });
 
 //Get entry question values and dates

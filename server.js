@@ -223,7 +223,6 @@ app.delete("/:session/delete/:id", async (req, res) => {
 //Delete all readings
 app.delete("/:session/delete/all", async (req, res) => {
   try {
-    console.log(2);
     const session = req.params.session;
     const account = await getSession(session);
     account.readings = [];
