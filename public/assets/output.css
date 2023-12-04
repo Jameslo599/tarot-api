@@ -1545,6 +1545,10 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -1963,6 +1967,14 @@ video {
 
   .md\:top-\[3rem\] {
     top: 3rem;
+  }
+
+  .md\:right-\[0\.5rem\] {
+    right: 0.5rem;
+  }
+
+  .md\:right-\[0rem\] {
+    right: 0rem;
   }
 
   .md\:order-last {
