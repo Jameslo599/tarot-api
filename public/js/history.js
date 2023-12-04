@@ -8,7 +8,7 @@ document.querySelector("#delete-all").addEventListener("click", async () => {
       await fetch(`https://tarot.cyclic.app/${session}/delete-all`, {
         method: "DELETE",
       });
-      location.reload();
+      return location.reload();
     } catch (error) {
       console.error("Error deleting readings:", error);
     }
