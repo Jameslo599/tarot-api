@@ -8,6 +8,7 @@ const uri = process.env.MONGO_URI;
 const mongoose = require("mongoose");
 const { format } = require("date-fns");
 const crypto = require("crypto");
+const { get } = require("http");
 
 mongoose.Promise = Promise;
 mongoose.connect(uri, { dbName: "tarot" });
@@ -23,6 +24,7 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   email: { type: String, required: true },
   forgot: { type: String, required: true },
+  readings: { type: Array, required: true },
   authentication: {
     password: { type: String, required: true, select: false },
     salt: { type: String, select: false },
@@ -58,6 +60,9 @@ app.get("/login", (req, res) => {
 });
 app.get("/register", (req, res) => {
   res.sendFile(__dirname + "/register.html");
+});
+app.get("/history", (req, res) => {
+  res.sendFile(__dirname + "/history.html");
 });
 
 //Return card info corresponding to name
@@ -110,6 +115,7 @@ app.post("/auth/register", (req, res) => {
     username: user,
     email: email,
     forgot: req.body.password,
+    readings: [],
     authentication: {
       salt: salt,
       password: password,
@@ -126,6 +132,7 @@ app.post("/check", (req, res) => {
     .then((data) => res.json(data))
     .catch((error) => res.json(error));
 });
+
 //Check if user exists for account creation
 app.post("/check/create", async (req, res) => {
   try {
@@ -186,6 +193,44 @@ app.get("/forgot/:email/", (req, res) => {
   getEmail(email)
     .then((data) => res.json(data[0].forgot))
     .catch((error) => res.json(error));
+});
+
+//Add new reading
+app.post("/:session/post", async (req, res) => {
+  try {
+    const session = req.params.session;
+    const account = await getSession(session);
+    account.readings.push(req.body);
+    account.save();
+  } catch (error) {
+    res.json(error);
+  }
+});
+
+//Delete selected reading
+app.delete("/:session/delete/:id", async (req, res) => {
+  try {
+    const session = req.params.session;
+    const id = +req.params.id;
+    const account = await getSession(session);
+    account.readings = account.readings.filter((e) => e.id !== id);
+    account.save();
+  } catch (error) {
+    res.json(error);
+  }
+});
+
+//Delete all readings
+app.delete("/:session/delete/all", async (req, res) => {
+  try {
+    console.log(2);
+    const session = req.params.session;
+    const account = await getSession(session);
+    account.readings = [];
+    account.save();
+  } catch (error) {
+    res.json(error);
+  }
 });
 
 function getUsers() {

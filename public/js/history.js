@@ -1,24 +1,38 @@
+const session = document.cookie.slice(11);
 //Populate saved readings on site load
 window.addEventListener("load", populate);
 //Delete all readings on click
-document.querySelector("#delete-all").addEventListener("click", () => {
+document.querySelector("#delete-all").addEventListener("click", async () => {
   if (confirm("Delete all saved readings?")) {
-    localStorage.clear();
-    location.reload();
+    try {
+      await fetch(`https://tarot.cyclic.app/${session}/delete/all`, {
+        method: "DELETE",
+      });
+      location.reload();
+    } catch (error) {
+      console.error("Error deleting readings:", error);
+      // Handle error, e.g., show a user-friendly message
+    }
   }
+  console.log(2);
 });
 
 //Get entry question values and dates
-function populate() {
-  const arr = getArr();
-  for (let i = 0; i < arr.length; i++) {
-    const value = JSON.parse(localStorage.getItem(arr[i].id));
-    //Revive object methods
-    value.removeState = function () {
-      //Delete reading
-      localStorage.removeItem(this.id);
-    };
-    makeSpan(value.question, value.date, value);
+async function populate() {
+  try {
+    const arr = await getArr();
+    for (let i = arr.length - 1; i >= 0; i--) {
+      //Revive object methods
+      arr[i].removeState = async function () {
+        //Delete reading
+        await fetch(`https://tarot.cyclic.app/${session}/delete/${this.id}`, {
+          method: "DELETE",
+        });
+      };
+      makeSpan(arr[i].question, arr[i].date, arr[i]);
+    }
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -37,25 +51,36 @@ function makeSpan(query, date, fn) {
   container.classList.add("entry-r");
   day.innerHTML = date;
   day.classList.add("sm:mx-4");
+  //Remove reading
   button.classList.add("trash");
   button.addEventListener("click", () => {
     fn.removeState();
     question.style.display = "none";
     container.style.display = "none";
   });
-  icon.src = "/public/images/black-bin.svg";
+  icon.src = "/images/black-bin.svg";
   button.appendChild(icon);
   container.append(day, button);
   log.appendChild(container);
 }
 
-//Obtain an array from all local storage items
-function getArr() {
-  const arr = [];
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    const value = JSON.parse(localStorage.getItem(key));
-    arr.push(value);
+//Obtain account's array of readings
+async function getArr() {
+  try {
+    const account = await getUser(session);
+    return account.readings;
+  } catch (error) {
+    console.log(error);
   }
-  return arr.sort((a, b) => b.id - a.id);
+}
+
+//Validate session token
+async function getUser(session) {
+  try {
+    const req = await fetch(`https://tarot.cyclic.app/session/${session}`);
+    const data = await req.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 }

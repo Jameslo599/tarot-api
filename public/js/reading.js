@@ -2,11 +2,11 @@
 const form = document.querySelector("#form");
 const save = document.querySelector("#save");
 const cta = document.querySelector("#cta");
+const session = document.cookie.slice(11);
 
 window.addEventListener("load", async () => {
   if (document.cookie === "" || document.cookie.slice(0, 10) !== "JAMES-AUTH")
     return cta.classList.add("signedOut");
-  const session = document.cookie.slice(11);
   const username = await getUser(session);
   //Return if multiple logins
   if (!username) return cta.classList.add("signedOut");
@@ -21,9 +21,6 @@ form.addEventListener("submit", async (e) => {
   //Update DOM h2 with question
   document.querySelector("#question").innerHTML =
     document.querySelector("#theAsk").value;
-  document
-    .querySelector("#question")
-    .classList.replace("bg-slate-900/0", "bg-slate-900/90");
   //Populate save button
   save.classList.remove("hidden");
   //Reset text input
@@ -98,16 +95,15 @@ class Reading {
     const spread = document.querySelector("#cardImages");
     const imgArr = spread.getElementsByClassName("image");
     const meaning = spread.getElementsByClassName("result");
+    const cover = spread.getElementsByClassName("cover");
     const container = spread.getElementsByClassName("container");
     document.querySelector("#question").innerHTML = this.question;
-    document
-      .querySelector("#question")
-      .classList.replace("bg-slate-900/0", "bg-slate-900/70");
     for (let i = 0; i < 3; i++) {
       imgArr[i].src = this.image[i];
       meaning[i].textContent = this.meaning[i];
       container[i].classList.replace("inactive", "activated");
       spread.children[i].classList.add("card");
+      cover[i].classList.replace("bg-slate-800/80", "bg-slate-800/0");
     }
   }
 }
@@ -144,40 +140,47 @@ function makeObj() {
 //Save new reading
 async function saveObj(img, meaning) {
   //Generate unique id number
-  const arr = getArr();
-  const num = localStorage.length ? arr[0].id + 1 : 0;
+  const arr = await getArr();
+  const num = arr.length ? arr[arr.length - 1].id + 1 : 0;
   const date = await getDate();
 
-  //Convert object to string for local storage
-  const newObj = JSON.stringify(
-    new Reading(
-      num,
-      img,
-      meaning,
-      document.querySelector("#question").textContent,
-      date
-    )
-  );
-
-  localStorage.setItem(num, newObj);
+  //Send reading to be saved to account
+  await fetch(`http://localhost:8000/${session}/post`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(
+      new Reading(
+        num,
+        img,
+        meaning,
+        document.querySelector("#question").textContent,
+        date
+      )
+    ),
+  });
 }
 
 //Load saved reading
-function loadObj(num) {
-  //Revive object with methods
-  const load = JSON.parse(localStorage.getItem(num));
-  Object.assign(new Reading(), load).loadState();
-}
+// async function loadObj(num) {
+//   try {
+//     //Revive object with methods
+//     const arr = await getArr();
+//     Object.assign(new Reading(), arr[num]).loadState();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
-//Obtain an array from all local storage items
-function getArr() {
-  const arr = [];
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    const value = JSON.parse(localStorage.getItem(key));
-    arr.push(value);
+//Obtain account's array of readings
+async function getArr() {
+  try {
+    const account = await getUser(session);
+    return account.readings;
+  } catch (error) {
+    console.log(error);
   }
-  return arr.sort((a, b) => b.id - a.id);
 }
 
 //Validate session token
