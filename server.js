@@ -176,12 +176,14 @@ app.post("/auth/login", async (req, res) => {
 //Sign out user
 app.delete("/sign-out", (req, res) => {
   res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  res.clearCookie("JAMES-AUTH", {
-    path: "/",
-    domain: "localhost",
-    sameSite: "None",
-    secure: true,
-  });
+  res
+    .clearCookie("JAMES-AUTH", {
+      path: "/",
+      domain: "localhost",
+      sameSite: "None",
+      secure: true,
+    })
+    .send();
   res.status(200).end();
 });
 
