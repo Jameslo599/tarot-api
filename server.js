@@ -167,7 +167,7 @@ app.post("/auth/login", async (req, res) => {
   user.save();
 
   res.cookie("JAMES-AUTH", user.authentication.sessionToken, {
-    domain: "tarot.cyclic.app",
+    domain: "localhost",
     path: "/",
   });
   res.status(200).json(user).end();
@@ -176,7 +176,7 @@ app.post("/auth/login", async (req, res) => {
 //Sign out user
 app.delete("/sign-out", (req, res) => {
   res.clearCookie("JAMES-AUTH", {
-    domain: "tarot.cyclic.app",
+    domain: "localhost",
     path: "/",
     sameSite: "None",
     secure: true,
