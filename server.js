@@ -167,7 +167,7 @@ app.post("/auth/login", async (req, res) => {
   user.save();
 
   res.cookie("JAMES-AUTH", user.authentication.sessionToken, {
-    domain: "localhost",
+    domain: "tarot.cyclic.app",
     path: "/",
   });
   res.status(200).json(user).end();
