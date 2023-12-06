@@ -175,7 +175,7 @@ app.post("/auth/login", async (req, res) => {
 
 //Sign out user
 app.delete("/sign-out", (req, res) => {
-  res.clearCookie("JAMES-AUTH", { domain: "localhost", path: "/" });
+  res.clearCookie("JAMES-AUTH", { domain: "tarot.cyclic.app", path: "/" });
   res.json("Successfully signed out!").end();
 });
 
