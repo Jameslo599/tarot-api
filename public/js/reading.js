@@ -145,7 +145,7 @@ async function saveObj(img, meaning) {
   const date = await getDate();
 
   //Send reading to be saved to account
-  await fetch(`http://localhost:8000/${session}/post`, {
+  await fetch(`https://tarot.cyclic.app/${session}/post`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
