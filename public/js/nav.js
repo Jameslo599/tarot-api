@@ -90,7 +90,7 @@ async function signOut() {
     await fetch("https://tarot.cyclic.app/sign-out", {
       method: "DELETE",
     });
-    location.reload();
+    window.location.href = "https://tarot.cyclic.app/";
   } catch (error) {
     console.log(error);
   }
