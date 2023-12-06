@@ -48,7 +48,7 @@ function makeSpan(query, date, fn) {
   const icon = document.createElement("img");
   container.classList.add("entry-r");
   day.innerHTML = date;
-  day.classList.add("sm:mx-4");
+  day.classList.add("mx-4");
   //Remove reading
   button.classList.add("trash");
   button.addEventListener("click", () => {
