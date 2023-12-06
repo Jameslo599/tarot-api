@@ -175,7 +175,13 @@ app.post("/auth/login", async (req, res) => {
 
 //Sign out user
 app.delete("/sign-out", (req, res) => {
-  res.clearCookie("JAMES-AUTH", { domain: "tarot.cyclic.app", path: "/" });
+  res.clearCookie("JAMES-AUTH", {
+    domain: "tarot.cyclic.app",
+    path: "/",
+    sameSite: "None",
+    secure: true,
+  });
+  res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
   res.status(200).end();
 });
 
