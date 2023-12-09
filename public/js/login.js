@@ -43,7 +43,7 @@ async function login() {
       return document.querySelector("#invalid").classList.remove("hidden");
 
     //Login
-    const creation = await fetch(`http://localhost:8000/auth/login`, {
+    const creation = await fetch(`https://tarot.cyclic.app/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -56,7 +56,7 @@ async function login() {
       return document.querySelector("#invalid").classList.remove("hidden");
     document.querySelector("#invalid").classList.add("hidden");
     document.querySelector("#success").classList.remove("hidden");
-    //window.location.href = "https://tarot.cyclic.app/";
+    window.location.href = "https://tarot.cyclic.app/";
   } catch (error) {
     console.log(error);
   }

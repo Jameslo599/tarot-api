@@ -38,8 +38,22 @@ async function populate() {
 function makeSpan(query, date, fn) {
   const log = document.querySelector("#log");
   const question = document.createElement("span");
+  const link = document.createElement("a");
   question.classList.add("entry-l");
-  question.innerHTML = query;
+  link.innerHTML = query;
+  link.href = "https://tarot.cyclic.app/card-reading";
+  link.target = "_blank";
+  link.title = "View reading";
+  link.classList.add("entry-link");
+  link.addEventListener("click", async () => {
+    try {
+      const user = document.querySelector("#username").innerText;
+      await fetch(`https://tarot.cyclic.app/${user}/view/${fn.id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  });
+  question.appendChild(link);
   log.appendChild(question);
   //Append date
   const container = document.createElement("div");
@@ -51,6 +65,7 @@ function makeSpan(query, date, fn) {
   day.classList.add("mx-4");
   //Remove reading
   button.classList.add("trash");
+  button.title = "Delete reading";
   button.addEventListener("click", () => {
     fn.removeState();
     question.style.display = "none";

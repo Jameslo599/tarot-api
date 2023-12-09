@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true },
   forgot: { type: String, required: true },
   readings: { type: Array, required: true },
+  view: { type: String },
   authentication: {
     password: { type: String, required: true, select: false },
     salt: { type: String, select: false },
@@ -235,7 +236,33 @@ app.delete("/:session/delete-all", async (req, res) => {
     const account = await getSession(session);
     account.readings = [];
     account.save();
-    res.status(200).json(user).end();
+    res.status(200).end();
+  } catch (error) {
+    res.json(error);
+  }
+});
+
+//Prepare to view a reading
+app.get("/:user/view/:id", async (req, res) => {
+  try {
+    const account = await User.findOne({ username: req.params.user });
+    account.view = req.params.id;
+    account.save();
+    res.status(200).end();
+  } catch (error) {
+    res.json(error);
+  }
+});
+
+//View saved reading
+app.get("/:session/viewid", async (req, res) => {
+  try {
+    const session = req.params.session;
+    const account = await getSession(session);
+    res.json(account.view);
+    account.view = "";
+    account.save();
+    res.status(200).end();
   } catch (error) {
     res.json(error);
   }

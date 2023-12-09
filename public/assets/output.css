@@ -712,6 +712,20 @@ video {
   }
 }
 
+.entry-link {
+  text-decoration-line: underline;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.entry-link:hover {
+  --tw-text-opacity: 1;
+  color: rgb(0 201 170 / var(--tw-text-opacity));
+}
+
 .entry-r {
   display: flex;
   width: 50%;

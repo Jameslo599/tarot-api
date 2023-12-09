@@ -10,6 +10,8 @@ window.addEventListener("load", async () => {
   const username = await getUser(session);
   //Return if multiple logins
   if (!username) return cta.classList.add("signedOut");
+
+  await loadObj(session);
 });
 
 //Handles displaying data on DOM
@@ -163,15 +165,19 @@ async function saveObj(img, meaning) {
 }
 
 //Load saved reading
-// async function loadObj(num) {
-//   try {
-//     //Revive object with methods
-//     const arr = await getArr();
-//     Object.assign(new Reading(), arr[num]).loadState();
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
+async function loadObj(session) {
+  try {
+    const response = await fetch(`https://tarot.cyclic.app/${session}/viewid`);
+    const data = await response.json();
+    //Revive object with methods
+    const arr = await getArr();
+    data.length > 0
+      ? Object.assign(new Reading(), arr[data]).loadState()
+      : null;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 //Obtain account's array of readings
 async function getArr() {
