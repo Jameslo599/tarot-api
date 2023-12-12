@@ -1,7 +1,11 @@
 //Sign up new user
 document.querySelector("#signUp").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  await signUp();
+  try {
+    e.preventDefault();
+    await signUp();
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 async function signUp() {

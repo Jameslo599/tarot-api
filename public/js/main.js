@@ -1,13 +1,17 @@
 //API call to obtain card data prevent page refresh after submitting form
 document.querySelector("#form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  await getName();
+  try {
+    e.preventDefault();
+    await getName();
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 // Obtain data on a single card
-async function getName(e) {
-  const tarotName = document.querySelector("#dropDown").value;
+async function getName() {
   try {
+    const tarotName = document.querySelector("#dropDown").value;
     const response = await fetch(
       `https://tarot.cyclic.app/card-api/${tarotName}`
     );

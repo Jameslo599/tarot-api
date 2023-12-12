@@ -5,29 +5,38 @@ const cta = document.querySelector("#cta");
 const session = document.cookie.slice(11);
 
 window.addEventListener("load", async () => {
-  if (document.cookie === "" || document.cookie.slice(0, 10) !== "JAMES-AUTH")
-    return cta.classList.add("signedOut");
-  const username = await getUser(session);
-  //Return if multiple logins
-  if (!username) return cta.classList.add("signedOut");
+  try {
+    if (document.cookie === "" || document.cookie.slice(0, 10) !== "JAMES-AUTH")
+      return cta.classList.add("signedOut");
+    const username = await getUser(session);
+    //Return if multiple logins
+    if (!username) return cta.classList.add("signedOut");
 
-  await loadObj(session);
+    await loadObj(session);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 //Handles displaying data on DOM
 form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  //Iterate through three child cards and update with info from api call
-  const result = await getReading();
-  updateDOM(result);
-  //Update DOM h2 with question
-  document.querySelector("#question").innerHTML =
-    document.querySelector("#theAsk").value;
-  //Populate save button
-  save.classList.remove("hidden");
-  //Reset text input
-  form.reset();
+  try {
+    e.preventDefault();
+    //Iterate through three child cards and update with info from api call
+    const result = await getReading();
+    updateDOM(result);
+    //Update DOM h2 with question
+    document.querySelector("#question").innerHTML =
+      document.querySelector("#theAsk").value;
+    //Populate save button
+    save.classList.remove("hidden");
+    //Reset text input
+    form.reset();
+  } catch (error) {
+    console.log(error);
+  }
 });
+
 //Handles saving
 form.addEventListener("submit", () => {
   save.addEventListener("click", makeObj);
@@ -35,20 +44,24 @@ form.addEventListener("submit", () => {
 
 //Obtain a 3 card spread reading
 async function getReading() {
-  const cardArr = [];
-  const numArr = getRandomInt(22);
-  for (let i = 0; i < 3; i++) {
-    try {
-      const response = await fetch(
-        `https://tarot.cyclic.app/reading/${numArr[i]}`
-      );
-      const data = await response.json();
-      cardArr.push(data);
-    } catch (error) {
-      console.log(error);
+  try {
+    const cardArr = [];
+    const numArr = getRandomInt(22);
+    for (let i = 0; i < 3; i++) {
+      try {
+        const response = await fetch(
+          `https://tarot.cyclic.app/reading/${numArr[i]}`
+        );
+        const data = await response.json();
+        cardArr.push(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
+    return cardArr.flat();
+  } catch (error) {
+    console.log(error);
   }
-  return cardArr.flat();
 }
 
 //Randomized number without duplicates
@@ -141,27 +154,31 @@ function makeObj() {
 
 //Save new reading
 async function saveObj(img, meaning) {
-  //Generate unique id number
-  const arr = await getArr();
-  const num = arr.length ? arr[arr.length - 1].id + 1 : 0;
-  const date = await getDate();
+  try {
+    //Generate unique id number
+    const arr = await getArr();
+    const num = arr.length ? arr[arr.length - 1].id + 1 : 0;
+    const date = await getDate();
 
-  //Send reading to be saved to account
-  await fetch(`https://tarot.cyclic.app/${session}/post`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(
-      new Reading(
-        num,
-        img,
-        meaning,
-        document.querySelector("#question").textContent,
-        date
-      )
-    ),
-  });
+    //Send reading to be saved to account
+    await fetch(`https://tarot.cyclic.app/${session}/post`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(
+        new Reading(
+          num,
+          img,
+          meaning,
+          document.querySelector("#question").textContent,
+          date
+        )
+      ),
+    });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 //Load saved reading

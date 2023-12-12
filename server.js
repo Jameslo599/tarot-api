@@ -151,27 +151,31 @@ app.post("/check/create", async (req, res) => {
 
 //Login user
 app.post("/auth/login", async (req, res) => {
-  let user = await getUsername(req.body.user).select(
-    "+authentication.salt +authentication.password"
-  );
-  user = user[0];
-  const expectedHash = authenticate(
-    user.authentication.salt,
-    req.body.password
-  );
-  if (user.authentication.password !== expectedHash) {
-    res.json(false);
-    return res.sendStatus(403);
-  }
-  const salt = random();
-  user.authentication.sessionToken = authenticate(salt, user._id.toString());
-  user.save();
+  try {
+    let user = await getUsername(req.body.user).select(
+      "+authentication.salt +authentication.password"
+    );
+    user = user[0];
+    const expectedHash = authenticate(
+      user.authentication.salt,
+      req.body.password
+    );
+    if (user.authentication.password !== expectedHash) {
+      res.json(false);
+      return res.sendStatus(403);
+    }
+    const salt = random();
+    user.authentication.sessionToken = authenticate(salt, user._id.toString());
+    user.save();
 
-  res.cookie("JAMES-AUTH", user.authentication.sessionToken, {
-    domain: "localhost",
-    path: "/",
-  });
-  res.status(200).json(user).end();
+    res.cookie("JAMES-AUTH", user.authentication.sessionToken, {
+      domain: "localhost",
+      path: "/",
+    });
+    res.status(200).json(user).end();
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 //Sign out user

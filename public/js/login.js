@@ -20,8 +20,12 @@ async function forgotPass(email) {
 
 //Login user
 document.querySelector("#signIn").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  await login();
+  try {
+    e.preventDefault();
+    await login();
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 async function login() {

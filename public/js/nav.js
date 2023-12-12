@@ -1,15 +1,22 @@
 //Switch last nav link depending if user is signed in
 window.addEventListener("load", async () => {
-  if (document.cookie === "" || document.cookie.slice(0, 10) !== "JAMES-AUTH") {
-    return (document.querySelector("#dropdownHover").style.display = "none");
+  try {
+    if (
+      document.cookie === "" ||
+      document.cookie.slice(0, 10) !== "JAMES-AUTH"
+    ) {
+      return (document.querySelector("#dropdownHover").style.display = "none");
+    }
+    const session = document.cookie.slice(11);
+    const username = await getUser(session);
+    //Return if multiple logins
+    if (!username) return;
+    document.querySelector("#login").style.display = "none";
+    await document.querySelector("#username").prepend(username.username);
+    document.querySelector("#dropdownHoverButton").classList.remove("hidden");
+  } catch (error) {
+    console.log(error);
   }
-  const session = document.cookie.slice(11);
-  const username = await getUser(session);
-  //Return if multiple logins
-  if (!username) return;
-  document.querySelector("#login").style.display = "none";
-  await document.querySelector("#username").prepend(username.username);
-  document.querySelector("#dropdownHoverButton").classList.remove("hidden");
 });
 
 //Open mobile navbar
