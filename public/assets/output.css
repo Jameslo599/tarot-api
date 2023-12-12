@@ -1650,6 +1650,10 @@ video {
   color: rgb(0 201 170 / 0.8);
 }
 
+.hover\:text-moss\/90:hover {
+  color: rgb(0 201 170 / 0.9);
+}
+
 .hover\:text-neutral-100:hover {
   --tw-text-opacity: 1;
   color: rgb(245 245 245 / var(--tw-text-opacity));
