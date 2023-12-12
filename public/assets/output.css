@@ -1713,6 +1713,11 @@ video {
   background-color: rgb(0 201 170 / 0.5);
 }
 
+.focus\:bg-emerald-300:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(110 231 183 / var(--tw-bg-opacity));
+}
+
 .focus\:text-black:focus {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
