@@ -1,14 +1,12 @@
 //API call to obtain card data prevent page refresh after submitting form
-(async () => {
-  try {
-    document.querySelector("#form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      await getName();
-    });
-  } catch (error) {
-    console.log(error);
-  }
-})();
+// document.querySelector("#form").addEventListener("submit", async (e) => {
+//   try {
+//     e.preventDefault();
+//     await getName();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 // Obtain data on a single card
 async function getName() {
