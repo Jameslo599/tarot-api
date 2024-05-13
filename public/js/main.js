@@ -13,7 +13,7 @@ async function getName() {
   try {
     const tarotName = document.querySelector("#dropDown").value;
     const response = await fetch(
-      `https://tarot.cyclic.app/card-api/${tarotName}`
+      `https://tarotapi.up.railway.app/card-api/${tarotName}`
     );
     const data = await response.json();
     //Update information with results

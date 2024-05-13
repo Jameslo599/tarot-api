@@ -80,7 +80,9 @@ function navClick(e) {
 //Determine last nav link to use
 async function getUser(session) {
   try {
-    const req = await fetch(`https://tarot.cyclic.app/session/${session}`);
+    const req = await fetch(
+      `https://tarotapi.up.railway.app/session/${session}`
+    );
     const data = await req.json();
     return data;
   } catch (error) {
@@ -94,10 +96,10 @@ document.querySelector("#signOut").addEventListener("click", signOut);
 //Sign out user
 async function signOut() {
   try {
-    await fetch("https://tarot.cyclic.app/sign-out", {
+    await fetch("https://tarotapi.up.railway.app/sign-out", {
       method: "DELETE",
     });
-    window.location.href = "https://tarot.cyclic.app/";
+    window.location.href = "https://tarotapi.up.railway.app/";
   } catch (error) {
     console.log(error);
   }

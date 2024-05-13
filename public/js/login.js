@@ -8,7 +8,7 @@ document.querySelector("#recovery").addEventListener("click", () => {
 //Search for account with email
 async function forgotPass(email) {
   try {
-    const req = await fetch(`https://tarot.cyclic.app/forgot/${email}`);
+    const req = await fetch(`https://tarotapi.up.railway.app/forgot/${email}`);
     const data = await req.json();
     return data.length
       ? alert(`Your password is "${data}"`)
@@ -35,7 +35,7 @@ async function login() {
       password: document.querySelector("#password").value,
     };
     //Check if acc exists
-    const response = await fetch(`https://tarot.cyclic.app/check`, {
+    const response = await fetch(`https://tarotapi.up.railway.app/check`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +47,7 @@ async function login() {
       return document.querySelector("#invalid").classList.remove("hidden");
 
     //Login
-    const creation = await fetch(`https://tarot.cyclic.app/auth/login`, {
+    const creation = await fetch(`https://tarotapi.up.railway.app/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ async function login() {
       return document.querySelector("#invalid").classList.remove("hidden");
     document.querySelector("#invalid").classList.add("hidden");
     document.querySelector("#success").classList.remove("hidden");
-    window.location.href = "https://tarot.cyclic.app/";
+    window.location.href = "https://tarotapi.up.railway.app/";
   } catch (error) {
     console.log(error);
   }
