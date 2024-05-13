@@ -50,7 +50,7 @@ async function getReading() {
     for (let i = 0; i < 3; i++) {
       try {
         const response = await fetch(
-          `https://tarotapi.up.railway.app/reading/${numArr[i]}`
+          `https://tarot.cyclic.app/reading/${numArr[i]}`
         );
         const data = await response.json();
         cardArr.push(data);
