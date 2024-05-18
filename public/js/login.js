@@ -8,7 +8,10 @@ document.querySelector("#recovery").addEventListener("click", () => {
 //Search for account with email
 async function forgotPass(email) {
   try {
-    const req = await fetch(`https://tarot-api.up.railway.app/forgot/${email}`);
+    const req = await fetch(
+      `https://tarot-api.up.railway.app/forgot/${email}`,
+      { credentials: "include" }
+    );
     const data = await req.json();
     return data.length
       ? alert(`Your password is "${data}"`)
@@ -41,6 +44,7 @@ async function login() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(acc),
+      credentials: "include",
     });
     const existingUser = await response.json();
     if (existingUser.length === 0)
@@ -55,6 +59,7 @@ async function login() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(acc),
+        credentials: "include",
       }
     );
     const data = await creation.json();

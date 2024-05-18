@@ -24,6 +24,7 @@ async function signUp() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(acc),
+        credentials: "include",
       }
     );
     const existingUser = await response.json();
@@ -49,6 +50,7 @@ async function signUp() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(acc),
+      credentials: "include",
     });
     document.querySelector("#invalid").classList.add("hidden");
     document.querySelector("#success").classList.remove("hidden");
@@ -61,7 +63,9 @@ async function signUp() {
 //Get users
 async function getUsers() {
   try {
-    const response = await fetch(`https://tarot-api.up.railway.app/users`);
+    const response = await fetch(`https://tarot-api.up.railway.app/users`, {
+      credentials: "include",
+    });
     const data = await response.json();
     console.log(data);
   } catch (error) {
@@ -73,7 +77,8 @@ async function getUsers() {
 async function deleteUser() {
   try {
     const response = await fetch(
-      `https://tarot-api.up.railway.app/delete/jameslo599`
+      `https://tarot-api.up.railway.app/delete/jameslo599`,
+      { credentials: "include" }
     );
     const data = await response.json();
     console.log(data);

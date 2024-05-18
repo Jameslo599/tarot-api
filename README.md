@@ -2,7 +2,7 @@
 
 This is a REST API that manages a fun tarot card reading activity.
 
-**Link to project:** https://tarot.cyclic.app/
+**Link to project:** https://tarot-api.up.railway.app/
 
 ![portfolio website](/public/images/tarot-api.webp)
 

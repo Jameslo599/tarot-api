@@ -7,7 +7,7 @@ const uri = process.env.MONGO_URI;
 const mongoose = require("mongoose");
 const { format } = require("date-fns");
 const crypto = require("crypto");
-const { get } = require("http");
+const cookieParser = require("cookie-parser");
 
 mongoose.Promise = Promise;
 mongoose.connect(uri, { dbName: "tarot" });
@@ -40,7 +40,13 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://tarot-api.up.railway.app", // Update this to your client origin
+    credentials: true,
+  })
+);
+app.use(cookieParser());
 
 // Routes
 app.get("/", (req, res) => {
@@ -160,20 +166,23 @@ app.post("/auth/login", async (req, res) => {
       req.body.password
     );
     if (user.authentication.password !== expectedHash) {
-      res.json(false);
-      return res.sendStatus(403);
+      return res.sendStatus(403).json(false);
     }
     const salt = random();
     user.authentication.sessionToken = authenticate(salt, user._id.toString());
-    user.save();
+    await user.save();
 
     res.cookie("JAMES-AUTH", user.authentication.sessionToken, {
-      domain: "localhost",
-      path: "/",
+      domain: "tarot-api.up.railway.app",
+      maxAge: 3 * 24 * 60 * 60 * 1000, // Session expiration time (in milliseconds)
+      secure: true, // Set to true if serving over HTTPS
+      httpOnly: true, // Restrict access to cookies from client-side JavaScript
+      sameSite: "strict", // Prevent cross-site request forgery
     });
     res.status(200).json(user).end();
   } catch (error) {
     console.log(error);
+    res.sendStatus(500);
   }
 });
 
@@ -183,12 +192,12 @@ app.delete("/sign-out", (req, res) => {
   res
     .clearCookie("JAMES-AUTH", {
       path: "/",
-      domain: "localhost",
-      sameSite: "None",
+      domain: "tarot-api.up.railway.app",
+      sameSite: "strict",
       secure: true,
     })
-    .send();
-  res.status(200).end();
+    .status(200)
+    .end();
 });
 
 //Delete User

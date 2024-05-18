@@ -81,7 +81,8 @@ function navClick(e) {
 async function getUser(session) {
   try {
     const req = await fetch(
-      `https://tarot-api.up.railway.app/session/${session}`
+      `https://tarot-api.up.railway.app/session/${session}`,
+      { credentials: "include" }
     );
     const data = await req.json();
     return data;
@@ -98,6 +99,7 @@ async function signOut() {
   try {
     await fetch("https://tarot-api.up.railway.app/sign-out", {
       method: "DELETE",
+      credentials: "include",
     });
     window.location.href = "https://tarot-api.up.railway.app/";
   } catch (error) {

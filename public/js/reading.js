@@ -50,7 +50,8 @@ async function getReading() {
     for (let i = 0; i < 3; i++) {
       try {
         const response = await fetch(
-          `https://tarot-api.up.railway.app/reading/${numArr[i]}`
+          `https://tarot-api.up.railway.app/reading/${numArr[i]}`,
+          { credentials: "include" }
         );
         const data = await response.json();
         cardArr.push(data);
@@ -127,7 +128,8 @@ class Reading {
 async function getDate() {
   try {
     const response = await fetch(
-      `https://tarot-api.up.railway.app/card-reading/date`
+      `https://tarot-api.up.railway.app/card-reading/date`,
+      { credentials: "include" }
     );
     const data = await response.json();
     return data;
@@ -177,6 +179,7 @@ async function saveObj(img, meaning) {
           date
         )
       ),
+      credentials: "include",
     });
   } catch (error) {
     console.log(error);
@@ -187,7 +190,8 @@ async function saveObj(img, meaning) {
 async function loadObj(session) {
   try {
     const response = await fetch(
-      `https://tarot-api.up.railway.app/${session}/viewid`
+      `https://tarot-api.up.railway.app/${session}/viewid`,
+      { credentials: "include" }
     );
     const data = await response.json();
     //Revive object with methods
@@ -214,7 +218,8 @@ async function getArr() {
 async function getUser(session) {
   try {
     const req = await fetch(
-      `https://tarot-api.up.railway.app/session/${session}`
+      `https://tarot-api.up.railway.app/session/${session}`,
+      { credentials: "include" }
     );
     const data = await req.json();
     return data;
