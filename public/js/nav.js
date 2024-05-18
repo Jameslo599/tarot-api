@@ -7,6 +7,7 @@ window.addEventListener("load", async () => {
     ) {
       return (document.querySelector("#dropdownHover").style.display = "none");
     }
+    console.log(document.cookie);
     const session = document.cookie.slice(11);
     const username = await getUser(session);
     //Return if multiple logins

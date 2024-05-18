@@ -173,6 +173,7 @@ app.post("/auth/login", async (req, res) => {
     await user.save();
 
     res.cookie("JAMES-AUTH", user.authentication.sessionToken, {
+      path: "/",
       domain: "tarot-api.up.railway.app",
       maxAge: 3 * 24 * 60 * 60 * 1000, // Session expiration time (in milliseconds)
       secure: true, // Set to true if serving over HTTPS
