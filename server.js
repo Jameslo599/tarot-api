@@ -311,5 +311,5 @@ function authenticate(salt, password) {
 
 // Listen
 app.listen(process.env.PORT || 8000, () => {
-  console.log(`The server is running on ${PORT}.`);
+  console.log(`The server is running on ${process.env.PORT || 8000}.`);
 });
