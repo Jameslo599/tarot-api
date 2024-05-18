@@ -5,7 +5,7 @@ window.addEventListener("load", populate);
 document.querySelector("#delete-all").addEventListener("click", async () => {
   try {
     if (confirm("Delete all saved readings?")) {
-      await fetch(`https://tarot.cyclic.app/${session}/delete-all`, {
+      await fetch(`https://tarot-api.up.railway.app/${session}/delete-all`, {
         method: "DELETE",
       });
       return location.reload();
@@ -23,9 +23,12 @@ async function populate() {
       //Revive object methods
       arr[i].removeState = async function () {
         //Delete reading
-        await fetch(`https://tarot.cyclic.app/${session}/delete/${this.id}`, {
-          method: "DELETE",
-        });
+        await fetch(
+          `https://tarot-api.up.railway.app/${session}/delete/${this.id}`,
+          {
+            method: "DELETE",
+          }
+        );
       };
       makeSpan(arr[i].question, arr[i].date, arr[i]);
     }
@@ -41,14 +44,14 @@ function makeSpan(query, date, fn) {
   const link = document.createElement("a");
   question.classList.add("entry-l");
   link.innerHTML = query;
-  link.href = "https://tarot.cyclic.app/card-reading";
+  link.href = "https://tarot-api.up.railway.app/card-reading";
   link.target = "_blank";
   link.title = "View reading";
   link.classList.add("entry-link");
   link.addEventListener("click", async () => {
     try {
       const user = document.querySelector("#username").innerText;
-      await fetch(`https://tarot.cyclic.app/${user}/view/${fn.id}`);
+      await fetch(`https://tarot-api.up.railway.app/${user}/view/${fn.id}`);
     } catch (error) {
       console.log(error);
     }
@@ -90,7 +93,9 @@ async function getArr() {
 //Validate session token
 async function getUser(session) {
   try {
-    const req = await fetch(`https://tarot.cyclic.app/session/${session}`);
+    const req = await fetch(
+      `https://tarot-api.up.railway.app/session/${session}`
+    );
     const data = await req.json();
     return data;
   } catch (error) {

@@ -50,7 +50,7 @@ async function getReading() {
     for (let i = 0; i < 3; i++) {
       try {
         const response = await fetch(
-          `https://tarot.cyclic.app/reading/${numArr[i]}`
+          `https://tarot-api.up.railway.app/reading/${numArr[i]}`
         );
         const data = await response.json();
         cardArr.push(data);
@@ -126,7 +126,9 @@ class Reading {
 //Get date
 async function getDate() {
   try {
-    const response = await fetch(`https://tarot.cyclic.app/card-reading/date`);
+    const response = await fetch(
+      `https://tarot-api.up.railway.app/card-reading/date`
+    );
     const data = await response.json();
     return data;
   } catch (error) {
@@ -161,7 +163,7 @@ async function saveObj(img, meaning) {
     const date = await getDate();
 
     //Send reading to be saved to account
-    await fetch(`https://tarot.cyclic.app/${session}/post`, {
+    await fetch(`https://tarot-api.up.railway.app/${session}/post`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -184,7 +186,9 @@ async function saveObj(img, meaning) {
 //Load saved reading
 async function loadObj(session) {
   try {
-    const response = await fetch(`https://tarot.cyclic.app/${session}/viewid`);
+    const response = await fetch(
+      `https://tarot-api.up.railway.app/${session}/viewid`
+    );
     const data = await response.json();
     //Revive object with methods
     const arr = await getArr();
@@ -209,7 +213,9 @@ async function getArr() {
 //Validate session token
 async function getUser(session) {
   try {
-    const req = await fetch(`https://tarot.cyclic.app/session/${session}`);
+    const req = await fetch(
+      `https://tarot-api.up.railway.app/session/${session}`
+    );
     const data = await req.json();
     return data;
   } catch (error) {

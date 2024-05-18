@@ -16,13 +16,16 @@ async function signUp() {
       password: document.querySelector("#password").value,
     };
     //Check if acc already exists
-    const response = await fetch(`https://tarot.cyclic.app/check/create`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(acc),
-    });
+    const response = await fetch(
+      `https://tarot-api.up.railway.app/check/create`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(acc),
+      }
+    );
     const existingUser = await response.json();
     console.log(existingUser);
     if (existingUser.username.length > 0 && existingUser.email.length > 0) {
@@ -40,7 +43,7 @@ async function signUp() {
     }
 
     //Create new account
-    await fetch(`https://tarot.cyclic.app/auth/register`, {
+    await fetch(`https://tarot-api.up.railway.app/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +52,7 @@ async function signUp() {
     });
     document.querySelector("#invalid").classList.add("hidden");
     document.querySelector("#success").classList.remove("hidden");
-    window.location.href = "https://tarot.cyclic.app/login";
+    window.location.href = "https://tarot-api.up.railway.app/login";
   } catch (error) {
     console.log(error);
   }
@@ -58,7 +61,7 @@ async function signUp() {
 //Get users
 async function getUsers() {
   try {
-    const response = await fetch(`https://tarot.cyclic.app/users`);
+    const response = await fetch(`https://tarot-api.up.railway.app/users`);
     const data = await response.json();
     console.log(data);
   } catch (error) {
@@ -69,7 +72,9 @@ async function getUsers() {
 //Delete user
 async function deleteUser() {
   try {
-    const response = await fetch(`https://tarot.cyclic.app/delete/jameslo599`);
+    const response = await fetch(
+      `https://tarot-api.up.railway.app/delete/jameslo599`
+    );
     const data = await response.json();
     console.log(data);
   } catch (error) {
