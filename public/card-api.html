@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" class="font-alegreya text-lg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/output.css" />
+    <title>Tarot API</title>
+  </head>
+
+  <body class="h-screen min-w-[320px] bg-lilac bg-overlay">
+    <div class="flex flex-col h-screen justify-between">
+      <header
+        class="fixed h-16 w-full left-0 top-0 bg-slate-900 bg-overlay z-10"
+      >
+        <nav>
+          <div
+            id="navBar"
+            class="flex flex-row justify-between items-center h-16"
+          >
+            <a href="/" class="nav-link rounded md:ml-4 hover:bg-violet"
+              ><img
+                src="/images/logo.svg"
+                alt="tarot logo"
+                class="w-28 p-1 sm:p-2 md:w-32"
+            /></a>
+            <div class="mr-4 order-last sm:mr-6 md:hidden">
+              <button
+                id="hamburger"
+                class="flex flex-col justify-center border-2 p-[0.15rem] border-moss rounded-lg transition-all"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 32 32"
+                  class="w-7 h-7"
+                >
+                  <title>menu-to-close-2</title>
+                  <g
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    fill="none"
+                    stroke="#ffffff"
+                  >
+                    <g
+                      id="burgerAni"
+                      class="js-nc-int-icon nc-int-menu-to-close-2"
+                    >
+                      <line x1="2" x2="30" y1="8" y2="8"></line>
+                      <line x1="30" x2="2" y1="24" y2="24"></line>
+                      <line x1="30" x2="2" y1="16" y2="16"></line>
+                      <line
+                        x1="30"
+                        x2="2"
+                        y1="16"
+                        y2="16"
+                        stroke="#ffffff"
+                      ></line>
+                    </g>
+                    <style>
+                      .nc-int-menu-to-close-2 {
+                        --transition-duration: 0.5s;
+                      }
+                      .nc-int-menu-to-close-2 :nth-child(1),
+                      .nc-int-menu-to-close-2 :nth-child(2) {
+                        transition: opacity 0s
+                            calc(var(--transition-duration) / 2),
+                          transform calc(var(--transition-duration) / 2)
+                            calc(var(--transition-duration) / 2)
+                            cubic-bezier(0.86, 0, 0.07, 1);
+                      }
+                      .nc-int-menu-to-close-2 :nth-child(1) {
+                        transform-origin: 16px 9px;
+                      }
+                      .nc-int-menu-to-close-2 :nth-child(2) {
+                        transform-origin: 16px 23px;
+                      }
+                      .nc-int-menu-to-close-2 :nth-child(3),
+                      .nc-int-menu-to-close-2 :nth-child(4) {
+                        transform-origin: 50% 50%;
+                        transition: transform
+                          calc(var(--transition-duration) / 2)
+                          cubic-bezier(0.86, 0, 0.07, 1);
+                      }
+                      .nc-int-menu-to-close-2.nc-int-icon-state-b :nth-child(1),
+                      .nc-int-menu-to-close-2.nc-int-icon-state-b
+                        :nth-child(2) {
+                        transition: transform
+                            calc(var(--transition-duration) / 2)
+                            cubic-bezier(0.86, 0, 0.07, 1),
+                          opacity 0s calc(var(--transition-duration) / 2);
+                        opacity: 0;
+                      }
+                      .nc-int-menu-to-close-2.nc-int-icon-state-b
+                        :nth-child(1) {
+                        transform: translateY(7px);
+                      }
+                      .nc-int-menu-to-close-2.nc-int-icon-state-b
+                        :nth-child(2) {
+                        transform: translateY(-7px);
+                      }
+                      .nc-int-menu-to-close-2.nc-int-icon-state-b :nth-child(3),
+                      .nc-int-menu-to-close-2.nc-int-icon-state-b
+                        :nth-child(4) {
+                        transition: transform
+                          calc(var(--transition-duration) / 2)
+                          calc(var(--transition-duration) / 2)
+                          cubic-bezier(0.86, 0, 0.07, 1);
+                      }
+                      .nc-int-menu-to-close-2.nc-int-icon-state-b
+                        :nth-child(3) {
+                        transform: rotate(45deg);
+                      }
+                      .nc-int-menu-to-close-2.nc-int-icon-state-b
+                        :nth-child(4) {
+                        transform: rotate(-45deg);
+                      }
+                    </style>
+                    <script>
+                      function
+                      initIntIcon(i){i.classList.contains("js-nc-int-icon-loaded")||(i.classList.add("js-nc-int-icon-loaded"),i.closest("svg").addEventListener("click",function(n){i.classList.toggle("nc-int-icon-state-b")}))}for(var
+                      intIcons=document.getElementsByClassName("js-nc-int-icon"),i=0;intIcons.length>i;i++)initIntIcon(intIcons[i])
+                    </script>
+                  </g>
+                </svg>
+              </button>
+            </div>
+            <div
+              id="navLinks"
+              class="justify-between items-center fixed w-full top-16 bg-slate-900 bg-overlay origin-top duration-200 scale-y-0 rounded-b md:top-0 md:flex md:relative md:order-last md:h-16 md:w-fit md:scale-y-100"
+            >
+              <ul
+                class="flex flex-col bg-violet m-4 rounded-lg md:w-100 md:m-0 md:mr-4 md:flex-row md:bg-transparent"
+              >
+                <a
+                  href="/about"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
+                >
+                  <li class="m-2 text-white">
+                    About Tarot
+                    <span class="md:nav-underline"></span>
+                  </li>
+                </a>
+                <a
+                  href="/card-reading"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
+                >
+                  <li class="m-2 text-white">
+                    Tarot Reading
+                    <span class="md:nav-underline"></span>
+                  </li>
+                </a>
+                <a
+                  href="/card-api"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
+                >
+                  <li class="m-2 text-white">
+                    Tarot API
+                    <span class="md:nav-underline"></span>
+                  </li>
+                </a>
+
+                <!-- Not signed in -->
+                <a
+                  id="login"
+                  href="/login"
+                  class="group nav-link inline-block border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
+                >
+                  <li class="m-2 text-white">
+                    Login
+                    <span class="md:nav-underline"></span>
+                  </li>
+                </a>
+
+                <!-- Signed in -->
+                <button
+                  id="dropdownHoverButton"
+                  class="hidden group nav-link inline-block md:rounded hover:bg-violet md:border-0"
+                  type="button"
+                >
+                  <div class="m-2">
+                    <li id="username" class="flex items-center text-white">
+                      <svg
+                        class="w-2.5 h-2.5 ms-1"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 10 6"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m1 1 4 4 4-4"
+                        />
+                      </svg>
+                    </li>
+                    <span class="md:nav-underline"></span>
+                  </div>
+                </button>
+                <!-- Dropdown menu -->
+                <div
+                  id="dropdownHover"
+                  class="z-10 m-2 md:my-2 bg-slate-900 rounded shadow md:absolute md:top-[3rem] md:right-[0rem] md:invisible"
+                >
+                  <ul class="p-2 md:py-2 md:px-3 text-white font-medium">
+                    <li>
+                      <a
+                        href="/history"
+                        class="block px-4 py-2 border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
+                        >History</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        id="signOut"
+                        href="#"
+                        class="block px-4 py-2 border-b-2 border-moss md:rounded hover:bg-violet md:border-0"
+                        >Sign Out</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <section id="banner" class="mt-16 py-10 h-auto text-center">
+        <h1
+          class="font-bold bg-white bg-overlay underline rounded p-4 inline-block text-gray-800 text-3xl sm:text-4xl xl:text-5xl transition duration-500 ease-in-out shadow-lg hover:shadow-lg hover:shadow-moss hover:text-moss"
+        >
+          Tarot API
+        </h1>
+        <div
+          class="my-8 flex flex-col items-center sm:mx-auto w-full my-16 mx-auto lg:flex lg:flex-row lg:justify-center md:w-10/12 lg:w-8/12 lg:items-center 2xl:w-5/12"
+        >
+          <form
+            id="form"
+            method="get"
+            class="flex flex-col justify-start flex-1 mx-4 justify-between items-center bg-white rounded-lg shadow-xl"
+          >
+            <p
+              class="text-left w-full p-4 sm:p-8 sm:w-11/12 sm:text-lg md:w-full xl:px-10"
+            >
+              The profound mystique and symbolic potency of the Tarot deck,
+              responsible for its profound influence across generations,
+              predominantly resides within its enigmatic 22 cards of the major
+              arcana. <br /><br />
+              Devoid of this major arcana, the Tarot would resemble standard
+              playing cards—a useful tool for games of chance and common
+              fortune-telling. However, it would lack the extraordinary
+              qualities that have ignited centuries of preservation, evolution,
+              interpretation, and artistic innovation, as witnessed in the rich
+              tapestry of Tarot cards. <br /><br />
+              To learn more about each of the 22 major arcana cards, choose a
+              card from the list.
+            </p>
+            <label for="tarot-search" class="text-2xl sr-only"
+              >Learn more about a card:</label
+            >
+            <div
+              class="flex flex-col bg-violet bg-overlay rounded-md p-4 px-5 my-10 max-w-[520px] sm:mx-auto sm:flex sm:flex-row sm:justify-around sm:w-96 sm:p-6 sm:items-center"
+            >
+              <select
+                name="tarot-search"
+                id="dropDown"
+                class="text-lg text-center text-white block py-1 px-0 w-[220px] sm:mr-4 bg-transparent border-0 border-b-2 border-white appearance-none dark:text-black dark:border-white focus:ring-0 focus:border-neutral-300 focus:text-black focus:bg-white bg-drop-down bg-no-repeat bg-right cursor-pointer hover:text-neutral-300 hover:border-neutral-300 transition duration-200 ease-in-out"
+                required
+              >
+                <option value="">--Select a Card--</option>
+                <option value="Magician">The Magician</option>
+                <option value="Popess">The Popess</option>
+                <option value="Empress">The Empress</option>
+                <option value="Emperor">The Emperor</option>
+                <option value="Pope">The Pope</option>
+                <option value="Lover">The Lover</option>
+                <option value="Chariot">The Chariot</option>
+                <option value="Justice">Justice</option>
+                <option value="Hermit">The Hermit</option>
+                <option value="Wheel-of-Fortune">The Wheel of Fortune</option>
+                <option value="Force">The Force</option>
+                <option value="Hanged-Man">The Hanged Man</option>
+                <option value="Death">Card 13</option>
+                <option value="Temperance">Temperance</option>
+                <option value="Devil">The Devil</option>
+                <option value="Tower">The Tower</option>
+                <option value="Star">The Star</option>
+                <option value="Moon">The Moon</option>
+                <option value="Sun">The Sun</option>
+                <option value="Judgment">Judgment</option>
+                <option value="World">The World</option>
+                <option value="Fool">The Fool</option>
+              </select>
+              <button
+                class="mt-6 bg-moss hover:bg-moss/70 text-neutral-100 font-semibold hover:text-white py-2 px-4 border-2 border-moss hover:border-transparent rounded transition duration-200 ease-in-out active:bg-moss/50 sm:mt-0"
+                type="submit"
+                value="Submit"
+                id="search"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <section id="info" class="py-14 bg-pink bg-overlay hidden text-center">
+        <h2
+          class="name mx-auto text-2xl sm:text-3xl font-bold bg-violet bg-overlay underline rounded p-4 inline-block text-white shadow-lg"
+        >
+          Card Name
+        </h2>
+        <div
+          class="mx-auto my-8 w-48 border-2 bg-slate-900 border-gray-900 rounded sm:w-fit lg:border-4 lg:flex-1 lg:relative shadow-lg"
+        >
+          <img
+            class="image w-fit mx-auto rounded"
+            src=""
+            alt="tarot cardback"
+          />
+        </div>
+        <div
+          class="w-auto sm:w-11/12 2xl:w-3/6 textBox mx-4 sm:mx-auto p-4 sm:p-8 rounded bg-white bg-overlay shadow-lg"
+        >
+          <p class="description text-left sm:text-lg sm:text-justify"></p>
+        </div>
+      </section>
+      <footer class="h-16 bg-slate-950 flex flex-col justify-center p-8">
+        <span class="block text-white mx-auto text-center"
+          >&copy; 2023 Copyright:
+          <a
+            href="https://www.jameshlo.com/"
+            target="_blank"
+            class="border-b-2 border-moss transition duration-200 ease-in-out hover:border-moss/60 hover:text-moss"
+            >James H Lo</a
+          ></span
+        >
+      </footer>
+    </div>
+    <script src="/js/main.js"></script>
+    <script src="/js/nav.js"></script>
+  </body>
+</html>
