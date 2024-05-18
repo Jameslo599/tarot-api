@@ -177,7 +177,7 @@ app.post("/auth/login", async (req, res) => {
       domain: "tarot-api.up.railway.app",
       maxAge: 3 * 24 * 60 * 60 * 1000, // Session expiration time (in milliseconds)
       secure: true, // Set to true if serving over HTTPS
-      httpOnly: true, // Restrict access to cookies from client-side JavaScript
+      httpOnly: false, // Restrict access to cookies from client-side JavaScript
       sameSite: "strict", // Prevent cross-site request forgery
     });
     res.status(200).json(user).end();
