@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const PORT = 8000;
 const uri = process.env.MONGO_URI;
 const mongoose = require("mongoose");
 const { format } = require("date-fns");
@@ -311,6 +310,6 @@ function authenticate(salt, password) {
 }
 
 // Listen
-app.listen(process.env.PORT || PORT, () => {
+app.listen(process.env.PORT || 8000, () => {
   console.log(`The server is running on ${PORT}.`);
 });
