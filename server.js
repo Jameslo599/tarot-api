@@ -178,7 +178,7 @@ app.post("/auth/login", async (req, res) => {
       maxAge: 3 * 24 * 60 * 60 * 1000, // Session expiration time (in milliseconds)
       secure: true, // Set to true if serving over HTTPS
       httpOnly: false, // Restrict access to cookies from client-side JavaScript
-      sameSite: "strict", // Prevent cross-site request forgery
+      sameSite: "lax", // Prevent cross-site request forgery
     });
     res.status(200).json(user).end();
   } catch (error) {
@@ -194,7 +194,7 @@ app.delete("/sign-out", (req, res) => {
     .clearCookie("JAMES-AUTH", {
       path: "/",
       domain: "tarot-api.up.railway.app",
-      sameSite: "strict",
+      sameSite: "lax",
       secure: true,
     })
     .status(200)
