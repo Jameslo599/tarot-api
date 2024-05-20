@@ -19,8 +19,7 @@ document.querySelector("#delete-all").addEventListener("click", async () => {
 async function populate() {
   try {
     const arr = await getUser();
-    console.log(arr);
-    for (let i = arr.readings.length - 1; i >= 0; i--) {
+    for (let i = arr[0].readings.length - 1; i >= 0; i--) {
       //Revive object methods
       arr[i].removeState = async function () {
         //Delete reading
@@ -82,17 +81,4 @@ function makeSpan(query, date, fn) {
   button.appendChild(icon);
   container.append(day, button);
   log.appendChild(container);
-}
-
-//Validate session token
-async function getUser() {
-  try {
-    const req = await fetch(`https://tarot-api.up.railway.app/session`, {
-      credentials: "include",
-    });
-    const data = await req.json();
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
 }

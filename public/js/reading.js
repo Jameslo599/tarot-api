@@ -10,7 +10,7 @@ window.addEventListener("load", async () => {
       return cta.classList.add("signedOut");
     const username = await getUser();
     //Return if multiple logins
-    if (!username) return cta.classList.add("signedOut");
+    if (!username[1]) return cta.classList.add("signedOut");
 
     await loadObj();
   } catch (error) {
@@ -160,8 +160,10 @@ function makeObj() {
 async function saveObj(img, meaning) {
   try {
     //Generate unique id number
-    const arr = await getArr();
-    const num = arr.length ? arr[arr.length - 1].id + 1 : 0;
+    const arr = await getUser();
+    const num = arr[0].readings.length
+      ? arr[0].readings[arr[0].readings.length - 1].id + 1
+      : 0;
     const date = await getDate();
 
     //Send reading to be saved to account
@@ -195,33 +197,10 @@ async function loadObj() {
     );
     const data = await response.json();
     //Revive object with methods
-    const arr = await getArr();
+    const arr = await getUser();
     data.length > 0
-      ? Object.assign(new Reading(), arr[data]).loadState()
+      ? Object.assign(new Reading(), arr[0].readings[data]).loadState()
       : null;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-//Obtain account's array of readings
-async function getArr() {
-  try {
-    const account = await getUser();
-    return account.readings;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-//Validate session token
-async function getUser() {
-  try {
-    const req = await fetch(`https://tarot-api.up.railway.app/session`, {
-      credentials: "include",
-    });
-    const data = await req.json();
-    return data;
   } catch (error) {
     console.log(error);
   }
