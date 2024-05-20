@@ -104,13 +104,23 @@ app.get("/users", (req, res) => {
 });
 
 //Get user by session token
-app.get("/session", (req, res) => {
-  //   const session = `${req.params.token}`;
-  const cookie = req.cookies["JAMES-AUTH"];
-  const confirm = getSession(cookie);
-  console.log(confirm);
-  if (!confirm) return res.status(404).json("Token does not exist");
-  return res.status(200).json(data);
+app.get("/session", async (req, res) => {
+  try {
+    const cookie = req.cookies["JAMES-AUTH"];
+    if (!cookie) {
+      return res.status(401).json({ error: "Unauthorized: No session token" });
+    }
+
+    const user = await getSession(cookie);
+    if (!user) {
+      return res.status(404).json({ error: "Token does not exist" });
+    }
+
+    return res.status(200).json(user);
+  } catch (error) {
+    console.error("Error fetching session:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
 //Add new user
@@ -286,8 +296,13 @@ app.get("/session/viewid", async (req, res) => {
 function getUsers() {
   return User.find({});
 }
-function getSession(sessionToken) {
-  return User.findOne({ "authentication.sessionToken": sessionToken });
+async function getSession(sessionToken) {
+  try {
+    return await User.findOne({ "authentication.sessionToken": sessionToken });
+  } catch (error) {
+    console.error("Error finding session:", error);
+    throw new Error("Error finding session");
+  }
 }
 function getUsername(user) {
   return User.find({ username: user });
