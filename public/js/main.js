@@ -18,7 +18,6 @@ async function getName() {
     );
     const data = await response.json();
     //Update information with results
-    console.log(data);
     document.querySelector(".name").innerText = data[0].name;
     document.querySelector(".image").src = data[0].image;
     document.querySelector(".description").innerText = data[0].description;
