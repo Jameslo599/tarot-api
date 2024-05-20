@@ -1,4 +1,3 @@
-//const session = document.cookie.slice(11);
 //Populate saved readings on site load
 window.addEventListener("load", populate);
 //Delete all readings on click
@@ -19,8 +18,9 @@ document.querySelector("#delete-all").addEventListener("click", async () => {
 //Get entry question values and dates
 async function populate() {
   try {
-    const arr = await getArr();
-    for (let i = arr.length - 1; i >= 0; i--) {
+    const arr = await getUser();
+    console.log(arr);
+    for (let i = arr.readings.length - 1; i >= 0; i--) {
       //Revive object methods
       arr[i].removeState = async function () {
         //Delete reading
@@ -82,16 +82,6 @@ function makeSpan(query, date, fn) {
   button.appendChild(icon);
   container.append(day, button);
   log.appendChild(container);
-}
-
-//Obtain account's array of readings
-async function getArr() {
-  try {
-    const account = await getUser();
-    return account.readings;
-  } catch (error) {
-    console.log(error);
-  }
 }
 
 //Validate session token
