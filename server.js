@@ -73,7 +73,7 @@ app.get("/history", (req, res) => {
 
 //Return card info corresponding to name
 app.get("/card-api/:tarotCard", (req, res) => {
-  console.log(req.cookie);
+  console.log(req.cookies);
   const card = req.params.tarotCard.toLowerCase();
   TarotCard.find({ id: card })
     .then((data) => res.json(data))
