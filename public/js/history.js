@@ -1,11 +1,11 @@
-const session = document.cookie.slice(11);
+//const session = document.cookie.slice(11);
 //Populate saved readings on site load
 window.addEventListener("load", populate);
 //Delete all readings on click
 document.querySelector("#delete-all").addEventListener("click", async () => {
   try {
     if (confirm("Delete all saved readings?")) {
-      await fetch(`https://tarot-api.up.railway.app/${session}/delete-all`, {
+      await fetch(`https://tarot-api.up.railway.app/session/delete-all`, {
         method: "DELETE",
         credentials: "include",
       });
@@ -25,7 +25,7 @@ async function populate() {
       arr[i].removeState = async function () {
         //Delete reading
         await fetch(
-          `https://tarot-api.up.railway.app/${session}/delete/${this.id}`,
+          `https://tarot-api.up.railway.app/session/delete/${this.id}`,
           {
             method: "DELETE",
             credentials: "include",
@@ -87,7 +87,7 @@ function makeSpan(query, date, fn) {
 //Obtain account's array of readings
 async function getArr() {
   try {
-    const account = await getUser(session);
+    const account = await getUser();
     return account.readings;
   } catch (error) {
     console.log(error);
@@ -95,12 +95,11 @@ async function getArr() {
 }
 
 //Validate session token
-async function getUser(session) {
+async function getUser() {
   try {
-    const req = await fetch(
-      `https://tarot-api.up.railway.app/session/${session}`,
-      { credentials: "include" }
-    );
+    const req = await fetch(`https://tarot-api.up.railway.app/session`, {
+      credentials: "include",
+    });
     const data = await req.json();
     return data;
   } catch (error) {

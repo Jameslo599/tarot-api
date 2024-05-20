@@ -1,19 +1,16 @@
 //Switch last nav link depending if user is signed in
 window.addEventListener("load", async () => {
   try {
-    if (
-      document.cookie === "" ||
-      document.cookie.slice(0, 10) !== "JAMES-AUTH"
-    ) {
+    const username = await getUser();
+    console.log(username);
+    if (!username[1]) {
       return (document.querySelector("#dropdownHover").style.display = "none");
     }
-    console.log(document.cookie);
-    const session = document.cookie.slice(11);
-    const username = await getUser(session);
-    //Return if multiple logins
-    if (!username) return;
+    // console.log(document.cookie);
+    // const session = document.cookie.slice(11);
+    // const username = await getUser(session);
     document.querySelector("#login").style.display = "none";
-    await document.querySelector("#username").prepend(username.username);
+    await document.querySelector("#username").prepend(username[0].username);
     document.querySelector("#dropdownHoverButton").classList.remove("hidden");
   } catch (error) {
     console.log(error);
@@ -79,14 +76,13 @@ function navClick(e) {
 }
 
 //Determine last nav link to use
-async function getUser(session) {
+async function getUser() {
   try {
-    const req = await fetch(
-      `https://tarot-api.up.railway.app/session/${session}`,
-      { credentials: "include" }
-    );
+    const req = await fetch(`https://tarot-api.up.railway.app/session`, {
+      credentials: "include",
+    });
     const data = await req.json();
-    return data;
+    return [data, req.ok];
   } catch (error) {
     console.log(error);
   }

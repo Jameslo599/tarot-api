@@ -73,7 +73,6 @@ app.get("/history", (req, res) => {
 
 //Return card info corresponding to name
 app.get("/card-api/:tarotCard", (req, res) => {
-  console.log(req.cookies);
   const card = req.params.tarotCard.toLowerCase();
   TarotCard.find({ id: card })
     .then((data) => res.json(data))
@@ -105,11 +104,13 @@ app.get("/users", (req, res) => {
 });
 
 //Get user by session token
-app.get("/session/:token", (req, res) => {
-  const session = `${req.params.token}`;
-  getSession(session)
-    .then((data) => res.json(data))
-    .catch(() => res.json("Token does not exist"));
+app.get("/session", (req, res) => {
+  //   const session = `${req.params.token}`;
+  const cookie = req.cookies["JAMES-AUTH"];
+  const confirm = getSession(cookie);
+  console.log(confirm);
+  if (!confirm) return res.status(404).json("Token does not exist");
+  return res.status(200).json(data);
 });
 
 //Add new user
@@ -178,7 +179,7 @@ app.post("/auth/login", async (req, res) => {
       domain: "tarot-api.up.railway.app",
       maxAge: 3 * 24 * 60 * 60 * 1000, // Session expiration time (in milliseconds)
       secure: true, // Set to true if serving over HTTPS
-      httpOnly: false, // Restrict access to cookies from client-side JavaScript
+      httpOnly: true, // Restrict access to cookies from client-side JavaScript
       sameSite: "none", // Prevent cross-site request forgery
     });
     res.status(200).json(user).end();
@@ -219,9 +220,9 @@ app.get("/forgot/:email/", (req, res) => {
 });
 
 //Add new reading
-app.post("/:session/post", async (req, res) => {
+app.post("/session/post", async (req, res) => {
   try {
-    const session = req.params.session;
+    const session = req.cookies["JAMES-AUTH"];
     const account = await getSession(session);
     account.readings.push(req.body);
     account.save();
@@ -231,9 +232,9 @@ app.post("/:session/post", async (req, res) => {
 });
 
 //Delete selected reading
-app.delete("/:session/delete/:id", async (req, res) => {
+app.delete("/session/delete/:id", async (req, res) => {
   try {
-    const session = req.params.session;
+    const session = req.cookies["JAMES-AUTH"];
     const id = +req.params.id;
     const account = await getSession(session);
     account.readings = account.readings.filter((e) => e.id !== id);
@@ -244,9 +245,9 @@ app.delete("/:session/delete/:id", async (req, res) => {
 });
 
 //Delete all readings
-app.delete("/:session/delete-all", async (req, res) => {
+app.delete("/session/delete-all", async (req, res) => {
   try {
-    const session = req.params.session;
+    const session = req.cookies["JAMES-AUTH"];
     const account = await getSession(session);
     account.readings = [];
     account.save();
@@ -269,9 +270,9 @@ app.get("/:user/view/:id", async (req, res) => {
 });
 
 //View saved reading
-app.get("/:session/viewid", async (req, res) => {
+app.get("/session/viewid", async (req, res) => {
   try {
-    const session = req.params.session;
+    const session = req.cookies["JAMES-AUTH"];
     const account = await getSession(session);
     res.json(account.view);
     account.view = "";

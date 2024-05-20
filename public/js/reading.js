@@ -2,17 +2,17 @@
 const form = document.querySelector("#form");
 const save = document.querySelector("#save");
 const cta = document.querySelector("#cta");
-const session = document.cookie.slice(11);
+//const session = document.cookie.slice(11);
 
 window.addEventListener("load", async () => {
   try {
     if (document.cookie === "" || document.cookie.slice(0, 10) !== "JAMES-AUTH")
       return cta.classList.add("signedOut");
-    const username = await getUser(session);
+    const username = await getUser();
     //Return if multiple logins
     if (!username) return cta.classList.add("signedOut");
 
-    await loadObj(session);
+    await loadObj();
   } catch (error) {
     console.log(error);
   }
@@ -165,7 +165,7 @@ async function saveObj(img, meaning) {
     const date = await getDate();
 
     //Send reading to be saved to account
-    await fetch(`https://tarot-api.up.railway.app/${session}/post`, {
+    await fetch(`https://tarot-api.up.railway.app/session/post`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -187,10 +187,10 @@ async function saveObj(img, meaning) {
 }
 
 //Load saved reading
-async function loadObj(session) {
+async function loadObj() {
   try {
     const response = await fetch(
-      `https://tarot-api.up.railway.app/${session}/viewid`,
+      `https://tarot-api.up.railway.app/session/viewid`,
       { credentials: "include" }
     );
     const data = await response.json();
@@ -207,7 +207,7 @@ async function loadObj(session) {
 //Obtain account's array of readings
 async function getArr() {
   try {
-    const account = await getUser(session);
+    const account = await getUser();
     return account.readings;
   } catch (error) {
     console.log(error);
@@ -215,12 +215,11 @@ async function getArr() {
 }
 
 //Validate session token
-async function getUser(session) {
+async function getUser() {
   try {
-    const req = await fetch(
-      `https://tarot-api.up.railway.app/session/${session}`,
-      { credentials: "include" }
-    );
+    const req = await fetch(`https://tarot-api.up.railway.app/session`, {
+      credentials: "include",
+    });
     const data = await req.json();
     return data;
   } catch (error) {
