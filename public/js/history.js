@@ -18,8 +18,9 @@ document.querySelector("#delete-all").addEventListener("click", async () => {
 //Get entry question values and dates
 async function populate() {
   try {
-    const arr = await getUser();
-    for (let i = arr[0].readings.length - 1; i >= 0; i--) {
+    const acc = await getUser();
+    const arr = acc[0].readings;
+    for (let i = arr.length - 1; i >= 0; i--) {
       //Revive object methods
       arr[i].removeState = async function () {
         //Delete reading

@@ -11,7 +11,6 @@ window.addEventListener("load", async () => {
     const username = await getUser();
     //Return if multiple logins
     if (!username[1]) return cta.classList.add("signedOut");
-
     await loadObj();
   } catch (error) {
     console.log(error);
@@ -160,10 +159,9 @@ function makeObj() {
 async function saveObj(img, meaning) {
   try {
     //Generate unique id number
-    const arr = await getUser();
-    const num = arr[0].readings.length
-      ? arr[0].readings[arr[0].readings.length - 1].id + 1
-      : 0;
+    const acc = await getUser();
+    const arr = acc[0].readings;
+    const num = arr.length ? arr[arr.length - 1].id + 1 : 0;
     const date = await getDate();
 
     //Send reading to be saved to account
