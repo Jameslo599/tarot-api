@@ -6,10 +6,7 @@ const cta = document.querySelector("#cta");
 
 window.addEventListener("load", async () => {
   try {
-    if (document.cookie === "" || document.cookie.slice(0, 10) !== "JAMES-AUTH")
-      return cta.classList.add("signedOut");
     const username = await getUser();
-    //Return if multiple logins
     if (!username[1]) return cta.classList.add("signedOut");
     await loadObj();
   } catch (error) {

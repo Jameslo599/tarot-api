@@ -2,7 +2,6 @@
 window.addEventListener("load", async () => {
   try {
     const username = await getUser();
-    console.log(username);
     if (!username[1]) {
       return (document.querySelector("#dropdownHover").style.display = "none");
     }
